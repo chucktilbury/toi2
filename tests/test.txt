@@ -1,0 +1,85 @@
+/*
+
+    this is a comment
+*/
+
+// this is a comment
+import "blart";
+import "bacon", "eggs", "peas", "carrots";
+
+class  private static nameeoeo(none) {
+    int protected fine;
+    int blart;
+    int asd;
+    constructor() {}
+    destructor {}
+}
+
+class public name__eoeo(none, protected iney, public miny) {
+    int good;
+    constructor() {}
+    destructor {}
+}
+
+class /* protected */  good_dog() {
+    int8 public static some;
+    float static public blart;
+    constructor() {}
+    destructor {}
+}
+
+class blart()
+{
+    array some;
+
+    method static public some_method(int asd, int bwer)(int retv) {
+        int made;
+        made.in.france = -1-2+3;
+        while(ab+2 == 123) {
+            int good = 0;
+            int bad;
+           call.something(good)(bad);
+           retv = bad;
+
+           int x; int y;
+           while ( x == y ) {
+               y++;
+               x--;
+               int z = 123 + (12 * x) / z;
+           }
+
+           if(1 ==2) {
+               int asd;
+               asd = 1+2*3;
+           }
+           else(2 == 3) {
+               asd = 2+3+4;
+           }
+           else {
+           (int) (x << 123);
+           }
+        }
+
+    }
+
+    constructor() {}
+    destructor {
+        do {
+            asd= 123;
+            if(1 ==2 ) {
+                we.are.parsing(123)(asd);
+            }
+        }while (0 == 0);
+
+        switch ( g == a) {
+            case 123 {
+                abc = 123;
+            }
+            case 0.012 {
+                lkj = 0;
+            }
+        }
+    }
+    uint32 static public value;
+}
+
