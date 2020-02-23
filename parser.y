@@ -334,7 +334,7 @@ method_param_def
         method data_attrs name (parm list) (parm list) {body}
     */
 method_definition
-    : METHOD data_attrs_list SYMBOL '(' method_param_def ')' '(' method_param_def ')'method_body
+    : METHOD data_attrs_list SYMBOL '(' method_param_def ')' '(' method_param_def ')' method_body
     | METHOD SYMBOL '(' method_param_def ')' '(' method_param_def ')' method_body
     ;
 
