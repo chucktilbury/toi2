@@ -60,6 +60,8 @@ static void append_str(char *str) {
 
     /* keywords */
 "nothing"       { return NOTHING; }
+"nada"          { return NOTHING; }
+"null"          { return NOTHING; }
 "import"        { return IMPORT; }
 "class"         { return CLASS; }
 "method"        { return METHOD; }
@@ -67,17 +69,22 @@ static void append_str(char *str) {
 "function"      { return METHOD; }
 "create"        { return CREATE; }
 "constructor"   { return CREATE; }
+"construct"     { return CREATE; }
 "destroy"       { return DESTROY; }
 "destructor"    { return DESTROY; }
+"destruct"      { return DESTROY; }
 "public"        { return PUBLIC; }
 "private"       { return PRIVATE; }
 "protect"       { return PROTECTED; }
 "protected"     { return PROTECTED; }
 "static"        { return STATIC; }
 "const"         { return CONST; }
+"constant"      { return CONST; }
 "dict"          { return DICT; }
+"dictionary"    { return DICT; }
 "array"         { return ARRAY; }
 "bool"          { return BOOL; }
+"boolean"       { return BOOL; }
 "string"        { return STRING; }
 "int8"          { return INT8; }
 "int16"         { return INT16; }
@@ -91,24 +98,17 @@ static void append_str(char *str) {
 "uint64"        { return UINT64; }
 "uint"          { return UINT; }
 "if"            { return IF; }
-"elseif"        { return ELSEIF; }
 "else"          { return ELSE; }
-"for"           { return FOR; }
 "while"         { return WHILE; }
 "do"            { return DO; }
 "try"           { return TRY; }
 "except"        { return EXCEPT; }
+"catch"         { return EXCEPT; }
 "raise"         { return RAISE; }
-"alloc"         { return ALLOC; }
-"delete"        { return DELETE; }
 "switch"        { return SWITCH; }
 "case"          { return CASE; }
 "break"         { return BREAK; }
 "continue"      { return CONTINUE; }
-    /*
-    "namespace"     { return NAMESPACE; }
-    "var"           { return VAR; }
-    */
 
     /* boolean operator tokens composed of special characters */
 "&&"            { return AND; }

@@ -11,11 +11,11 @@ int main(int argc, char **argv) {
 
     yyparse();
 
-    if(get_num_errors())
-        printf("\nparse failed: %d errors: %d warnings\n", get_num_errors(),
-               get_num_warnings());
+    int errors = get_num_errors();
+    if(errors != 0)
+        printf("\nparse failed: %d errors: %d warnings\n", errors, get_num_warnings());
     else
-        printf("\nparse succeeded: %d errors: %d warnings\n", get_num_errors(),
-               get_num_warnings());
-    return 0;
+        printf("\nparse succeeded: %d errors: %d warnings\n", errors, get_num_warnings());
+
+    return errors;
 }

@@ -11,8 +11,8 @@ class  private static nameeoeo(none) {
     int protected fine;
     int blart;
     int asd;
-    constructor() {}
-    destructor {}
+    //constructor() {}
+    //destructor {}
 }
 
 class public name__eoeo(none, protected iney, public miny) {
@@ -39,6 +39,7 @@ class blart()
             int good = 0;
             int bad;
            call.something(good)(bad);
+           blart(this, is, a, long, 'parameter', a[0], list)(here, is, another);
            retv = bad;
 
            int x; int y;
@@ -56,7 +57,7 @@ class blart()
                asd = 2+3+4;
            }
            else {
-           (int) (x << 123);
+           blart = int: (x << 123);
            }
         }
 
@@ -64,6 +65,7 @@ class blart()
 
     constructor() {}
     destructor {
+        print_formatted(poop, arg[1], pigs)(asd);
         do {
             asd= 123;
             if(1 ==2 ) {

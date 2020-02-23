@@ -19,9 +19,9 @@
 %token CREATE DESTROY NOTHING IMPORT PUBLIC PRIVATE
 %token PROTECTED STATIC CONST DICT ARRAY BOOL
 %token STRING FLOAT INT INT8 INT16 INT32 INT64
-%token UINT UINT8 UINT16 UINT32 UINT64 IF ELSEIF
-%token ELSE FOR WHILE DO TRY EXCEPT RAISE ALLOC
-%token DELETE SWITCH CASE BREAK CONTINUE AND OR
+%token UINT UINT8 UINT16 UINT32 UINT64 IF
+%token ELSE WHILE DO TRY EXCEPT RAISE
+%token SWITCH CASE BREAK CONTINUE AND OR
 %token NOT EQU NEQU LTEQU GTEQU BSHL BSHR BROL
 %token BROR INC DEC
 
@@ -98,6 +98,7 @@ data_attrs
     : PRIVATE
     | PUBLIC
     | PROTECTED
+    | CONST
     | STATIC
     ;
 
@@ -124,6 +125,16 @@ number
     : UNUM
     | INUM
     | FNUM
+    ;
+
+fomatted_strg
+    : QSTRG
+    | QSTRG '%' '(' parameter_list ')'
+    ;
+
+subscript
+    : complex_name '[' expression ']'
+    | complex_name '[' fomatted_strg ']'
     ;
 
     /*
@@ -160,20 +171,36 @@ expression
     | '(' expression ')'
     ;
 
-expression_list
-    : expression
-    | expression_list ',' expression
+
+parameter
+    : fomatted_strg
+    | subscript
+    | expression
     ;
+
+parameter_list
+    :
+    | parameter
+    | parameter_list ',' parameter
+    ;
+
+    // expression_list
+    //     : QSTRG
+    //     | subscript
+    //     | expression
+    //     | expression_list ',' expression
+    //     ;
 
 data_definition
     : intrinsic_type SYMBOL ';'
     | intrinsic_type SYMBOL '=' expression ';'
-    | '(' intrinsic_type ')' expression
-    | '(' intrinsic_type ')' expression ';'
+    | intrinsic_type SYMBOL '=' NOTHING ';'
     ;
 
 function_call
-    : complex_name '(' expression_list ')' '(' expression_list ')' ';'
+    : complex_name '(' parameter_list ')' '(' parameter_list ')' ';'
+    | complex_name '.' CREATE '(' parameter_list ')' ';'
+    | complex_name '.' DESTROY ';'
     ;
 
 else_clause
@@ -199,6 +226,30 @@ do_clause
     : DO loop_body WHILE '(' expression ')' ';'
     ;
 
+except_parameter
+    :
+    | fomatted_strg
+    | complex_name
+    ;
+
+except_parameter_list
+    : except_parameter
+    | except_parameter_list ',' except_parameter
+    ;
+
+except_clause
+    : EXCEPT '(' except_parameter_list ')' method_body
+    | EXCEPT complex_name '(' except_parameter_list ')' method_body
+    ;
+
+try_clause
+    : TRY method_body except_clause
+    ;
+
+raise_clause
+    : RAISE '(' except_parameter_list ')' ';'
+    ;
+
 case_clause
     : CASE UNUM method_body
     | CASE INUM method_body
@@ -214,8 +265,14 @@ switch_clause
     : SWITCH '(' expression ')' '{' case_body '}'
     ;
 
+type_cast
+    : intrinsic_type ':'
+    ;
+
 assignment
     : complex_name '=' expression ';'
+    | complex_name '=' type_cast expression ';'
+    | complex_name '=' NOTHING ';'
     ;
 
 jump_clause
@@ -225,6 +282,8 @@ jump_clause
 
 method_body_element
     : data_definition
+    | try_clause
+    | raise_clause
     | function_call
     | if_clause
     | while_clause
