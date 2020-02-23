@@ -44,6 +44,7 @@ static void append_str(char *str) {
     }
 }
 
+#define YY_USER_ACTION yylloc.first_line = yylloc.last_line = yylineno;
 %}
 
     /* state definitions */
@@ -51,7 +52,7 @@ static void append_str(char *str) {
 %x DQUOTES
 %x COMMENT
 %option noinput nounput
-
+%option yylineno
 %%
 
     /* overhead */
@@ -85,6 +86,10 @@ static void append_str(char *str) {
 "array"         { return ARRAY; }
 "bool"          { return BOOL; }
 "boolean"       { return BOOL; }
+"true"          { return TRUE; }
+"yes"           { return TRUE; }
+"false"         { return FALSE; }
+"no"            { return FALSE; }
 "string"        { return STRING; }
 "int8"          { return INT8; }
 "int16"         { return INT16; }
@@ -110,6 +115,8 @@ static void append_str(char *str) {
 "case"          { return CASE; }
 "break"         { return BREAK; }
 "continue"      { return CONTINUE; }
+"default"       { return DEFAULT; }
+"final"         { return FINAL; }
 
     /* boolean operator tokens composed of special characters */
 "&&"            { return AND; }

@@ -1,0 +1,47 @@
+/*
+    Verify that the switch/case syntax works
+*/
+
+class name() {
+
+    func name()(){
+
+        int tval;
+
+        switch(tval) {
+            case 10 {
+                call_something()();
+            }
+            case 8080.88 {
+                do_something ()();
+                break;
+                do_elsewhere()();
+            }
+            default {
+                make_it_here()();
+            }
+        }
+
+        switch(asd*eggs/(12*plaster)) {
+            case 8080.88 {
+                do_something ()();
+                break;
+                do_elsewhere()();
+            }
+            default {
+                make_it_here()();
+            }
+        }
+
+        switch(tval.qwert.xcv) {
+            case 10 {
+                call_something()();
+            }
+            case 8080.88 {
+                do_something ()();
+                break;
+                do_elsewhere()();
+            }
+        }
+    }
+}

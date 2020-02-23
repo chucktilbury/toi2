@@ -1,0 +1,44 @@
+/*
+    Try/catch syntax test
+*/
+
+class name() {
+
+    func name() () {
+
+        int abc;
+
+        try {
+            float define_a_var = 0.0;
+            call_this()();
+            bla()();
+        }
+        catch(some_name, 'string'%(format)) {
+            something()();
+            backon.eggs.are.good()();
+        }
+
+
+        try {
+            float define_a_var = 0.0;
+            call_this()();
+            bla()();
+        }
+        catch('string'%(format)) {
+            something()();
+            backon.eggs.are.good()();
+        }
+        final {}
+
+        try {
+            float define_a_var = 0.0;
+            call_this()();
+            bla()();
+        }
+        except('string'%(format)) {
+            something()();
+            backon.eggs.are.good()();
+        }
+        final {}
+    }
+}

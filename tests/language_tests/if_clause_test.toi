@@ -1,0 +1,47 @@
+
+/*
+    These tests check that the syntax if the "if" clause works properly.
+*/
+
+class SomeClass() {
+
+    method name()() {
+
+        if (x == y) {
+            int a = b;
+            if (xyz) {
+                if(peas) {
+                    int p = 123;
+                    somecall()();
+                    if (carrots) {
+                        int x = y;
+                    }
+                    else{
+                        blart=123;
+                    }
+                }
+            }
+        }
+        else(y == x) {
+            float n = 123.0;
+        }
+        else(asd == 123) {
+            if (xyz) {
+                if(peas) {
+                    int p = 123;
+                    somecall()();
+                    if (carrots) {
+                        int x = y;
+                    }
+                    else{
+                        blart=123;
+                    }
+                }
+            }
+            int booga;
+        }
+        else {
+            // empty
+        }
+    }
+}

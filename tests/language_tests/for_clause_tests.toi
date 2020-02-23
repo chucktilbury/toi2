@@ -1,0 +1,24 @@
+/*
+    Syntax test for the "for" clause.
+*/
+
+class name() {
+
+    func name()(){
+
+        for(x=0; x< 10; x++) {
+            asdf()();
+        }
+
+        for(int x = 0; (x << 10) != 50; x = 10) {
+            asdf()();
+        }
+
+        for(x.asd = 0; x.qwer < 10; x <=< 18) {
+            asdf()();
+        }
+
+        for(x.asd = 0; x.qwer != 10; x  + 12) {}
+
+    }
+}

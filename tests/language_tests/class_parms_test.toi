@@ -1,0 +1,14 @@
+
+/*
+    This test verifies that class declaration syntax is accepted.
+*/
+
+class name() { func name()(){} }
+
+class name(asdf) { func name()(){} }
+
+class name(asdf.wer) { func name()(){} }
+
+class name(qwe.ert.ert) { func name()(){} }
+
+class name(qwe,ert,ert) { func name()(){} }

@@ -14,16 +14,17 @@
 
 %}
 %define parse.error verbose
+%locations
 
 %token SYMBOL UNUM FNUM INUM QSTRG CLASS METHOD
 %token CREATE DESTROY NOTHING IMPORT PUBLIC PRIVATE
 %token PROTECTED STATIC CONST DICT ARRAY BOOL
 %token STRING FLOAT INT INT8 INT16 INT32 INT64
-%token UINT UINT8 UINT16 UINT32 UINT64 IF
-%token ELSE WHILE DO TRY EXCEPT RAISE FOR
-%token SWITCH CASE BREAK CONTINUE AND OR
+%token UINT UINT8 UINT16 UINT32 UINT64 IF TRUE
+%token ELSE WHILE DO TRY EXCEPT RAISE FOR FALSE
+%token SWITCH CASE BREAK CONTINUE AND OR DEFAULT
 %token NOT EQU NEQU LTEQU GTEQU BSHL BSHR BROL
-%token BROR INC DEC
+%token BROR INC DEC FINAL
 
 %left AND OR
 %left '&' '|' '^'
@@ -127,14 +128,14 @@ number
     | FNUM
     ;
 
-fomatted_strg
+formatted_string
     : QSTRG
     | QSTRG '%' '(' parameter_list ')'
     ;
 
 subscript
     : complex_name '[' expression ']'
-    | complex_name '[' fomatted_strg ']'
+    | complex_name '[' formatted_string ']'
     ;
 
     /*
@@ -173,7 +174,7 @@ expression
 
 
 parameter
-    : fomatted_strg
+    : formatted_string
     | subscript
     | expression
     ;
@@ -184,9 +185,16 @@ parameter_list
     | parameter_list ',' parameter
     ;
 
+data_definition_target
+    : NOTHING
+    | expression
+    | type_cast expression
+    | formatted_string
+    ;
+
 data_definition_assignment
-    : intrinsic_type SYMBOL '=' expression ';'
-    | intrinsic_type SYMBOL '=' NOTHING ';'
+    : intrinsic_type SYMBOL '=' data_definition_target ';'
+    | intrinsic_type CONST SYMBOL '=' data_definition_target ';'
     ;
 
 data_definition
@@ -200,11 +208,26 @@ function_call
     | complex_name '.' DESTROY ';'
     ;
 
+for_initialize
+    : intrinsic_type SYMBOL '=' NOTHING ';'
+    | intrinsic_type SYMBOL '=' expression ';'
+    | intrinsic_type SYMBOL '=' bool_value ';'
+    | assignment ';'
+    ;
+
+
+for_test_expression
+    : expression ';'
+    ;
+
+for_arith_expression
+    : expression
+    | pre_post_inc
+    | assignment
+    ;
+
 for_clause
-    : FOR '(' data_definition_assignment ';' expression ';' expression ')' loop_body
-    | FOR '(' ')' loop_body
-    | FOR '(' expression ')' loop_body
-    | FOR '(' expression ';' expression ')' loop_body
+    : FOR '(' for_initialize for_test_expression  for_arith_expression ')' loop_body
     ;
 
 else_clause
@@ -218,21 +241,26 @@ else_body
     | method_body
     ;
 
+branch_expression
+    : expression
+    | bool_value
+    ;
+
 if_clause
-    : IF '(' expression ')' else_body
+    : IF '(' branch_expression ')' else_body
     ;
 
 while_clause
-    : WHILE '(' expression ')' loop_body
+    : WHILE '(' branch_expression ')' loop_body
     ;
 
 do_clause
-    : DO loop_body WHILE '(' expression ')' ';'
+    : DO loop_body WHILE '(' branch_expression ')' ';'
     ;
 
 except_parameter
     :
-    | fomatted_strg
+    | formatted_string
     | complex_name
     ;
 
@@ -246,8 +274,13 @@ except_clause
     | EXCEPT complex_name '(' except_parameter_list ')' method_body
     ;
 
+final_clause
+    : FINAL method_body
+    ;
+
 try_clause
     : TRY method_body except_clause
+    | TRY method_body except_clause final_clause
     ;
 
 raise_clause
@@ -255,9 +288,13 @@ raise_clause
     ;
 
 case_clause
-    : CASE UNUM method_body
-    | CASE INUM method_body
-    | CASE FNUM method_body
+    : CASE UNUM loop_body
+    | CASE INUM loop_body
+    | CASE FNUM loop_body
+    ;
+
+default_case
+    : DEFAULT loop_body
     ;
 
 case_body
@@ -267,21 +304,36 @@ case_body
 
 switch_clause
     : SWITCH '(' expression ')' '{' case_body '}'
+    | SWITCH '(' expression ')' '{' case_body default_case '}'
     ;
 
 type_cast
     : intrinsic_type ':'
     ;
 
+bool_value
+    : TRUE
+    | FALSE
+    ;
+
 assignment
-    : complex_name '=' expression ';'
-    | complex_name '=' type_cast expression ';'
-    | complex_name '=' NOTHING ';'
+    : complex_name '=' expression
+    | complex_name '=' formatted_string
+    | complex_name '=' type_cast expression
+    | complex_name '=' NOTHING
+    | complex_name '=' bool_value
     ;
 
 jump_clause
     : CONTINUE ';'
     | BREAK ';'
+    ;
+
+pre_post_inc
+    : complex_name INC
+    | complex_name DEC
+    | INC complex_name
+    | DEC complex_name
     ;
 
 method_body_element
@@ -294,11 +346,8 @@ method_body_element
     | while_clause
     | do_clause
     | switch_clause
-    | complex_name INC ';'
-    | complex_name DEC ';'
-    | INC complex_name ';'
-    | DEC complex_name ';'
-    | assignment
+    | pre_post_inc ';'
+    | assignment ';'
     ;
 
 loop_body_element
@@ -312,7 +361,8 @@ loop_body_element_list
     ;
 
 loop_body
-    : '{' loop_body_element_list '}'
+    : '{' '}'
+    | '{' loop_body_element_list '}'
     ;
 
 method_body_element_list
@@ -371,7 +421,7 @@ extern char yytext[];
 void yyerror(const char* s)
 {
 	fflush(stdout);
-	fprintf(stderr, "\n%s: %d: %s\n\n", get_file_name(), get_line_number(), s);
+	fprintf(stderr, "\n%s: line %d: at %d: %s\n\n", get_file_name(), get_line_number(), yylloc.first_line, s);
     inc_error_count();
 }
 

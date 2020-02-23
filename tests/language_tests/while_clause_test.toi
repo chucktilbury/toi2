@@ -1,0 +1,15 @@
+
+/*
+    Syntax tests for the while clause.
+*/
+
+class name() {
+
+    func name()() {
+
+        while(1) {}
+        while(true) {}
+        while(1+2*(1/2)) {}
+        while(asd.qwe.er != 0) {}
+    }
+}

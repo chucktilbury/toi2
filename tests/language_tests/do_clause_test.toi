@@ -1,0 +1,15 @@
+/*
+    Do/while syntax tests
+*/
+
+class name() {
+
+    func name()() {
+
+        do {} while(1);
+        do {
+            some_func()();
+        } while(x != 10);
+
+    }
+}

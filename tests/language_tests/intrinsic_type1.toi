@@ -1,0 +1,99 @@
+
+/*
+    This is a positive test it should pass without failures.
+    These tests only test the parser. They are not symantec tests.
+*/
+
+class SomeClass() {
+    // without assignments
+    int value;
+    uint value;
+    int8 value;
+    int16 val;
+    int32 val;
+    int64 val;
+    uint8 val;
+    uint16 val;
+    uint32 val;
+    uint64 val;
+    float val;
+    dict val;
+    dictionary val;
+    array val;
+    bool val;
+
+    int public value;
+    uint private value;
+    int8 protected value;
+    int16 public val;
+    int32 private val;
+    int64 protected val;
+    uint8 public val;
+    uint16 private val;
+    uint32 protected val;
+    uint64 public val;
+    float private val;
+    dict protected val;
+    dictionary public val;
+    array private val;
+    bool protected val;
+
+    int const value;
+    uint const value;
+    int8 const value;
+    int16 const val;
+    int32 const val;
+    int64 const val;
+    uint8 const val;
+    uint16 const val;
+    uint32 const val;
+    uint64 const val;
+    float const val;
+    dict const val;
+    dictionary const val;
+    array const val;
+    bool const val;
+
+    int static const public value;
+    uint const static private value;
+    int8 protected static const value;
+    int16 static public const val;
+    int32 const static private val;
+    int64 const protected static val;
+    uint8 static public const  val;
+    uint16 private static const val;
+    uint32 const protected static val;
+    uint64 static const public val;
+    float private static const val;
+    dict protected const static val;
+    dictionary static const public val;
+    array const static private val;
+    bool const protected static val;
+
+    // with assignments, which is only allowed in a method
+    method some_method()() {
+        int value = 2+1;
+        uint value = 'this string';
+        int8 value = int:0.123;
+        int16 val = val;
+        int32 val = bacon.eggs;
+        int64 val = 1234567890;
+        uint8 val = (1+(2+3));
+
+        int value = 2+1;
+        uint value = 'this string';
+        int8 value = int:0.123;
+        int16 val = val;
+        int32 val = bacon.eggs;
+        int64 val = 1234567890;
+        uint8 val = (1+(2+3));
+
+        int const value = 2+1;
+        uint const value = 'this string';
+        int8 const value = int:0.123;
+        int16 const val = val;
+        int32 const val = bacon.eggs;
+        int64 const val = 1234567890;
+        uint8 const val = (1+(2+3));
+    }
+}
