@@ -97,6 +97,7 @@ static void append_str(char *str) {
 "uint32"        { return UINT32; }
 "uint64"        { return UINT64; }
 "uint"          { return UINT; }
+"for"           { return FOR; }
 "if"            { return IF; }
 "else"          { return ELSE; }
 "while"         { return WHILE; }

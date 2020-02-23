@@ -20,7 +20,7 @@
 %token PROTECTED STATIC CONST DICT ARRAY BOOL
 %token STRING FLOAT INT INT8 INT16 INT32 INT64
 %token UINT UINT8 UINT16 UINT32 UINT64 IF
-%token ELSE WHILE DO TRY EXCEPT RAISE
+%token ELSE WHILE DO TRY EXCEPT RAISE FOR
 %token SWITCH CASE BREAK CONTINUE AND OR
 %token NOT EQU NEQU LTEQU GTEQU BSHL BSHR BROL
 %token BROR INC DEC
@@ -184,23 +184,27 @@ parameter_list
     | parameter_list ',' parameter
     ;
 
-    // expression_list
-    //     : QSTRG
-    //     | subscript
-    //     | expression
-    //     | expression_list ',' expression
-    //     ;
+data_definition_assignment
+    : intrinsic_type SYMBOL '=' expression ';'
+    | intrinsic_type SYMBOL '=' NOTHING ';'
+    ;
 
 data_definition
     : intrinsic_type SYMBOL ';'
-    | intrinsic_type SYMBOL '=' expression ';'
-    | intrinsic_type SYMBOL '=' NOTHING ';'
+    | data_definition_assignment
     ;
 
 function_call
     : complex_name '(' parameter_list ')' '(' parameter_list ')' ';'
     | complex_name '.' CREATE '(' parameter_list ')' ';'
     | complex_name '.' DESTROY ';'
+    ;
+
+for_clause
+    : FOR '(' data_definition_assignment ';' expression ';' expression ')' loop_body
+    | FOR '(' ')' loop_body
+    | FOR '(' expression ')' loop_body
+    | FOR '(' expression ';' expression ')' loop_body
     ;
 
 else_clause
@@ -285,6 +289,7 @@ method_body_element
     | try_clause
     | raise_clause
     | function_call
+    | for_clause
     | if_clause
     | while_clause
     | do_clause
