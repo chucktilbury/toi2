@@ -133,9 +133,18 @@ formatted_string
     | QSTRG '%' '(' parameter_list ')'
     ;
 
-subscript
-    : complex_name '[' expression ']'
-    | complex_name '[' formatted_string ']'
+subscript_item
+    : '[' expression ']'
+    | '[' formatted_string ']'
+    ;
+
+subscript_list
+    : subscript_item
+    | subscript_list subscript_item
+
+expression_name
+    : complex_name
+    | complex_name subscript_list
     ;
 
     /*
@@ -144,7 +153,7 @@ subscript
     */
 expression
     : number
-    | complex_name
+    | expression_name
     | expression '+' expression
     | expression '-' expression
     | expression '/' expression
@@ -175,7 +184,6 @@ expression
 
 parameter
     : formatted_string
-    | subscript
     | expression
     ;
 

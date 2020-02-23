@@ -1,0 +1,14 @@
+
+/*
+    Test array subscript syntax.
+*/
+
+class name() {
+
+    func name() () {
+
+        a = b[1];
+        a = b['string'];
+        a = b[1][2][1];
+    }
+}
