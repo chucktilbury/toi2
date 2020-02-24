@@ -13,6 +13,7 @@ static char strbuf[1024*64];
 
 typedef struct _file_name_stack {
     int line_no;
+    int col_no;
     char *name;
     struct _file_name_stack *next;
 } _file_name_stack;
@@ -44,7 +45,25 @@ static void append_str(char *str) {
     }
 }
 
-#define YY_USER_ACTION yylloc.first_line = yylloc.last_line = yylineno;
+static void update_loc(void){
+
+    if(NULL != name_stack) {
+        yylloc.first_line   = name_stack->line_no;
+        yylloc.first_column = name_stack->col_no;
+    }
+    else
+        return;
+
+    for(char *s = yytext; *s != '\0'; s++) {
+        name_stack->col_no++;
+    }
+
+    yylloc.last_line   = name_stack->line_no;
+    yylloc.last_column = name_stack->col_no-1;
+}
+
+#define YY_USER_ACTION update_loc();
+//#define YY_USER_ACTION yylloc.first_line = yylloc.last_line = yylineno;
 %}
 
     /* state definitions */
@@ -56,8 +75,8 @@ static void append_str(char *str) {
 %%
 
     /* overhead */
-\n           {name_stack->line_no ++; yylineno++; }
-[ \t\r]       {}
+\n              { name_stack->line_no++; name_stack->col_no=1; } // yylineno++; }
+[ \t\r]         {}
 
     /* keywords */
 "nothing"       { return NOTHING; }
@@ -117,6 +136,7 @@ static void append_str(char *str) {
 "continue"      { return CONTINUE; }
 "default"       { return DEFAULT; }
 "final"         { return FINAL; }
+"finaly"        { return FINAL; }
 
     /* boolean operator tokens composed of special characters */
 "&&"            { return AND; }
@@ -280,6 +300,7 @@ void open_file(char *fname) {
 
     name->next = name_stack;
     name->line_no = 1;
+    name->col_no = 1;
     name_stack = name;
 
     yyin = fopen(fname, "r");
@@ -302,6 +323,13 @@ char *get_file_name(void) {
 int get_line_number(void) {
     if(NULL != name_stack)
         return name_stack->line_no;
+    else
+        return -1;
+}
+
+int get_col_number(void) {
+    if(NULL != name_stack)
+        return name_stack->col_no;
     else
         return -1;
 }

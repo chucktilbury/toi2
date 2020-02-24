@@ -8,6 +8,7 @@
 
 char *get_file_name(void);
 int get_line_number(void);
+int get_col_number(void);
 void open_file(char *fname);
 const char *get_tok_str(void);
 int get_token(void);

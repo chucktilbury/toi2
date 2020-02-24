@@ -9,6 +9,6 @@ class name() {
 
         a = b[1];
         a = b['string'];
-        a = b[1][2][1];
+        a =   b [1] [2] [1];
     }
 }

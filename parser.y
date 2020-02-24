@@ -149,7 +149,7 @@ expression_name
 
     /*
     * Expressions use the "switching yard" algorithm so they can be stored and
-    * evaluated at run time.
+    * then evaluated at run time.
     */
 expression
     : number
@@ -429,7 +429,7 @@ extern char yytext[];
 void yyerror(const char* s)
 {
 	fflush(stdout);
-	fprintf(stderr, "\n%s: line %d: at %d: %s\n\n", get_file_name(), get_line_number(), yylloc.first_line, s);
+	fprintf(stderr, "\n%s: line %d: at %d: %s\n\n", get_file_name(), get_line_number(), get_col_number(), s); //yylloc.first_line, s);
     inc_error_count();
 }
 
