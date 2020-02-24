@@ -6,14 +6,19 @@
 PLATNAME := $(shell uname)
 
 OBJS	=	errors.o \
-			main.o
+			main.o \
+			linked_lists.o \
+			hash_table.o \
+			xxhash.o
 
 OBJS1	=	scanner.o \
 			parser.o
 
 HEADERS	=	errors.h \
 			scanner.h \
-			simple.h
+			hash_table.h \
+			linked_lists.h \
+			xxhash.h
 
 SRCS	=	$(OBJS:.o=.c)
 
@@ -36,7 +41,7 @@ all: $(TARGET)
 
 big: pretty $(TARGET)
 
-$(TARGET): $(OBJS) $(OBJS1)
+$(TARGET): $(OBJS1) $(OBJS)
 	$(CC) $(CARGS) $(DEBUG) $(OBJS1) $(OBJS) -o $(TARGET) $(LIBS)
 
 parser.c parser.h: parser.y scanner.h
@@ -45,10 +50,13 @@ parser.c parser.h: parser.y scanner.h
 scanner.c: scanner.l parser.h scanner.h
 	flex -o scanner.c scanner.l
 
-main.o: main.c errors.h scanner.h parser.h
+main.o: main.c $(HEADERS)
 scanner.o: scanner.c scanner.h parser.h
 errors.o: errors.c errors.h
 parser.o: parser.c errors.h
+linked_lists.o: linked_lists.c linked_lists.h
+hash_table.o: hash_table.c hash_table.h
+xxhash.o: xxhash.c xxhash.h
 
 pretty: clean
 	indent $(SRCS) $(HEADERS)
