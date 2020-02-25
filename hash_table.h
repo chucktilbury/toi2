@@ -1,8 +1,8 @@
 #ifndef _HASH_TABLE_H_
-#define _HASH_TABLE_H_
+#  define _HASH_TABLE_H_
 
-#include <stdint.h>
-#include <stdlib.h>
+#  include <stdint.h>
+#  include <stdlib.h>
 
 typedef void *hash_tab_t;
 

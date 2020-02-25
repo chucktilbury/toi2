@@ -1,5 +1,5 @@
 #ifndef _AST_ATTRIBUTES_H_
-#define _AST_ATTRIBUTES_H_
+#  define _AST_ATTRIBUTES_H_
 
 typedef enum attrib_type_t {
     ATTRIB_TYPE_DICT,
@@ -28,6 +28,8 @@ typedef enum attrib_type_t {
 
     ATTRIB_CLASS_ISMAIN,
     ATTRIB_CLASS_ISCHILD,
+    ATTRIB_IS_REFERENCE,
+    ATTRIB_IS_DEFINITION
 } attrib_type_t;
 
 void ast_set_sym(const char *symbol);
@@ -35,6 +37,6 @@ const char *ast_get_sym(void);
 void ast_set_flag(attrib_type_t type);
 int ast_get_flag(attrib_type_t type); // returns bool
 void ast_set_value(void *value, attrib_type_t type);
-void *ast_get_value(void);
+void *ast_get_value(attrib_type_t * type);
 
 #endif /* _AST_ATTRIBUTES_H_ */

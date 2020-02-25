@@ -1,5 +1,5 @@
 #ifndef _ABSTRACT_TREE_H_
-#define _ABSTRACT_TREE_H_
+#  define _ABSTRACT_TREE_H_
 
 // Opaque handles for AST
 typedef void *ast_node_t;
@@ -15,13 +15,13 @@ void ast_open_node(void);
 void ast_close_node(void);
 
 // Get and set attributes to the current node.
-//void ast_add_attribute(const char *name, void *data, const size_t size);
+// void ast_add_attribute(const char *name, void *data, const size_t size);
 void *ast_get_attribute(const char *name);
 void ast_add_string(const char *name, const char *str);
 void ast_add_generic(const char *name, void *data, size_t size);
 
 // Symbol manipulations reference the current node.
-ast_node_t ast_lookup_symbol(const char* name);
+ast_node_t ast_lookup_symbol(const char *name);
 void ast_add_symbol(const char *name);
 
 // Dump the ast tree for debugging

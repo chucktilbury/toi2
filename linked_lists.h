@@ -20,6 +20,6 @@ data_stack_t create_stack(void);
 void push_stack(data_stack_t stack, void *data, size_t size);
 void pop_stack(data_stack_t stack, void *data, size_t size);
 void *get_stack(data_stack_t stack);
-void destroy_stack(data_stack_t) ;
+void destroy_stack(data_stack_t);
 
 #endif /* __UTILS_H__ */

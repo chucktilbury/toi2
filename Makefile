@@ -43,12 +43,12 @@ endif
 .c.o:
 	$(CC) $(CARGS) $(DEBUG) -c $< -o $@
 
-all: $(TARGET) $(DEPS)
+all: $(TARGET)
 
 $(DEPS): $(SRCS) $(SRCS1)
 	$(CC) -M $(SRCS) $(SRCS1) > $(DEPS)
 
-$(TARGET): $(OBJS1) $(OBJS)
+$(TARGET): $(OBJS1) $(OBJS) $(DEPS)
 	$(CC) $(CARGS) $(DEBUG) $(OBJS1) $(OBJS) -o $(TARGET) $(LIBS)
 
 parser.c parser.h: parser.y scanner.h
@@ -63,5 +63,5 @@ pretty: clean
 	indent $(SRCS) $(HEADERS)
 
 clean:
-	-rm -f scanner.c parser.c parser.h parser.output $(OBJS) $(OBJS1) $(TARGET) $(DEPS) *.bak
+	-rm -f scanner.c parser.c parser.h parser.output $(OBJS) $(OBJS1) $(TARGET) $(DEPS) *.bak *~
 

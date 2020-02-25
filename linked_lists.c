@@ -27,12 +27,12 @@ llist_t create_llist(void) {
     if(NULL == (lst = calloc(1, sizeof(linked_list_t))))
         fatal_error("cannot allocate memory for linked list");
 
-    return((llist_t)lst);
+    return ((llist_t) lst);
 }
 
 void destroy_llist(llist_t ll) {
 
-    linked_list_t *lst = (linked_list_t *)ll;
+    linked_list_t *lst = (linked_list_t *) ll;
     linked_list_item_t *tmp;
     linked_list_item_t *next;
 
@@ -47,55 +47,61 @@ void destroy_llist(llist_t ll) {
 
 void *llist_current(llist_t ll) {
 
-    linked_list_t *lst = (linked_list_t *)ll;
-    return(lst->current->data);
+    linked_list_t *lst = (linked_list_t *) ll;
+
+    return (lst->current->data);
 }
 
 void *llist_first(llist_t ll) {
 
-    linked_list_t *lst = (linked_list_t *)ll;
-    return(lst->first->data);
+    linked_list_t *lst = (linked_list_t *) ll;
+
+    return (lst->first->data);
 }
 
 void *llist_last(llist_t ll) {
 
-    linked_list_t *lst = (linked_list_t *)ll;
-    return(lst->last->data);
+    linked_list_t *lst = (linked_list_t *) ll;
+
+    return (lst->last->data);
 }
 
 void reset_llist(llist_t ll) {
 
-    linked_list_t *lst = (linked_list_t *)ll;
+    linked_list_t *lst = (linked_list_t *) ll;
+
     lst->current = lst->first;
 }
 
 void *llist_next(llist_t ll) {
 
-    linked_list_t *lst = (linked_list_t *)ll;
+    linked_list_t *lst = (linked_list_t *) ll;
+
     if(lst->current->next != NULL) {
         lst->current = lst->current->next;
-        return(lst->current->data);
+        return (lst->current->data);
     }
     else {
-        return(NULL);
+        return (NULL);
     }
 }
 
 void *llist_prev(llist_t ll) {
 
-    linked_list_t *lst = (linked_list_t *)ll;
+    linked_list_t *lst = (linked_list_t *) ll;
+
     if(lst->current->prev != NULL) {
         lst->current = lst->current->prev;
-        return(lst->current->data);
+        return (lst->current->data);
     }
     else {
-        return(NULL);
+        return (NULL);
     }
 }
 
 void llist_insert_end(llist_t ll, void *data, size_t size) {
 
-    linked_list_t *lst = (linked_list_t *)ll;
+    linked_list_t *lst = (linked_list_t *) ll;
     linked_list_item_t *tmp;
 
     if(NULL == (tmp = calloc(1, sizeof(linked_list_item_t))))
@@ -120,7 +126,7 @@ void llist_insert_end(llist_t ll, void *data, size_t size) {
 
 void llist_insert_start(llist_t ll, void *data, size_t size) {
 
-    linked_list_t *lst = (linked_list_t *)ll;
+    linked_list_t *lst = (linked_list_t *) ll;
     linked_list_item_t *tmp;
 
     if(NULL == (tmp = calloc(1, sizeof(linked_list_item_t))))
@@ -146,7 +152,7 @@ void llist_insert_start(llist_t ll, void *data, size_t size) {
 // insert after the current pointer and make the new point the current one.
 void llist_insert_current(llist_t ll, void *data, size_t size) {
 
-    linked_list_t *lst = (linked_list_t *)ll;
+    linked_list_t *lst = (linked_list_t *) ll;
     linked_list_item_t *tmp;
 
     if(NULL == (tmp = calloc(1, sizeof(linked_list_item_t))))
@@ -176,7 +182,7 @@ void llist_insert_current(llist_t ll, void *data, size_t size) {
  */
 data_stack_t create_stack(void) {
 
-    return((data_stack_t) create_llist());
+    return ((data_stack_t) create_llist());
 }
 
 void push_stack(data_stack_t stack, void *data, size_t size) {
@@ -202,7 +208,7 @@ void pop_stack(data_stack_t stack, void *data, size_t size) {
 
 void *get_stack(data_stack_t stack) {
 
-    return(llist_first((linked_list_t *) stack));
+    return (llist_first((linked_list_t *) stack));
 }
 
 void destroy_stack(data_stack_t stack) {
@@ -211,8 +217,8 @@ void destroy_stack(data_stack_t stack) {
 }
 
 /*
-    To build: clang linked_lists.c scanner.c errors.c parser.c
-*/
+ * To build: clang linked_lists.c scanner.c errors.c parser.c 
+ */
 // #define TESTING_LIST
 #ifdef TESTING_LIST
 
