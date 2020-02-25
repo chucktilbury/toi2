@@ -9,7 +9,8 @@ OBJS	=	errors.o \
 			main.o \
 			linked_lists.o \
 			hash_table.o \
-			xxhash.o
+			xxhash.o \
+			abstract_tree.o
 
 OBJS1	=	scanner.o \
 			parser.o
@@ -18,7 +19,8 @@ HEADERS	=	errors.h \
 			scanner.h \
 			hash_table.h \
 			linked_lists.h \
-			xxhash.h
+			xxhash.h \
+			abstract_tree.h
 
 SRCS	=	$(OBJS:.o=.c)
 
@@ -57,6 +59,7 @@ parser.o: parser.c errors.h
 linked_lists.o: linked_lists.c linked_lists.h
 hash_table.o: hash_table.c hash_table.h
 xxhash.o: xxhash.c xxhash.h
+abstract_tree.o: abstract_tree.c abstract_tree.h
 
 pretty: clean
 	indent $(SRCS) $(HEADERS)

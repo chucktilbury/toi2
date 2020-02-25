@@ -22,7 +22,7 @@ typedef struct __htt__ {
 } hash_table_t;
 
 
-ht_handle_t create_hash_table(int slots)
+hash_tab_t create_hash_table(int slots)
 {
     hash_table_t *ht;
     if(NULL == (ht = (hash_table_t *)calloc(1, sizeof(hash_table_t))))
@@ -32,10 +32,10 @@ ht_handle_t create_hash_table(int slots)
         fatal_error("cannot allocate hash table entry");
 
     ht->slots = slots;
-    return((ht_handle_t)ht);
+    return((hash_tab_t)ht);
 }
 
-void destroy_hash_table(ht_handle_t ht)
+void destroy_hash_table(hash_tab_t ht)
 {
     hash_table_entry_t *next, *hte;
     hash_table_t* table = (hash_table_t*)ht;
@@ -46,9 +46,10 @@ void destroy_hash_table(ht_handle_t ht)
             if(NULL != table->table[i]) {
                 for(hte = table->table[i]; hte != NULL; hte = next) {
                     next = hte->next;
-                    if(NULL != hte->key) {
+                    if(NULL != hte->key)
                         free(hte->key);
-                    }
+                    if(NULL != hte->data)
+                        free(hte->data);
 
                     free(hte);
                 }
@@ -78,7 +79,7 @@ static inline hash_table_entry_t *find_local(hash_table_t *table, const char *ke
     return NULL;    // not found
 }
 
-int hash_save(ht_handle_t ht, const char *key, void *data)
+int hash_save(hash_tab_t ht, const char *key, void *data, size_t size)
 {
     hash_table_t* table = (hash_table_t*)ht;
     hash_table_entry_t *hte;
@@ -92,9 +93,12 @@ int hash_save(ht_handle_t ht, const char *key, void *data)
                 fatal_error("cannot allocate hash table entry");
 
             if(NULL == (hte->key = strdup(key)))
-                fatal_error("cannot allocate table entry name");
+                fatal_error("cannot allocate hash table entry name");
 
-            hte->data = data;
+            if(NULL == (hte->data = calloc(size+2, 1)))
+                fatal_error("cannot allocate hash table data (%d)", size);
+            memcpy(hte->data, data, size);
+
             hte->next = NULL;
 
             if(NULL != table->table[hash])
@@ -104,15 +108,22 @@ int hash_save(ht_handle_t ht, const char *key, void *data)
             return 0;   // success
         }
         else {
-            return 1;   // symbol already in the table
+            // symbol already in the table
+            free(hte->data);
+
+            if(NULL == (hte->data = calloc(size, 1)))
+                fatal_error("cannot allocate hash table data (%d)", size);
+            memcpy(hte->data, data, size);
+
+            return 0;
         }
     }
     else {
-        return -1;      // table is invalid
+        return 1;      // table is invalid
     }
 }
 
-void *hash_find(ht_handle_t ht, const char *key)
+void *hash_find(hash_tab_t ht, const char *key)
 {
     hash_table_t* table = (hash_table_t*)ht;
     hash_table_entry_t *hte;

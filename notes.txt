@@ -73,4 +73,13 @@ Assignment of classes takes more code. There needs to be a simple way to copy
 a node's attributes. Of course there is the scenario where someone may assign
 an object to an int or something.
 
+I plan to test the AST by writing code that will re-write the program
+represented by the AST as a compilable text file. This should be able to be
+done any number of times and still have it semantically the same.
 
+------------------------
+
+Do I want to mangle method names so that methods can be differentiated by their
+input and/or their output parameters?
+
+-------------------------
