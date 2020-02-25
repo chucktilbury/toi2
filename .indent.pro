@@ -19,7 +19,7 @@
 --dont-tab-align-comments
 
 // Set tab size to n spaces.
-//--tab-size4
+--tab-size4
 
 // Use tabs. This is the default.
 //--use-tabs
@@ -154,7 +154,7 @@
 --ignore-newlines
 
 // Set maximum line length for non-comment lines to n.
---line-length256
+--line-length150
 
 
 ////////////// STATEMENTS ///////////////////////////////
