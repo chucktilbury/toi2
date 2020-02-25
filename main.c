@@ -4,7 +4,7 @@
 #include "scanner.h"
 #include "parser.h"
 #include "errors.h"
-#include "abstract_tree.h"
+#include "ast_tree.h"
 
 int main(int argc, char **argv) {
     init_errors(0, stdout);

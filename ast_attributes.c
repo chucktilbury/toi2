@@ -6,7 +6,7 @@
 #include "errors.h"
 #include "linked_lists.h"
 #include "hash_table.h"
-#include "abstract_tree.h"
+#include "ast_tree.h"
 #include "ast_attributes.h"
 
 // note that the int and uint are both 64 bits
@@ -53,14 +53,14 @@ static inline const char *convert_to_string(attrib_type_t type) {
 }
 
 /*
- * Set a symbol attribute. The symbol is stored as a whole unit with the dots. 
+ * Set a symbol attribute. The symbol is stored as a whole unit with the dots.
  */
 void ast_set_sym(const char *symbol) {
     ast_add_generic("symbol", (void *)symbol, strlen(symbol) + 2);
 }
 
 /*
- * Retrieve a symbol attribute, as a raw symbol, including the dots. 
+ * Retrieve a symbol attribute, as a raw symbol, including the dots.
  */
 const char *ast_get_sym(void) {
     return ast_get_attribute("symbol");
@@ -68,14 +68,14 @@ const char *ast_get_sym(void) {
 
 /*
  * Set a zero data flag from the enums in the header. The presence or absence
- * of a flag indicates the information. 
+ * of a flag indicates the information.
  */
 void ast_set_flag(attrib_type_t type) {
     ast_add_generic(convert_to_string(type), NULL, 0);
 }
 
 /*
- * Find out if a flag has been set in the attributes. Return a boolean. 
+ * Find out if a flag has been set in the attributes. Return a boolean.
  */
 int ast_get_flag(attrib_type_t type) {
     if(ast_get_attribute(convert_to_string(type)))
@@ -85,8 +85,8 @@ int ast_get_flag(attrib_type_t type) {
 }
 
 /*
- * Set a value attribute. A pointer to the value is passed as well as the type. 
- * Both are stored separately in the attribute store. 
+ * Set a value attribute. A pointer to the value is passed as well as the type.
+ * Both are stored separately in the attribute store.
  */
 void ast_set_value(void *value, attrib_type_t type) {
 
@@ -129,8 +129,8 @@ void ast_set_value(void *value, attrib_type_t type) {
 }
 
 /*
- * Get the value. This function expects the caller to get the type of the value 
- * and cast it to the proper type. 
+ * Get the value. This function expects the caller to get the type of the value
+ * and cast it to the proper type.
  */
 void *ast_get_value(attrib_type_t * type) {
 
