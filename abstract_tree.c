@@ -32,6 +32,7 @@ typedef struct abstract_tree {
 static abstract_tree_t *tree = NULL;
 static void destroy_node(ast_node_t);
 static inline abstract_tree_node_t *create_node(void);
+static inline void add_attribute(const char *name, void *data, const size_t size);
 //static inline llist_t *parse_symbol(const char *);
 
 
@@ -52,11 +53,13 @@ void init_ast(void) {
     if(NULL == (ttree = (abstract_tree_t*)calloc(1, sizeof(abstract_tree_t))))
         fatal_error("cannot allocate memory for AST");
 
+    tree = ttree;
+
     // root, current, and parent are all NULL.
     if(NULL == (ttree->root = create_node()))
         fatal_error("cannot allocate memory for AST root node");
 
-    ast_add_attribute("name", (void*)"root", strlen("root")+1);
+    add_attribute("symbol", (void*)"root", strlen("root")+1);
 }
 
 /*
@@ -90,21 +93,32 @@ void ast_close_node(void) {
 }
 
 /*
-    Save an attribute to the current node. This data is allocated and memcopied
-    into the hash table. When the attribute is destroyed, this data must be
-    freed. All names should be unique. If a name that is not unique is supplied,
-    then the data is replaced in the table.
-*/
-void ast_add_attribute(const char *name, void *data, const size_t size) {
-    hash_save(tree->current->attributes, name, data, size);
-}
-
-/*
     Retrieve the data stored in the attribute table based on the name given. If
     the name is not found, then return NULL.
 */
 void *ast_get_attribute(const char *name) {
     return hash_find(tree->current->attributes, name);
+}
+
+/*
+    Add a string attribute to the current node.
+*/
+void ast_add_string(const char *name, const char *str) {
+    add_attribute(name, (void*)str, strlen(str)+1);
+}
+
+/*
+    Add a generic attribute to the current node.
+*/
+void ast_add_generic(const char *name, void *data, size_t size) {
+    add_attribute(name, data, size);
+}
+
+/*
+    Dump the tree for debugging.
+*/
+void ast_dump_tree(void) {
+
 }
 
 /*
@@ -139,6 +153,16 @@ void ast_add_symbol(const char *name) {
 /******************************************************************************
     End of public interface.
 ******************************************************************************/
+
+/*
+    Save an attribute to the current node. This data is allocated and memcopied
+    into the hash table. When the attribute is destroyed, this data must be
+    freed. All names should be unique. If a name that is not unique is supplied,
+    then the data is replaced in the table.
+*/
+static inline void add_attribute(const char *name, void *data, const size_t size) {
+    hash_save(tree->current->attributes, name, data, size);
+}
 
 /*
     This function destroys the current node and all of it's children. It is

@@ -83,3 +83,13 @@ Do I want to mangle method names so that methods can be differentiated by their
 input and/or their output parameters?
 
 -------------------------
+
+Implement intrinsic types as objects with methods that can be called on them.
+These classes are defined in the standard library, which is defined in source
+code and automatically imported for the program as children of the root node.
+
+When the AST is created, that is taken into account as "special" syntax. The
+"root" node is special in that specifying it is optional.
+
+--------------------
+

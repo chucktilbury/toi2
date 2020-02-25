@@ -95,9 +95,15 @@ int hash_save(hash_tab_t ht, const char *key, void *data, size_t size)
             if(NULL == (hte->key = strdup(key)))
                 fatal_error("cannot allocate hash table entry name");
 
-            if(NULL == (hte->data = calloc(size+2, 1)))
-                fatal_error("cannot allocate hash table data (%d)", size);
-            memcpy(hte->data, data, size);
+            if(data != NULL) {
+                if(NULL == (hte->data = calloc(size+2, 1)))
+                    fatal_error("cannot allocate hash table data (%d)", size);
+                memcpy(hte->data, data, size);
+            }
+            else {
+                if(NULL == (hte->data = calloc(0, 0)))
+                    fatal_error("cannot allocate hash table data (%d)", 0);
+            }
 
             hte->next = NULL;
 
@@ -109,11 +115,17 @@ int hash_save(hash_tab_t ht, const char *key, void *data, size_t size)
         }
         else {
             // symbol already in the table
-            free(hte->data);
+            if(data != NULL) {
+                free(hte->data);
 
-            if(NULL == (hte->data = calloc(size, 1)))
-                fatal_error("cannot allocate hash table data (%d)", size);
-            memcpy(hte->data, data, size);
+                if(NULL == (hte->data = calloc(size+2, 1)))
+                    fatal_error("cannot allocate hash table data (%d)", size);
+                memcpy(hte->data, data, size);
+            }
+            else {
+                if(NULL == (hte->data = calloc(0, 0)))
+                    fatal_error("cannot allocate hash table data (%d)", 0);
+            }
 
             return 0;
         }

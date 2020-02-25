@@ -10,7 +10,8 @@ OBJS	=	errors.o \
 			linked_lists.o \
 			hash_table.o \
 			xxhash.o \
-			abstract_tree.o
+			abstract_tree.o \
+			ast_attributes.o
 
 OBJS1	=	scanner.o \
 			parser.o
@@ -20,11 +21,14 @@ HEADERS	=	errors.h \
 			hash_table.h \
 			linked_lists.h \
 			xxhash.h \
-			abstract_tree.h
+			abstract_tree.h \
+			ast_attributes.h
 
 SRCS	=	$(OBJS:.o=.c)
+SRCS1	=	$(OBJS1:.o=.c)
 
 TARGET	=	toi
+DEPS	= 	$(TARGET).dep
 
 CC		=	clang
 CARGS	=	-Wall
@@ -39,9 +43,10 @@ endif
 .c.o:
 	$(CC) $(CARGS) $(DEBUG) -c $< -o $@
 
-all: $(TARGET)
+all: $(TARGET) $(DEPS)
 
-big: pretty $(TARGET)
+$(DEPS): $(SRCS) $(SRCS1)
+	$(CC) -M $(SRCS) $(SRCS1) > $(DEPS)
 
 $(TARGET): $(OBJS1) $(OBJS)
 	$(CC) $(CARGS) $(DEBUG) $(OBJS1) $(OBJS) -o $(TARGET) $(LIBS)
@@ -52,20 +57,11 @@ parser.c parser.h: parser.y scanner.h
 scanner.c: scanner.l parser.h scanner.h
 	flex -o scanner.c scanner.l
 
-main.o: main.c $(HEADERS)
-scanner.o: scanner.c scanner.h parser.h
-errors.o: errors.c errors.h
-parser.o: parser.c errors.h
-linked_lists.o: linked_lists.c linked_lists.h
-hash_table.o: hash_table.c hash_table.h
-xxhash.o: xxhash.c xxhash.h
-abstract_tree.o: abstract_tree.c abstract_tree.h
+-include $(DEPS)
 
 pretty: clean
 	indent $(SRCS) $(HEADERS)
 
 clean:
-	-rm -f scanner.c parser.c parser.h parser.output $(OBJS) $(OBJS1) $(TARGET)
+	-rm -f scanner.c parser.c parser.h parser.output $(OBJS) $(OBJS1) $(TARGET) $(DEPS) *.bak
 
-list_test: scanner.o errors.o parser.o logging.o utils.c
-	$(CC) -DTESTING_LIST -o list_test $?
