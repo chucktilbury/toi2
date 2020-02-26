@@ -9,8 +9,10 @@ OBJS	=	errors.o \
 			linked_lists.o \
 			hash_table.o \
 			xxhash.o \
-			abstract_tree.o \
-			ast_attributes.o
+			ast_tree.o \
+			ast_attributes.o \
+			parser_support.o \
+			parser_states.o
 
 OBJS1	=	main.o \
 			scanner.o \
@@ -43,7 +45,7 @@ all: $(TARGET)
 $(DEPS): $(SRCS) $(SRCS1)
 	$(CC) -M $(SRCS) $(SRCS1) > $(DEPS)
 
-$(TARGET): $(OBJS1) $(OBJS) $(DEPS)
+$(TARGET): $(OBJS) $(OBJS1) $(DEPS)
 	$(CC) $(CARGS) $(DEBUG) $(OBJS1) $(OBJS) -o $(TARGET) $(LIBS)
 
 parser.c parser.h: parser.y scanner.h

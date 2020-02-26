@@ -38,7 +38,9 @@ static sym_str_t sym_str_table[] = {
     {ATTRIB_CLASS_ISMAIN, "CLASS_ISMAIN"},
     {ATTRIB_CLASS_ISCHILD, "CLASS_ISCHILD"},
     {ATTRIB_IS_REFERENCE, "IS_REFERENCE"},
-    {ATTRIB_IS_DEFINITION, "IS_DEFINITION"}
+    {ATTRIB_IS_DEFINITION, "IS_DEFINITION"},
+    {ATTRIB_IS_IMPORT, "IS_IMPORT"},
+    {ATTRIB_HAS_IMPORT_ALIAS, "HAS_IMPORT_ALIAS"}
 };
 
 #define NUM_ITEMS (sizeof(sym_str_table)/sizeof(sym_str_t))

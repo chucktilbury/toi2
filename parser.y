@@ -9,6 +9,7 @@
 
 #include "scanner.h"
 #include "errors.h"
+#include "parser_support.h"
 
 #define TOKSTR get_tok_str()
 
@@ -18,7 +19,7 @@
 
 %token SYMBOL UNUM FNUM INUM QSTRG CLASS METHOD
 %token CREATE DESTROY NOTHING IMPORT PUBLIC PRIVATE
-%token PROTECTED STATIC CONST DICT ARRAY BOOL
+%token PROTECTED STATIC CONST DICT ARRAY BOOL AS
 %token STRING FLOAT INT INT8 INT16 INT32 INT64
 %token UINT UINT8 UINT16 UINT32 UINT64 IF TRUE
 %token ELSE WHILE DO TRY EXCEPT RAISE FOR FALSE
@@ -39,54 +40,109 @@
 %%
 
 module
+    : module_list {
+        do_module_statement_finish();
+    }
+    ;
+
+module_list
     : module_item
     | module module_item
     ;
 
 module_item
-    : import_definition
-    | class_definition
+    : import_definition {
+        do_import_definition_finish();
+    }
+    | class_definition {
+        do_class_definition_finish();
+    }
     ;
 
-
 complex_name
-    : SYMBOL
-    | complex_name '.' SYMBOL
+    : SYMBOL {
+        do_init_complex_name(get_tok_str());
+    }
+    | complex_name '.' SYMBOL {
+        do_add_complex_name(get_tok_str());
+    }
     ;
 
 intrinsic_type
-    : DICT
-    | ARRAY
-    | BOOL
-    | STRING
-    | FLOAT
-    | INT
-    | INT8
-    | INT16
-    | INT32
-    | INT64
-    | UINT
-    | UINT8
-    | UINT16
-    | UINT32
-    | UINT64
-    | complex_name
+    : DICT {
+        do_intrinsic_type_dict();
+    }
+    | ARRAY {
+        do_intrinsic_type_array();
+    }
+    | BOOL {
+        do_intrinsic_type_bool();
+    }
+    | STRING {
+        do_intrinsic_type_string();
+    }
+    | FLOAT {
+        do_intrinsic_type_float();
+    }
+    | INT {
+        do_intrinsic_type_int64();
+    }
+    | INT8 {
+        do_intrinsic_type_int8();
+    }
+    | INT16 {
+        do_intrinsic_type_int16();
+    }
+    | INT32 {
+        do_intrinsic_type_int32();
+    }
+    | INT64 {
+        do_intrinsic_type_int64();
+    }
+    | UINT {
+        do_intrinsic_type_uint64();
+    }
+    | UINT8 {
+        do_intrinsic_type_uint8();
+    }
+    | UINT16 {
+        do_intrinsic_type_uint16();
+    }
+    | UINT32 {
+        do_intrinsic_type_uint32();
+    }
+    | UINT64 {
+        do_intrinsic_type_uint64();
+    }
+    | complex_name {
+        do_intrinsic_type_complex_name();
+    }
     ;
 
 import_definition
-    : IMPORT qstring_list ';'
-    ;
-
-qstring_list
-    : QSTRG
-    | qstring_list ',' QSTRG
+    : IMPORT SYMBOL {
+        do_import(get_tok_str());
+    } ';'
+    | IMPORT SYMBOL {
+        do_import(get_tok_str());
+    } AS SYMBOL {
+        do_set_import_name(get_tok_str());
+    } ';'
     ;
 
 class_parm
-    : PRIVATE complex_name
-    | PUBLIC complex_name
-    | PROTECTED complex_name
-    | complex_name
+    : PRIVATE complex_name {
+        do_private_class_parm();
+    }
+    | PUBLIC complex_name {
+        do_public_class_parm();
+    }
+    | PROTECTED complex_name {
+        do_protected_class_parm();
+    }
+    | complex_name {
+        do_private_class_parm();
+    }
     ;
 
 class_parm_list
@@ -96,11 +152,21 @@ class_parm_list
     ;
 
 data_attrs
-    : PRIVATE
-    | PUBLIC
-    | PROTECTED
-    | CONST
-    | STATIC
+    : PRIVATE {
+        do_set_private_data_attribute();
+    }
+    | PUBLIC {
+        do_set_public_data_attribute();
+    }
+    | PROTECTED {
+        do_set_protected_data_attribute();
+    }
+    | CONST {
+        do_set_const_data_attribute();
+    }
+    | STATIC {
+        do_set_static_data_attribute();
+    }
     ;
 
 data_attrs_list
@@ -109,12 +175,26 @@ data_attrs_list
     ;
 
 class_data_definition
-    : intrinsic_type data_attrs_list SYMBOL ';'
-    | intrinsic_type SYMBOL ';'
+    : intrinsic_type {
+        do_class_data_definition_type();
+    } data_attrs_list {
+        do_class_data_definition_attrs();
+    } SYMBOL {
+        do_class_data_definition_symbol();
+    }';'
+    | intrinsic_type {
+        do_class_data_definition_type();
+    }SYMBOL {
+        do_class_data_definition_symbol();
+    }';'
     ;
 
 method_def_param
-    : intrinsic_type SYMBOL
+    : intrinsic_type {
+        do_method_define_param_type();
+    } SYMBOL {
+        do_method_define_param_symbol();
+    }
     ;
 
 method_def_param_list
@@ -123,14 +203,28 @@ method_def_param_list
     ;
 
 number
-    : UNUM
-    | INUM
-    | FNUM
+    : UNUM {
+        do_literal_number_unsigned();
+    }
+    | INUM {
+        do_literal_number_signed();
+    }
+    | FNUM {
+        do_literal_number_float();
+    }
     ;
 
 formatted_string
-    : QSTRG
-    | QSTRG '%' '(' parameter_list ')'
+    : QSTRG {
+        do_formatted_string_without_format();
+    }
+    | QSTRG {
+        do_formatted_string_with_format();
+    } '%' '(' {
+        do_formatted_string_parm_begin();
+    } expression {
+        do_formatted_string_parm_end();
+    }')'
     ;
 
 subscript_item

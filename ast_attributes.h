@@ -29,7 +29,9 @@ typedef enum attrib_type_t {
     ATTRIB_CLASS_ISMAIN,
     ATTRIB_CLASS_ISCHILD,
     ATTRIB_IS_REFERENCE,
-    ATTRIB_IS_DEFINITION
+    ATTRIB_IS_DEFINITION,
+    ATTRIB_IS_IMPORT,
+    ATTRIB_HAS_IMPORT_ALIAS,
 } attrib_type_t;
 
 void ast_set_sym(const char *symbol);

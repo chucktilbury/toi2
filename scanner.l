@@ -83,6 +83,7 @@ static void update_loc(void){
 "nada"          { return NOTHING; }
 "null"          { return NOTHING; }
 "import"        { return IMPORT; }
+"as"            { return AS; }
 "class"         { return CLASS; }
 "method"        { return METHOD; }
 "func"          { return METHOD; }
@@ -269,7 +270,7 @@ static void update_loc(void){
 
 <<EOF>> {
 
-        debug(0, "closing file \"%s\"", name_stack->name);
+        debug(5, "closing file \"%s\"", name_stack->name);
         //fprintf(stderr, "There were %d errors found.\n", num_errors);
         _file_name_stack *name = name_stack->next;
         free(name_stack->name);
@@ -291,7 +292,7 @@ void open_file(char *fname) {
 
     _file_name_stack *name;
 
-    debug(0, "opening file: \"%s\"", fname);
+    debug(5, "opening file: \"%s\"", fname);
     if(NULL == (name = calloc(1, sizeof(_file_name_stack))))
         scanner_error("cannot allocate memory for file stack");
 

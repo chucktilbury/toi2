@@ -7,7 +7,7 @@
 #include "ast_tree.h"
 
 int main(int argc, char **argv) {
-    init_errors(0, stdout);
+    init_errors(10, stdout);
     open_file(argv[1]);
 
     init_ast();

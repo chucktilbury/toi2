@@ -4,8 +4,11 @@
 */
 
 // this is a comment
-import "blart";
-import "bacon", "eggs", "peas", "carrots";
+import blart as clipper;
+import bacon;
+import eggs;
+import peas;
+import carrots;
 
 class  private static nameeoeo(none) {
     int protected fine;
@@ -28,7 +31,7 @@ class /* protected */  good_dog() {
     destructor {}
 }
 
-class blart()
+class blart(private someclass.name.subname, public somename)
 {
     array some;
 
@@ -46,7 +49,7 @@ class blart()
            while ( x == y ) {
                y++;
                x--;
-               int z = 123 + (12 * x) / z;
+               int z = 123 + (12 * x) / objext.z;
            }
 
            if(1 ==2) {
