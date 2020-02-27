@@ -1,0 +1,13 @@
+DBG: /home/chuck/Src/toi2/tests/language_tests/do_clause_test.toi: open file
+DBG: /home/chuck/Src/toi2/tests/language_tests/do_clause_test.toi: 9: 22: do_literal_number_signed: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/do_clause_test.toi: 9: 22: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/do_clause_test.toi: 11: 22: do_init_complex_name: some_func
+DBG: /home/chuck/Src/toi2/tests/language_tests/do_clause_test.toi: 12: 18: do_init_complex_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/do_clause_test.toi: 12: 21: do_expression_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/do_clause_test.toi: 12: 21: do_expression_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/do_clause_test.toi: 12: 24: do_literal_number_signed: 10
+DBG: /home/chuck/Src/toi2/tests/language_tests/do_clause_test.toi: 12: 24: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/do_clause_test.toi: 12: 25: do_expression_comaprison_not_equal
+DBG: /home/chuck/Src/toi2/tests/language_tests/do_clause_test.toi: closing file
+
+parse succeeded: 0 errors: 0 warnings

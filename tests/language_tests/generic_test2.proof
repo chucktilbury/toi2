@@ -1,0 +1,110 @@
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: open file
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 10: 18: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 10: 18: do_method_define_param_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 10: 27: do_method_define_param_symbol
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 10: 34: do_intrinsic_type_array
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 10: 34: do_method_define_param_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 10: 39: do_method_define_param_symbol
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 12: 20: do_init_complex_name: args_len
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 12: 22: do_expression_name: args_len
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 12: 22: do_expression_name: args_len
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 12: 24: do_literal_number_signed: 2
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 12: 24: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 12: 26: do_expression_comaprison_greater_than
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 16: 25: do_init_complex_name: print_formatted
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 16: 39: do_formatted_string_with_format: Hello %s
+
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 16: 40: do_formatted_string_parm_begin
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 16: 43: do_init_complex_name: arg
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 16: 44: do_expression_name_with_subscript: arg
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 16: 45: do_subscript_item_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 16: 45: do_literal_number_signed: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 16: 45: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 16: 46: do_subscript_item_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 16: 46: do_subscript_item_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 16: 47: do_expression_name_subscript_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 16: 47: do_expression_name: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 16: 47: do_formatted_string_param_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 16: 47: do_formatted_string_parm_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 27: 15: do_init_complex_name: print
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 27: 62: do_formatted_string_without_format: The name to print is a required argument.
+
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 35: 16: do_import: strings
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 35: 16: do_import_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 42: 19: do_intrinsic_type_string
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 42: 19: do_method_define_param_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 42: 24: do_method_define_param_symbol
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 47: 9: do_init_complex_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 47: 14: do_init_complex_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 47: 15: do_expression_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 47: 15: do_expression_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 54: 9: do_intrinsic_type_string
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 54: 17: do_class_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 54: 17: do_set_private_data_attribute
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 54: 22: do_class_data_definition_attrs
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 54: 22: do_class_data_definition_symbol: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 54: 23: do_class_data_definition_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 62: 19: do_set_protected_data_attribute
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 62: 38: do_intrinsic_type_string
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 62: 38: do_method_define_param_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 62: 43: do_method_define_param_symbol
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 62: 51: do_intrinsic_type_string
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 62: 51: do_method_define_param_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 62: 58: do_method_define_param_symbol
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 64: 12: do_init_complex_name: strings
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 64: 19: do_add_complex_name: append
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 64: 24: do_init_complex_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 64: 25: do_expression_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 64: 25: do_expression_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 64: 32: do_init_complex_name: outstr
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 64: 33: do_expression_name: outstr
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 64: 33: do_expression_name: outstr
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 69: 26: do_init_complex_name: BaseClass
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 69: 27: do_private_class_parm: BaseClass
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 72: 19: do_intrinsic_type_string
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 72: 19: do_method_define_param_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 72: 24: do_method_define_param_symbol
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 76: 14: do_init_complex_name: BaseClass
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 76: 29: do_init_complex_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 76: 30: do_expression_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 76: 30: do_expression_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 80: 16: do_set_public_data_attribute
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 82: 11: do_intrinsic_type_string
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 82: 19: do_function_data_definition_symbol: my_name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 82: 20: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 87: 9: do_init_complex_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 87: 19: do_init_complex_name: my_name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 87: 20: do_expression_name: my_name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 87: 20: do_expression_name: my_name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 90: 9: do_init_complex_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 90: 17: do_init_complex_name: my_name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 90: 18: do_expression_name: my_name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 90: 18: do_expression_name: my_name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 93: 9: do_init_complex_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 93: 17: do_init_complex_name: my_name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 93: 18: do_expression_name: my_name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 93: 18: do_expression_name: my_name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 93: 26: do_init_complex_name: my_name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 93: 27: do_expression_name: my_name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 93: 27: do_expression_name: my_name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 98: 8: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 98: 18: do_function_data_definition_symbol: print_len
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 98: 19: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 109: 20: do_init_complex_name: print_formatted
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 109: 35: do_formatted_string_without_format: Hello %s!
+
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 109: 40: do_init_complex_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 109: 41: do_expression_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 109: 41: do_expression_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 109: 51: do_init_complex_name: print_len
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 109: 52: do_expression_name: print_len
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 109: 52: do_expression_name: print_len
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 112: 20: do_init_complex_name: print_formatted
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 112: 58: do_formatted_string_without_format: there were %d characters printed
+
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 112: 68: do_init_complex_name: print_len
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 112: 69: do_expression_name: print_len
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: 112: 69: do_expression_name: print_len
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test2.toi: closing file
+
+parse succeeded: 0 errors: 0 warnings

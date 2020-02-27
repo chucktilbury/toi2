@@ -31,7 +31,12 @@ enum {
     SYNTAX_ERROR,
 };
 
-#define DEBUG() debug(5, "%s: %d: %d: %s", get_file_name(), get_line_number(), get_col_number(), __func__);
-#define DEBSTR(s) debug(5, "%s: %d: %d: %s: %s", get_file_name(), get_line_number(), get_col_number(), __func__, (s));
+#  ifdef TRACE
+#    define DEBUG() debug(5, "%s: %d: %d: %s", get_file_name(), get_line_number(), get_col_number(), __func__);
+#    define DEBSTR(s) debug(5, "%s: %d: %d: %s: %s", get_file_name(), get_line_number(), get_col_number(), __func__, (s));
+#  else
+#    define DEBUG()
+#    define DEBSTR(s)
+#  endif
 
 #endif /* _ERRORS_H_ */

@@ -270,8 +270,7 @@ static void update_loc(void){
 
 <<EOF>> {
 
-        debug(5, "closing file \"%s\"", name_stack->name);
-        //fprintf(stderr, "There were %d errors found.\n", num_errors);
+        debug(5, "%s: closing file", name_stack->name);
         _file_name_stack *name = name_stack->next;
         free(name_stack->name);
         free(name_stack);
@@ -292,7 +291,7 @@ void open_file(char *fname) {
 
     _file_name_stack *name;
 
-    debug(5, "opening file: \"%s\"", fname);
+    debug(5, "%s: open file", fname);
     if(NULL == (name = calloc(1, sizeof(_file_name_stack))))
         scanner_error("cannot allocate memory for file stack");
 

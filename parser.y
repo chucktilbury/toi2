@@ -40,9 +40,7 @@
 %%
 
 module
-    : module_list {
-        do_module_statement_finish();
-    }
+    : module_list
     ;
 
 module_list
@@ -51,20 +49,16 @@ module_list
     ;
 
 module_item
-    : import_definition {
-        do_import_definition_finish();
-    }
-    | class_definition {
-        do_class_definition_finish();
-    }
+    : import_definition
+    | class_definition
     ;
 
 complex_name
     : SYMBOL {
-        do_init_complex_name(get_tok_str());
+        do_init_complex_name();
     }
     | complex_name '.' SYMBOL {
-        do_add_complex_name(get_tok_str());
+        do_add_complex_name();
     }
     ;
 
@@ -121,13 +115,17 @@ intrinsic_type
 
 import_definition
     : IMPORT SYMBOL {
-        do_import(get_tok_str());
-    } ';'
+        do_import();
+    } ';' {
+        do_import_end();
+    }
     | IMPORT SYMBOL {
-        do_import(get_tok_str());
+        do_import();
     } AS SYMBOL {
-        do_set_import_name(get_tok_str());
-    } ';'
+        do_set_import_name();
+    } ';' {
+        do_import_end();
+    }
     ;
 
 class_parm
@@ -181,12 +179,16 @@ class_data_definition
         do_class_data_definition_attrs();
     } SYMBOL {
         do_class_data_definition_symbol();
-    }';'
+    } ';' {
+        do_class_data_definition_end();
+    }
     | intrinsic_type {
         do_class_data_definition_type();
-    }SYMBOL {
+    } SYMBOL {
         do_class_data_definition_symbol();
-    }';'
+    } ';' {
+        do_class_data_definition_end();
+    }
     ;
 
 method_def_param
@@ -214,6 +216,20 @@ number
     }
     ;
 
+formatted_string_param
+    : QSTRG {
+        do_formatted_string_param_qstrg();
+    }
+    | expression {
+        do_formatted_string_param_expression();
+    }
+    ;
+
+formatted_string_param_list
+    : formatted_string_param
+    | formatted_string_param_list ',' formatted_string_param
+    ;
+
 formatted_string
     : QSTRG {
         do_formatted_string_without_format();
@@ -222,14 +238,26 @@ formatted_string
         do_formatted_string_with_format();
     } '%' '(' {
         do_formatted_string_parm_begin();
-    } expression {
+    } formatted_string_param_list {
         do_formatted_string_parm_end();
-    }')'
+    } ')'
     ;
 
 subscript_item
-    : '[' expression ']'
-    | '[' formatted_string ']'
+    : '[' {
+        do_subscript_item_start();
+    } expression {
+        do_subscript_item_expression();
+    } ']' {
+        do_subscript_item_finish();
+    }
+    | '[' {
+        do_subscript_item_start();
+    } formatted_string {
+        do_subscript_item_formatted_string();
+    } ']' {
+        do_subscript_item_finish();
+    }
     ;
 
 subscript_list
@@ -237,8 +265,14 @@ subscript_list
     | subscript_list subscript_item
 
 expression_name
-    : complex_name
-    | complex_name subscript_list
+    : complex_name {
+        do_expression_name();
+    }
+    | complex_name {
+        do_expression_name_with_subscript();
+    } subscript_list {
+        do_expression_name_subscript_finish();
+    }
     ;
 
     /*
@@ -246,67 +280,144 @@ expression_name
     * then evaluated at run time.
     */
 expression
-    : number
-    | expression_name
-    | expression '+' expression
-    | expression '-' expression
-    | expression '/' expression
-    | expression '*' expression
-    | expression '%' expression
-    | expression AND expression
-    | expression OR expression
-    | expression '<' expression
-    | expression '>' expression
-    | expression EQU expression
-    | expression NEQU expression
-    | expression LTEQU expression
-    | expression GTEQU expression
-    | expression '&' expression
-    | expression '|' expression
-    | expression '^' expression
-    | expression BROL expression
-    | expression BROR expression
-    | expression BSHL expression
-    | expression BSHR expression
-    | expression NOT expression
-    | '-' expression %prec NEG
-    | NOT expression
-    | '~' expression
-    | '(' expression ')'
+    : number {
+        do_expression_number();
+    }
+    | expression_name {
+        do_expression_name();
+    }
+    | expression '+' expression {
+        do_expression_addition();
+    }
+    | expression '-' expression {
+        do_expression_subtraction();
+    }
+    | expression '/' expression {
+        do_expression_division();
+    }
+    | expression '*' expression {
+        do_expression_multiplication();
+    }
+    | expression '%' expression {
+        do_expression_modulo();
+    }
+    | expression AND expression {
+        do_expression_comaprison_and();
+    }
+    | expression OR expression {
+        do_expression_comaprison_or();
+    }
+    | expression '<' expression {
+        do_expression_comaprison_less_than();
+    }
+    | expression '>' expression {
+        do_expression_comaprison_greater_than();
+    }
+    | expression EQU expression {
+        do_expression_comaprison_equal();
+    }
+    | expression NEQU expression {
+        do_expression_comaprison_not_equal();
+    }
+    | expression LTEQU expression {
+        do_expression_comaprison_less_than_or_equal();
+    }
+    | expression GTEQU expression {
+        do_expression_comaprison_greater_than_or_equal();
+    }
+    | expression '&' expression {
+        do_expression_bitwise_and();
+    }
+    | expression '|' expression {
+        do_expression_bitwise_or();
+    }
+    | expression '^' expression {
+        do_expression_bitwise_exclusive_or();
+    }
+    | expression BROL expression {
+        do_expression_bitwise_rotate_left();
+    }
+    | expression BROR expression {
+        do_expression_bitwise_rotate_right();
+    }
+    | expression BSHL expression {
+        do_expression_bitwise_shift_left();
+    }
+    | expression BSHR expression {
+        do_expression_bitwise_shift_right();
+    }
+    | '-' expression %prec NEG {
+        do_expression_unary_negate();
+    }
+    | NOT expression {
+        do_expression_unary_not();
+    }
+    | '~' expression {
+        do_expression_unary_bitwise_not();
+    }
+    | '(' {
+        do_expression_open_paren();
+    } expression ')' {
+        do_expression_close_paren();
+    }
     ;
 
+function_data_definition_target
+    : NOTHING {
+        do_function_data_definition_target_nothing();
+    }
+    | expression {
+        do_function_data_definition_target_expression();
+    }
+    | type_cast {
+        do_function_data_definition_target_type_cast();
+    } expression {
+        do_function_data_definition_target_expression();
+    }
+    | formatted_string {
+        do_function_data_definition_target_string();
+    }
+    ;
 
-parameter
+function_data_definition_symbol
+    : SYMBOL {
+        do_function_data_definition_symbol();
+    }
+    | CONST SYMBOL {
+        do_function_data_definition_const_symbol();
+    }
+    ;
+
+    /*
+        Note that due to conflicts, the intrionsic type needs to be determined and
+        saved before this construct is called.
+    */
+function_data_definition
+    : intrinsic_type function_data_definition_symbol ';' {
+        do_function_data_definition_type();
+    }
+    | intrinsic_type function_data_definition_symbol '=' {
+        do_function_data_definition_type();
+        do_function_data_definition_expr_start();
+    } function_data_definition_target ';' {
+        do_function_data_definition_expr_finish();
+    }
+    ;
+
+function_call_parameter
     : formatted_string
     | expression
     ;
 
-parameter_list
+function_call_parameter_list
     :
-    | parameter
-    | parameter_list ',' parameter
-    ;
-
-data_definition_target
-    : NOTHING
-    | expression
-    | type_cast expression
-    | formatted_string
-    ;
-
-data_definition_assignment
-    : intrinsic_type SYMBOL '=' data_definition_target ';'
-    | intrinsic_type CONST SYMBOL '=' data_definition_target ';'
-    ;
-
-data_definition
-    : intrinsic_type SYMBOL ';'
-    | data_definition_assignment
+    | function_call_parameter
+    | function_call_parameter_list ',' function_call_parameter
     ;
 
 function_call
-    : complex_name '(' parameter_list ')' '(' parameter_list ')' ';'
-    | complex_name '.' CREATE '(' parameter_list ')' ';'
+    : complex_name '(' function_call_parameter_list ')' '(' function_call_parameter_list ')' ';'
+    | complex_name '.' CREATE '(' function_call_parameter_list ')' ';'
     | complex_name '.' DESTROY ';'
     ;
 
@@ -439,7 +550,7 @@ pre_post_inc
     ;
 
 method_body_element
-    : data_definition
+    : function_data_definition
     | try_clause
     | raise_clause
     | function_call
@@ -523,7 +634,7 @@ extern char yytext[];
 void yyerror(const char* s)
 {
 	fflush(stdout);
-	fprintf(stderr, "\n%s: line %d: at %d: %s\n\n", get_file_name(), get_line_number(), get_col_number(), s); //yylloc.first_line, s);
+	fprintf(stdout, "\n%s: line %d: at %d: %s\n\n", get_file_name(), get_line_number(), get_col_number(), s); //yylloc.first_line, s);
     inc_error_count();
 }
 

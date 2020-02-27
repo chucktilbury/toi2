@@ -32,7 +32,7 @@ class Main() {
 /*
   Here is an example with non-library function calls.
 */
-import "strings";
+import strings;
 
 // parens after the class name are optional when there is no base class.
 class BaseClass() {

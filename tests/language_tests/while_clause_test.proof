@@ -1,0 +1,27 @@
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: open file
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 10: 16: do_literal_number_signed: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 10: 16: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 12: 16: do_literal_number_signed: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 12: 16: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 12: 18: do_literal_number_signed: 2
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 12: 18: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 12: 20: do_expression_open_paren
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 12: 21: do_literal_number_signed: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 12: 21: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 12: 23: do_literal_number_signed: 2
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 12: 23: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 12: 23: do_expression_division
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 12: 24: do_expression_close_paren
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 12: 24: do_expression_multiplication
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 12: 25: do_expression_addition
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 13: 18: do_init_complex_name: asd
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 13: 22: do_add_complex_name: qwe
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 13: 25: do_add_complex_name: er
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 13: 28: do_expression_name: er
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 13: 28: do_expression_name: er
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 13: 30: do_literal_number_signed: 0
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 13: 30: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: 13: 31: do_expression_comaprison_not_equal
+DBG: /home/chuck/Src/toi2/tests/language_tests/while_clause_test.toi: closing file
+
+parse succeeded: 0 errors: 0 warnings

@@ -1,0 +1,104 @@
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: open file
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 10: 14: do_init_complex_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 10: 17: do_expression_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 10: 17: do_expression_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 10: 19: do_init_complex_name: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 10: 20: do_expression_name: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 10: 20: do_expression_name: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 10: 20: do_expression_comaprison_equal
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 11: 16: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 11: 18: do_function_data_definition_symbol: a
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 11: 20: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 11: 20: do_function_data_definition_expr_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 11: 22: do_init_complex_name: b
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 11: 23: do_expression_name: b
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 11: 23: do_expression_name: b
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 11: 23: do_function_data_definition_target_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 11: 23: do_function_data_definition_expr_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 12: 20: do_init_complex_name: xyz
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 12: 21: do_expression_name: xyz
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 12: 21: do_expression_name: xyz
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 13: 24: do_init_complex_name: peas
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 13: 25: do_expression_name: peas
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 13: 25: do_expression_name: peas
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 14: 24: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 14: 26: do_function_data_definition_symbol: p
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 14: 28: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 14: 28: do_function_data_definition_expr_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 14: 32: do_literal_number_signed: 123
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 14: 32: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 14: 33: do_function_data_definition_target_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 14: 33: do_function_data_definition_expr_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 15: 29: do_init_complex_name: somecall
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 16: 32: do_init_complex_name: carrots
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 16: 33: do_expression_name: carrots
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 16: 33: do_expression_name: carrots
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 17: 28: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 17: 30: do_function_data_definition_symbol: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 17: 32: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 17: 32: do_function_data_definition_expr_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 17: 34: do_init_complex_name: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 17: 35: do_expression_name: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 17: 35: do_expression_name: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 17: 35: do_function_data_definition_target_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 17: 35: do_function_data_definition_expr_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 20: 30: do_init_complex_name: blart
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 20: 34: do_literal_number_signed: 123
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 20: 34: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 25: 15: do_init_complex_name: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 25: 18: do_expression_name: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 25: 18: do_expression_name: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 25: 20: do_init_complex_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 25: 21: do_expression_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 25: 21: do_expression_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 25: 21: do_expression_comaprison_equal
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 26: 18: do_intrinsic_type_float
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 26: 20: do_function_data_definition_symbol: n
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 26: 22: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 26: 22: do_function_data_definition_expr_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 26: 28: do_literal_number_float: 123.0
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 26: 28: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 26: 29: do_function_data_definition_target_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 26: 29: do_function_data_definition_expr_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 28: 17: do_init_complex_name: asd
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 28: 20: do_expression_name: asd
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 28: 20: do_expression_name: asd
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 28: 24: do_literal_number_signed: 123
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 28: 24: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 28: 25: do_expression_comaprison_equal
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 29: 20: do_init_complex_name: xyz
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 29: 21: do_expression_name: xyz
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 29: 21: do_expression_name: xyz
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 30: 24: do_init_complex_name: peas
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 30: 25: do_expression_name: peas
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 30: 25: do_expression_name: peas
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 31: 24: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 31: 26: do_function_data_definition_symbol: p
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 31: 28: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 31: 28: do_function_data_definition_expr_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 31: 32: do_literal_number_signed: 123
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 31: 32: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 31: 33: do_function_data_definition_target_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 31: 33: do_function_data_definition_expr_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 32: 29: do_init_complex_name: somecall
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 33: 32: do_init_complex_name: carrots
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 33: 33: do_expression_name: carrots
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 33: 33: do_expression_name: carrots
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 34: 28: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 34: 30: do_function_data_definition_symbol: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 34: 32: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 34: 32: do_function_data_definition_expr_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 34: 34: do_init_complex_name: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 34: 35: do_expression_name: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 34: 35: do_expression_name: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 34: 35: do_function_data_definition_target_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 34: 35: do_function_data_definition_expr_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 37: 30: do_init_complex_name: blart
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 37: 34: do_literal_number_signed: 123
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 37: 34: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 41: 16: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 41: 22: do_function_data_definition_symbol: booga
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 41: 23: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: closing file
+
+parse succeeded: 0 errors: 0 warnings

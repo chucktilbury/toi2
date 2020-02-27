@@ -1,0 +1,43 @@
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: open file
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 10: 10: do_init_complex_name: a
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 10: 14: do_init_complex_name: b
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 10: 15: do_expression_name_with_subscript: b
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 10: 16: do_subscript_item_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 10: 16: do_literal_number_signed: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 10: 16: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 10: 17: do_subscript_item_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 10: 17: do_subscript_item_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 10: 18: do_expression_name_subscript_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 10: 18: do_expression_name: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 11: 10: do_init_complex_name: a
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 11: 14: do_init_complex_name: b
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 11: 15: do_expression_name_with_subscript: b
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 11: 23: do_subscript_item_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 11: 24: do_formatted_string_without_format: string
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 11: 24: do_subscript_item_formatted_string
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 11: 24: do_subscript_item_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 11: 25: do_expression_name_subscript_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 11: 25: do_expression_name: string
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 10: do_init_complex_name: a
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 16: do_init_complex_name: b
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 18: do_expression_name_with_subscript: b
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 19: do_subscript_item_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 19: do_literal_number_signed: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 19: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 20: do_subscript_item_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 20: do_subscript_item_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 23: do_subscript_item_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 23: do_literal_number_signed: 2
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 23: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 24: do_subscript_item_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 24: do_subscript_item_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 27: do_subscript_item_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 27: do_literal_number_signed: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 27: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 28: do_subscript_item_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 28: do_subscript_item_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 29: do_expression_name_subscript_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: 12: 29: do_expression_name: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/array_test.toi: closing file
+
+parse succeeded: 0 errors: 0 warnings

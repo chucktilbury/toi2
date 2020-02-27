@@ -1,0 +1,299 @@
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: open file
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 7: 16: do_import: blart
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 7: 24: do_set_import_name: clipper
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 7: 25: do_import_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 8: 14: do_import: bacon
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 8: 14: do_import_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 9: 13: do_import: eggs
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 9: 13: do_import_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 10: 13: do_import: peas
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 10: 13: do_import_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 11: 16: do_import: carrots
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 11: 16: do_import_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 13: 15: do_set_private_data_attribute
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 13: 22: do_set_static_data_attribute
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 13: 36: do_init_complex_name: none
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 13: 37: do_private_class_parm: none
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 14: 8: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 14: 18: do_class_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 14: 18: do_set_protected_data_attribute
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 14: 23: do_class_data_definition_attrs
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 14: 23: do_class_data_definition_symbol: fine
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 14: 24: do_class_data_definition_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 15: 8: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 15: 14: do_class_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 15: 14: do_class_data_definition_symbol: blart
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 15: 15: do_class_data_definition_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 16: 8: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 16: 12: do_class_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 16: 12: do_class_data_definition_symbol: asd
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 16: 13: do_class_data_definition_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 21: 13: do_set_public_data_attribute
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 21: 29: do_init_complex_name: none
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 21: 30: do_private_class_parm: none
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 21: 45: do_init_complex_name: iney
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 21: 46: do_protected_class_parm: iney
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 21: 58: do_init_complex_name: miny
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 21: 59: do_public_class_parm: miny
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 22: 8: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 22: 13: do_class_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 22: 13: do_class_data_definition_symbol: good
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 22: 14: do_class_data_definition_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 28: 9: do_intrinsic_type_int8
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 28: 16: do_class_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 28: 16: do_set_public_data_attribute
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 28: 23: do_set_static_data_attribute
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 28: 28: do_class_data_definition_attrs
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 28: 28: do_class_data_definition_symbol: some
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 28: 29: do_class_data_definition_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 29: 10: do_intrinsic_type_float
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 29: 17: do_class_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 29: 17: do_set_static_data_attribute
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 29: 24: do_set_public_data_attribute
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 29: 30: do_class_data_definition_attrs
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 29: 30: do_class_data_definition_symbol: blart
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 29: 31: do_class_data_definition_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 34: 30: do_init_complex_name: someclass
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 34: 35: do_add_complex_name: name
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 34: 43: do_add_complex_name: subname
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 34: 44: do_private_class_parm: subname
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 34: 60: do_init_complex_name: somename
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 34: 61: do_public_class_parm: somename
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 36: 10: do_intrinsic_type_array
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 36: 15: do_class_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 36: 15: do_class_data_definition_symbol: some
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 36: 16: do_class_data_definition_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 38: 18: do_set_static_data_attribute
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 38: 25: do_set_public_data_attribute
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 38: 41: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 38: 41: do_method_define_param_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 38: 45: do_method_define_param_symbol
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 38: 50: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 38: 50: do_method_define_param_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 38: 55: do_method_define_param_symbol
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 38: 60: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 38: 60: do_method_define_param_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 38: 65: do_method_define_param_symbol
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 39: 12: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 39: 17: do_function_data_definition_symbol: made
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 39: 18: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 40: 13: do_init_complex_name: made
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 40: 16: do_add_complex_name: in
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 40: 23: do_add_complex_name: france
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 40: 28: do_literal_number_signed: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 40: 28: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 40: 28: do_expression_unary_negate
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 40: 30: do_literal_number_signed: 2
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 40: 30: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 40: 31: do_expression_subtraction
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 40: 32: do_literal_number_signed: 3
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 40: 32: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 40: 33: do_expression_addition
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 41: 17: do_init_complex_name: ab
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 41: 18: do_expression_name: ab
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 41: 18: do_expression_name: ab
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 41: 19: do_literal_number_signed: 2
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 41: 19: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 41: 22: do_expression_addition
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 41: 26: do_literal_number_signed: 123
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 41: 26: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 41: 27: do_expression_comaprison_equal
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 42: 16: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 42: 21: do_function_data_definition_symbol: good
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 42: 23: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 42: 23: do_function_data_definition_expr_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 42: 25: do_literal_number_signed: 0
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 42: 25: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 42: 26: do_function_data_definition_target_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 42: 26: do_function_data_definition_expr_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 43: 16: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 43: 20: do_function_data_definition_symbol: bad
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 43: 21: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 44: 16: do_init_complex_name: call
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 44: 26: do_add_complex_name: something
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 44: 31: do_init_complex_name: good
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 44: 32: do_expression_name: good
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 44: 32: do_expression_name: good
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 44: 36: do_init_complex_name: bad
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 44: 37: do_expression_name: bad
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 44: 37: do_expression_name: bad
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 17: do_init_complex_name: blart
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 22: do_init_complex_name: this
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 23: do_expression_name: this
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 23: do_expression_name: this
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 26: do_init_complex_name: is
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 27: do_expression_name: is
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 27: do_expression_name: is
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 29: do_init_complex_name: a
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 30: do_expression_name: a
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 30: do_expression_name: a
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 35: do_init_complex_name: long
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 36: do_expression_name: long
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 36: do_expression_name: long
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 49: do_formatted_string_without_format: parameter
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 51: do_init_complex_name: a
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 52: do_expression_name_with_subscript: a
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 53: do_subscript_item_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 53: do_literal_number_signed: 0
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 53: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 54: do_subscript_item_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 54: do_subscript_item_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 55: do_expression_name_subscript_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 55: do_expression_name: 0
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 60: do_init_complex_name: list
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 61: do_expression_name: list
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 61: do_expression_name: list
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 66: do_init_complex_name: here
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 67: do_expression_name: here
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 67: do_expression_name: here
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 70: do_init_complex_name: is
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 71: do_expression_name: is
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 71: do_expression_name: is
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 79: do_init_complex_name: another
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 80: do_expression_name: another
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 45: 80: do_expression_name: another
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 46: 16: do_init_complex_name: retv
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 46: 22: do_init_complex_name: bad
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 46: 23: do_expression_name: bad
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 46: 23: do_expression_name: bad
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 48: 15: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 48: 17: do_function_data_definition_symbol: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 48: 18: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 48: 22: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 48: 24: do_function_data_definition_symbol: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 48: 25: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 49: 21: do_init_complex_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 49: 24: do_expression_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 49: 24: do_expression_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 49: 26: do_init_complex_name: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 49: 28: do_expression_name: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 49: 28: do_expression_name: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 49: 28: do_expression_comaprison_equal
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 50: 17: do_init_complex_name: y
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 51: 17: do_init_complex_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 19: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 21: do_function_data_definition_symbol: z
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 23: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 23: do_function_data_definition_expr_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 27: do_literal_number_signed: 123
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 27: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 31: do_expression_open_paren
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 33: do_literal_number_signed: 12
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 33: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 37: do_init_complex_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 38: do_expression_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 38: do_expression_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 38: do_expression_multiplication
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 38: do_expression_close_paren
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 47: do_init_complex_name: objext
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 49: do_add_complex_name: z
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 50: do_expression_name: z
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 50: do_expression_name: z
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 50: do_expression_division
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 50: do_expression_addition
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 50: do_function_data_definition_target_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 52: 50: do_function_data_definition_expr_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 55: 16: do_literal_number_signed: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 55: 16: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 55: 20: do_literal_number_signed: 2
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 55: 20: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 55: 21: do_expression_comaprison_equal
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 56: 19: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 56: 23: do_function_data_definition_symbol: asd
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 56: 24: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 57: 19: do_init_complex_name: asd
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 57: 23: do_literal_number_signed: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 57: 23: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 57: 25: do_literal_number_signed: 2
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 57: 25: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 57: 27: do_literal_number_signed: 3
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 57: 27: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 57: 27: do_expression_multiplication
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 57: 28: do_expression_addition
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 59: 18: do_literal_number_signed: 2
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 59: 18: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 59: 23: do_literal_number_signed: 3
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 59: 23: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 59: 24: do_expression_comaprison_equal
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 60: 19: do_init_complex_name: asd
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 60: 23: do_literal_number_signed: 2
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 60: 23: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 60: 25: do_literal_number_signed: 3
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 60: 25: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 60: 26: do_expression_addition
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 60: 27: do_literal_number_signed: 4
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 60: 27: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 60: 28: do_expression_addition
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 63: 17: do_init_complex_name: blart
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 63: 23: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 63: 26: do_expression_open_paren
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 63: 27: do_init_complex_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 63: 30: do_expression_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 63: 30: do_expression_name: x
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 63: 34: do_literal_number_signed: 123
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 63: 34: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 63: 35: do_expression_bitwise_shift_left
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 63: 35: do_expression_close_paren
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 24: do_init_complex_name: print_formatted
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 29: do_init_complex_name: poop
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 30: do_expression_name: poop
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 30: do_expression_name: poop
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 34: do_init_complex_name: arg
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 35: do_expression_name_with_subscript: arg
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 36: do_subscript_item_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 36: do_literal_number_signed: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 36: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 37: do_subscript_item_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 37: do_subscript_item_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 38: do_expression_name_subscript_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 38: do_expression_name: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 43: do_init_complex_name: pigs
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 44: do_expression_name: pigs
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 44: do_expression_name: pigs
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 48: do_init_complex_name: asd
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 49: do_expression_name: asd
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 71: 49: do_expression_name: asd
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 73: 16: do_init_complex_name: asd
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 73: 21: do_literal_number_signed: 123
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 73: 21: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 74: 17: do_literal_number_signed: 1
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 74: 17: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 74: 21: do_literal_number_signed: 2
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 74: 21: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 74: 23: do_expression_comaprison_equal
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 75: 19: do_init_complex_name: we
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 75: 23: do_add_complex_name: are
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 75: 31: do_add_complex_name: parsing
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 75: 35: do_literal_number_signed: 123
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 75: 35: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 75: 40: do_init_complex_name: asd
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 75: 41: do_expression_name: asd
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 75: 41: do_expression_name: asd
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 77: 18: do_literal_number_signed: 0
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 77: 18: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 77: 23: do_literal_number_signed: 0
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 77: 23: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 77: 24: do_expression_comaprison_equal
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 79: 19: do_init_complex_name: g
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 79: 22: do_expression_name: g
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 79: 22: do_expression_name: g
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 79: 24: do_init_complex_name: a
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 79: 25: do_expression_name: a
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 79: 25: do_expression_name: a
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 79: 25: do_expression_comaprison_equal
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 81: 20: do_init_complex_name: abc
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 81: 26: do_literal_number_signed: 123
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 81: 26: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 84: 20: do_init_complex_name: lkj
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 84: 24: do_literal_number_signed: 0
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 84: 24: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 88: 11: do_intrinsic_type_uint32
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 88: 18: do_class_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 88: 18: do_set_static_data_attribute
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 88: 25: do_set_public_data_attribute
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 88: 31: do_class_data_definition_attrs
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 88: 31: do_class_data_definition_symbol: value
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: 88: 32: do_class_data_definition_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/generic_test1.toi: closing file
+
+parse succeeded: 0 errors: 0 warnings

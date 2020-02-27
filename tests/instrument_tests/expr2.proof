@@ -1,0 +1,34 @@
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: open file
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 6: 12: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 6: 14: do_function_data_definition_symbol: x
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 6: 16: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 6: 16: do_function_data_definition_expr_start
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 6: 18: do_literal_number_signed: 1
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 6: 18: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 6: 20: do_literal_number_signed: 2
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 6: 20: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 6: 22: do_literal_number_signed: 3
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 6: 22: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 6: 22: do_expression_multiplication
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 6: 23: do_expression_addition
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 6: 23: do_function_data_definition_target_expression
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 6: 23: do_function_data_definition_expr_finish
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 7: 12: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 7: 14: do_function_data_definition_symbol: x
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 7: 16: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 7: 16: do_function_data_definition_expr_start
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 7: 18: do_literal_number_signed: 1
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 7: 18: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 7: 20: do_expression_open_paren
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 7: 21: do_literal_number_signed: 2
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 7: 21: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 7: 23: do_literal_number_signed: 3
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 7: 23: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 7: 24: do_expression_addition
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 7: 24: do_expression_close_paren
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 7: 24: do_expression_multiplication
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 7: 25: do_function_data_definition_target_expression
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: 7: 25: do_function_data_definition_expr_finish
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr2.toi: closing file
+
+parse succeeded: 0 errors: 0 warnings

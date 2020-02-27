@@ -1,0 +1,74 @@
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: open file
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 9: 12: do_intrinsic_type_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 9: 16: do_function_data_definition_symbol: abc
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 9: 17: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 12: 18: do_intrinsic_type_float
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 12: 31: do_function_data_definition_symbol: define_a_var
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 12: 33: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 12: 33: do_function_data_definition_expr_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 12: 37: do_literal_number_float: 0.0
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 12: 37: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 12: 38: do_function_data_definition_target_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 12: 38: do_function_data_definition_expr_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 13: 22: do_init_complex_name: call_this
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 14: 16: do_init_complex_name: bla
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 16: 24: do_init_complex_name: some_name
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 16: 35: do_formatted_string_with_format: string
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 16: 36: do_formatted_string_parm_begin
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 16: 42: do_init_complex_name: format
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 16: 43: do_expression_name: format
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 16: 43: do_expression_name: format
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 16: 43: do_formatted_string_param_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 16: 43: do_formatted_string_parm_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 17: 22: do_init_complex_name: something
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 18: 19: do_init_complex_name: backon
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 18: 24: do_add_complex_name: eggs
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 18: 28: do_add_complex_name: are
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 18: 33: do_add_complex_name: good
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 23: 18: do_intrinsic_type_float
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 23: 31: do_function_data_definition_symbol: define_a_var
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 23: 33: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 23: 33: do_function_data_definition_expr_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 23: 37: do_literal_number_float: 0.0
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 23: 37: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 23: 38: do_function_data_definition_target_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 23: 38: do_function_data_definition_expr_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 24: 22: do_init_complex_name: call_this
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 25: 16: do_init_complex_name: bla
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 27: 24: do_formatted_string_with_format: string
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 27: 25: do_formatted_string_parm_begin
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 27: 31: do_init_complex_name: format
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 27: 32: do_expression_name: format
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 27: 32: do_expression_name: format
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 27: 32: do_formatted_string_param_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 27: 32: do_formatted_string_parm_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 28: 22: do_init_complex_name: something
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 29: 19: do_init_complex_name: backon
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 29: 24: do_add_complex_name: eggs
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 29: 28: do_add_complex_name: are
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 29: 33: do_add_complex_name: good
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 34: 18: do_intrinsic_type_float
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 34: 31: do_function_data_definition_symbol: define_a_var
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 34: 33: do_function_data_definition_type
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 34: 33: do_function_data_definition_expr_start
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 34: 37: do_literal_number_float: 0.0
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 34: 37: do_expression_number
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 34: 38: do_function_data_definition_target_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 34: 38: do_function_data_definition_expr_finish
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 35: 22: do_init_complex_name: call_this
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 36: 16: do_init_complex_name: bla
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 38: 25: do_formatted_string_with_format: string
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 38: 26: do_formatted_string_parm_begin
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 38: 32: do_init_complex_name: format
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 38: 33: do_expression_name: format
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 38: 33: do_expression_name: format
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 38: 33: do_formatted_string_param_expression
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 38: 33: do_formatted_string_parm_end
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 39: 22: do_init_complex_name: something
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 40: 19: do_init_complex_name: backon
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 40: 24: do_add_complex_name: eggs
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 40: 28: do_add_complex_name: are
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 40: 33: do_add_complex_name: good
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: closing file
+
+parse succeeded: 0 errors: 0 warnings

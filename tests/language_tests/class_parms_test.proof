@@ -1,0 +1,19 @@
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: open file
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: 8: 16: do_init_complex_name: asdf
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: 8: 17: do_private_class_parm: asdf
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: 10: 16: do_init_complex_name: asdf
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: 10: 20: do_add_complex_name: wer
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: 10: 21: do_private_class_parm: wer
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: 12: 15: do_init_complex_name: qwe
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: 12: 19: do_add_complex_name: ert
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: 12: 23: do_add_complex_name: ert
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: 12: 24: do_private_class_parm: ert
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: 14: 15: do_init_complex_name: qwe
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: 14: 16: do_private_class_parm: qwe
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: 14: 19: do_init_complex_name: ert
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: 14: 20: do_private_class_parm: ert
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: 14: 23: do_init_complex_name: ert
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: 14: 24: do_private_class_parm: ert
+DBG: /home/chuck/Src/toi2/tests/language_tests/class_parms_test.toi: closing file
+
+parse succeeded: 0 errors: 0 warnings
