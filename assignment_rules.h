@@ -1,0 +1,6 @@
+#ifndef _ASSIGNMENT_RULES_H_
+#define _ASSIGNMENT_RULES_H_
+
+
+
+#endif /* _ASSIGNMENT_RULES_H_ */

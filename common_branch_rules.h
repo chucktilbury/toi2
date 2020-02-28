@@ -1,0 +1,4 @@
+#ifndef _COMMON_BRANCH_RULES_H_
+#define _COMMON_BRANCH_RULES_H_
+
+#endif /* _COMMON_BRANCH_RULES_H_ */

@@ -11,8 +11,21 @@ OBJS	=	errors.o \
 			xxhash.o \
 			ast_tree.o \
 			ast_attributes.o \
-			parser_support.o \
-			parser_states.o
+			module_rules.o \
+			import_rules.o \
+			class_def_rules.o \
+			data_def_rules.o \
+			function_def_rules.o \
+			expression_def_rules.o \
+			function_call_rules.o \
+			common_branch_rules.o \
+			literal_value_rules.o \
+			for_loop_rules.o \
+			if_else_rules.o \
+			while_rules.o \
+			except_rules.o \
+			switch_case_rules.o \
+			assignment_rules.o
 
 OBJS1	=	main.o \
 			scanner.o \

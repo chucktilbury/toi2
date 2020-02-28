@@ -1,0 +1,4 @@
+#ifndef _FUNCTION_DEF_RULES_H_
+#define _FUNCTION_DEF_RULES_H_
+
+#endif /* _FUNCTION_DEF_RULES_H_ */
