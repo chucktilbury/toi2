@@ -1,0 +1,8 @@
+
+class name() {
+
+    method name() () {
+
+        some_obj.call_a_method("asd %s asd %s"%(asd, wer.sdf))();
+    }
+}
