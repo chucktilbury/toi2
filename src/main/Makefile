@@ -20,23 +20,26 @@ else ifeq ($(PLATNAME), MSYS_NT-6.1)
 	LIBS	=	$(LIBDIRS) -L/c/MinGW/msys/1.0/lib -lparser -lutils -lfl -ly
 endif
 
+.PHONY: all pretty clean all_clean
+all: $(TARGET)
+
 .c.o:
 	$(CC) $(HSRC) $(CARGS) $(DEBUG) -c $< -o $@
 
-all: $(TARGET)
-
--include $(DEPS)
-
-$(DEPS): $(SRCS) $(SRCS1)
-	$(CC) $(HSRC) -M $(SRCS) $(SRCS1) > $(DEPS)
-
-$(TARGET): $(OBJS) $(OBJS1) $(DEPS)
+$(TARGET): $(OBJS)
 	$(CC) $(HSRC) $(CARGS) $(DEBUG) $(OBJS) -o $(TARGET) $(LIBS)
 
-pretty: clean
+$(DEPS): $(SRCS)
+	$(CC) $(HSRC) -MM $(SRCS) > $(DEPS)
+
+pretty:
 	indent $(SRCS) $(HEADERS)
 	-rm -f *~
 
 clean:
-	-rm -f $(OBJS) $(TARGET) $(DEPS) *.bak *~
+	-rm -f $(OBJS) *.bak *~
 
+all_clean: clean
+	-rm -f $(TARGET) $(DEPS) .indent.pro
+
+-include $(DEPS)

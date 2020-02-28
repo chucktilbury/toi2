@@ -1,5 +1,4 @@
 #ifndef _EXPRESSION_DEF_RULES_H_
-#define _EXPRESSION_DEF_RULES_H_
-
+#  define _EXPRESSION_DEF_RULES_H_
 
 #endif /* _EXPRESSION_DEF_RULES_H_ */

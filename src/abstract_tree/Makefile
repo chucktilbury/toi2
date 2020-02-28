@@ -19,23 +19,28 @@ CARGS	=	-Wall
 DEBUG	=	-g -DTRACE
 HSRC	= 	-I../utils -I../parser
 
-.c.o:
-	$(CC) $(HSRC) $(CARGS) $(DEBUG) -c $< -o $@
+.PHONY: all pretty clean all_clean
 
 all: $(TARGET)
 
--include $(DEPS)
+.c.o:
+	$(CC) $(HSRC) $(CARGS) $(DEBUG) -c $< -o $@
 
-$(DEPS): $(SRCS) $(SRCS1)
-	$(CC) -M $(HSRC) $(SRCS) > $(DEPS)
-
-$(TARGET): $(OBJS) $(DEPS)
+$(TARGET): $(OBJS)
 	ar rcs $(TARGET) $(OBJS)
 
-pretty: clean
+$(DEPS): $(SRCS)
+	$(CC) -M $(HSRC) $(SRCS) > $(DEPS)
+
+pretty:
 	indent $(SRCS) $(HEADERS)
 	-rm -f *~
 
 clean:
-	-rm -f $(OBJS) $(TARGET) $(DEPS) *.bak *~
+	-rm -f $(OBJS) *.bak *~
+
+all_clean: clean
+	-rm -f $(TARGET) $(DEPS) .indent.pro
+
+-include $(DEPS)
 

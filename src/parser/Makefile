@@ -36,26 +36,18 @@ CARGS	=	-Wall
 DEBUG	=	-g -DTRACE
 HSRC	= 	-I../utils -I../abstract_tree
 
-ifeq ($(PLATNAME), Linux)
-	LIBS	=	-ll -ly
-else ifeq ($(PLATNAME), MSYS_NT-6.1)
-	LIBS	=	-L/c/MinGW/msys/1.0/lib -lfl -ly
-endif
+.PHONY: all pretty clean all_clean
+
+all: $(TARGET)
 
 .c.o:
 	$(CC) $(HSRC) $(CARGS) $(DEBUG) -c $< -o $@
 
-all: $(TARGET)
-
--include $(DEPS)
+$(TARGET): $(OBJS) $(OBJS1)
+	ar rcs $(TARGET) $(OBJS) $(OBJS1)
 
 $(DEPS): $(SRCS) $(SRCS1)
 	$(CC) -M $(HSRC) $(SRCS) $(SRCS1) > $(DEPS)
-
-$(TARGET): $(OBJS) $(OBJS1) $(DEPS)
-	ar rcs $(TARGET) $(OBJS) $(OBJS1)
-	#mv $(TARGET) ../../lib
-	#$(CC) $(CARGS) $(DEBUG) $(OBJS1) $(OBJS) -o $(TARGET) $(LIBS)
 
 parser.c parser.h: parser.y scanner.h
 	bison --report=lookahead -tvdo parser.c parser.y
@@ -63,10 +55,15 @@ parser.c parser.h: parser.y scanner.h
 scanner.c: scanner.l parser.h scanner.h
 	flex -o scanner.c scanner.l
 
-pretty: clean
+pretty:
 	indent $(SRCS) $(HEADERS)
 	-rm -f *~
 
 clean:
-	-rm -f scanner.c parser.c parser.h parser.output $(OBJS) $(OBJS1) $(TARGET) $(DEPS) *.bak *~
+	-rm -f parser.output $(OBJS) $(OBJS1) *.bak *~
+
+all_clean: clean
+	-rm -f scanner.c parser.c parser.h $(TARGET) $(DEPS) .indent.pro
+
+-include $(DEPS)
 

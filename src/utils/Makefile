@@ -21,23 +21,28 @@ CARGS	=	-Wall
 HSEARCH	=	-I../parser
 DEBUG	=	-g -DTRACE
 
-.c.o:
-	$(CC) $(HSEARCH) $(CARGS) $(DEBUG) -c $< -o $@
+.PHONY: all pretty clean all_clean
 
 all: $(TARGET)
 
--include $(DEPS)
+.c.o:
+	$(CC) $(HSEARCH) $(CARGS) $(DEBUG) -c $< -o $@
 
-$(DEPS): $(SRCS) $(SRCS1)
-	$(CC) -M $(HSEARCH) $(SRCS) $(SRCS1) > $(DEPS)
-
-$(TARGET): $(OBJS) $(OBJS1) $(DEPS)
+$(TARGET): $(OBJS) $(DEPS)
 	ar rcs $(TARGET) $(OBJS) $(OBJS1)
 
-pretty: clean
+$(DEPS): $(SRCS)
+	$(CC) -M $(HSEARCH) $(SRCS) > $(DEPS)
+
+pretty:
 	indent $(SRCS) $(HEADERS)
 	-rm -f *~
 
 clean:
-	-rm -f $(OBJS) $(TARGET) $(DEPS) *.bak *~
+	-rm -f $(OBJS) *.bak *~
+
+all_clean: clean
+	-rm -f $(TARGET) $(DEPS) .indent.pro
+
+-include $(DEPS)
 

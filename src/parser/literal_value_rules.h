@@ -1,5 +1,4 @@
 #ifndef _LITERAL_VALUES_RULES_H_
-#define _LITERAL_VALUES_RULES_H_
-
+#  define _LITERAL_VALUES_RULES_H_
 
 #endif /* _LITERAL_VALUES_RULES_H_ */
