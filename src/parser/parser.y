@@ -69,186 +69,452 @@ module_list
         Literal values rules.
     */
 complex_name
-    : SYMBOL {}
-    | complex_name '.' SYMBOL {}
+    : SYMBOL {
+        complex_name_init_symbol();
+    }
+    | complex_name '.' SYMBOL {
+        complex_name_add_symbol();
+    }
     ;
 
 intrinsic_type
-    : DICT {}
-    | ARRAY {}
-    | BOOL {}
-    | STRING {}
-    | FLOAT {}
-    | INT {}
-    | INT8 {}
-    | INT16 {}
-    | INT32 {}
-    | INT64 {}
-    | UINT {}
-    | UINT8 {}
-    | UINT16 {}
-    | UINT32 {}
-    | UINT64 {}
-    | complex_name {}
+    : DICT {
+        intrinsic_type_create_dict();
+    }
+    | ARRAY {
+        intrinsic_type_create_array();
+    }
+    | BOOL {
+        intrinsic_type_create_bool();
+    }
+    | STRING {
+        intrinsic_type_create_string();
+    }
+    | FLOAT {
+        intrinsic_type_create_float();
+    }
+    | INT {
+        intrinsic_type_create_int64();
+    }
+    | INT8 {
+        intrinsic_type_create_int8();
+    }
+    | INT16 {
+        intrinsic_type_create_int16();
+    }
+    | INT32 {
+        intrinsic_type_create_int32();
+    }
+    | INT64 {
+        intrinsic_type_create_int64();
+    }
+    | UINT {
+        intrinsic_type_create_uint64();
+    }
+    | UINT8 {
+        intrinsic_type_create_uint8();
+    }
+    | UINT16 {
+        intrinsic_type_create_uint16();
+    }
+    | UINT32 {
+        intrinsic_type_create_uint32();
+    }
+    | UINT64 {
+        intrinsic_type_create_uint64();
+    }
+    | complex_name {
+        intrinsic_type_create_complex_name();
+    }
     ;
 
 data_attrs
-    : PRIVATE {}
-    | PUBLIC {}
-    | PROTECTED {}
-    | CONST {}
-    | STATIC {}
+    : PRIVATE {
+        data_attrs_add_private();
+    }
+    | PUBLIC {
+        data_attrs_add_public();
+    }
+    | PROTECTED {
+        data_attrs_add_protected();
+    }
+    | CONST {
+        data_attrs_add_const();
+    }
+    | STATIC {
+        data_attrs_add_static();
+    }
     ;
 
 data_attrs_list
-    : data_attrs {}
-    | data_attrs_list data_attrs {}
+    : data_attrs {
+        data_attrs_list_init();
+    }
+    | data_attrs_list data_attrs {
+        data_attrs_list_add();
+    }
     ;
 
 number
-    : UNUM {}
-    | INUM {}
-    | FNUM {}
+    : UNUM {
+        number_create_literal_unum();
+    }
+    | INUM {
+        number_create_literal_inum();
+    }
+    | FNUM {
+        number_create_literal_fnum();
+    }
     ;
 
 formatted_string_param
-    : QSTRG {}
-    | expression {}
+    : QSTRG {
+        formatted_string_param_qstrg();
+    }
+    | expression {
+        formatted_string_param_expression();
+    }
     ;
 
 formatted_string_param_list
-    : formatted_string_param {}
-    | formatted_string_param_list ',' formatted_string_param {}
+    : formatted_string_param {
+        formatted_string_param_list_init();
+    }
+    | formatted_string_param_list ',' formatted_string_param {
+        formatted_string_param_list_add();
+    }
     ;
 
 formatted_string
-    : QSTRG {}
-    | QSTRG {} '%' '(' {} formatted_string_param_list {} ')'
+    : QSTRG {
+        formatted_string_no_format();
+    }
+    | QSTRG {
+        formatted_string_with_format();
+    } '%' '(' {
+        formatted_string_with_init_parameters_start();
+    } formatted_string_param_list {
+        formatted_string_with_init_parameters_finish();
+    } ')'
     ;
 
 bool_value
-    : TRUE {}
-    | FALSE {}
+    : TRUE {
+        bool_value_create_true();
+    }
+    | FALSE {
+        bool_value_create_false();
+    }
     ;
 
     /*
         Imports rules
     */
 import_definition
-    : IMPORT SYMBOL {} ';' {}
-    | IMPORT SYMBOL {} AS SYMBOL {} ';' {}
+    : IMPORT SYMBOL {
+        import_definition_create();
+    } ';' {
+        import_definition_finish();
+    }
+    | IMPORT SYMBOL {
+        import_definition_create();
+    } AS SYMBOL {
+        import_definition_alias_to_symbol();
+    } ';' {
+        import_definition_finish();
+    }
     ;
 
     /*
         Class definition related rules.
     */
 class_parm
-    : PRIVATE complex_name {}
-    | PUBLIC complex_name {}
-    | PROTECTED complex_name {}
-    | complex_name {}
+    : PRIVATE complex_name {
+        class_parm_add_private();
+    }
+    | PUBLIC complex_name {
+        class_parm_add_public();
+    }
+    | PROTECTED complex_name {
+        class_parm_add_protected();
+    }
+    | complex_name {
+        class_parm_add_private();
+    }
     ;
 
 class_parm_list
-    : class_parm {}
-    | class_parm_list ',' class_parm {}
-    |  /* blank */
+    : class_parm {
+        class_parm_list_create();
+    }
+    | class_parm_list ',' class_parm {
+        class_parm_list_add();
+    }
+    |  /* blank */ {
+        class_parm_list_blank();
+    }
     ;
 
 class_body_item
-    : class_data_definition {}
-    | method_definition {}
-    | constructor_definition {}
-    | destructor_definition {}
+    : class_data_definition {
+        class_body_item_data_definition_finish();
+    }
+    | method_definition {
+        class_body_item_method_definition_finish();
+    }
+    | constructor_definition {
+        class_body_item_constructor_definition_finish();
+    }
+    | destructor_definition {
+        class_body_item_destructor_definition_finish();
+    }
     ;
 
 class_body
-    : class_body_item {}
-    | class_body class_body_item {}
+    : class_body_item {
+        class_body_item_add();
+    }
+    | class_body class_body_item {
+        class_body_item_add();
+    }
     ;
 
 class_definition
-    : CLASS {} data_attrs_list {} SYMBOL {} '(' {} class_parm_list{}  ')' '{' {} class_body {} '}'
-    | CLASS {} SYMBOL {} '(' {} class_parm_list {} ')' '{' {} class_body {} '}'
+    : CLASS {
+        class_definiton_create();
+    } data_attrs_list {
+        class_definiton_attrs_finish();
+    } SYMBOL {
+        class_definiton_add_name();
+    } '(' {
+        class_definiton_param_list_start();
+    } class_parm_list {
+        class_definiton_param_list_finish();
+    }  ')' '{' {
+        class_definiton_body_start();
+    } class_body {
+        class_definiton_body_finish();
+    } '}'
+    | CLASS {
+        class_definiton_create();
+    } SYMBOL {
+        class_definiton_add_name();
+    } '(' {
+        class_definiton_param_list_start();
+    } class_parm_list {
+        class_definiton_param_list_finish();
+    } ')' '{' {
+        class_definiton_body_start();
+    } class_body {
+        class_definiton_body_finish();
+    } '}'
     ;
 
     /*
         Data definition rules.
     */
 class_data_definition
-    : intrinsic_type {} data_attrs_list {} SYMBOL {} ';' {}
-    | intrinsic_type {} SYMBOL {} ';' {}
+    : intrinsic_type {
+        class_data_definition_with_data_attrs();
+    } data_attrs_list {
+        class_data_definition_add_data_attrs();
+    } SYMBOL {
+        class_data_definition_name();
+    } ';' {
+        class_data_definition_finish();
+    }
+    | intrinsic_type {
+        class_data_definition_no_data_attrs();
+    } SYMBOL {
+        class_data_definition_name();
+    } ';' {
+        class_data_definition_finish();
+    }
     ;
 
 function_data_definition_target
-    : NOTHING {}
-    | expression {}
-    | type_cast {} expression {}
-    | formatted_string {}
+    : NOTHING {
+        function_data_definition_target_nothing();
+    }
+    | expression {
+        function_data_definition_target_expression();
+    }
+    | type_cast {
+        function_data_definition_target_cast();
+    } expression {
+        function_data_definition_target_expression();
+    }
+    | formatted_string {
+        function_data_definition_target_formatted_string();
+    }
     ;
 
 function_data_definition_symbol
-    : SYMBOL {}
-    | CONST SYMBOL {}
+    : SYMBOL {
+        function_data_definition_symbol();
+    }
+    | CONST SYMBOL {
+        function_data_definition_const_symbol();
+    }
     ;
 
 function_data_definition
-    : intrinsic_type function_data_definition_symbol ';' {}
-    | intrinsic_type function_data_definition_symbol '=' {} function_data_definition_target ';' {}
+    : intrinsic_type function_data_definition_symbol ';' {
+        function_data_definition_no_initializer();
+    }
+    | intrinsic_type function_data_definition_symbol '=' {
+        function_data_definition_with_initializer();
+    } function_data_definition_target ';' {
+        function_data_definition_with_initializer_finish();
+    }
     ;
 
     /*
         Method definition related rules
     */
 method_def_param
-    : intrinsic_type {} SYMBOL {}
+    : intrinsic_type {
+        method_def_param_intrinsic_type();
+    } SYMBOL {
+        method_def_param_symbol();
+    }
     ;
 
 method_def_param_list
-    : method_def_param {}
-    | method_def_param_list ',' method_def_param {}
+    : method_def_param {
+        method_def_param_list_method_def_param_create();
+    }
+    | method_def_param_list ',' method_def_param {
+        method_def_param_list_method_def_param_add();
+    }
     ;
 
 method_param_def
-    :  method_def_param_list {}
-    |  /* blank */
+    :  method_def_param_list {
+        method_param_def_finish();
+    }
+    |  /* blank */ {
+        method_param_def_blank();
+    }
     ;
 
 method_definition
-    : METHOD {} data_attrs_list {} SYMBOL {} '(' {} method_param_def {} ')' '(' {} method_param_def {} ')' {} method_body {}
-    | METHOD {} SYMBOL {} '(' {} method_param_def {} ')' '(' {} method_param_def {} ')' {} method_body {}
+    : METHOD {
+        method_definition_with_attrs_start();
+    } data_attrs_list {
+        method_definition_attrs_finish();
+    } SYMBOL {
+        method_definition_symbol();
+    } '(' {
+        method_definition_input_params_start();
+    } method_param_def {
+        method_definition_input_params_finish();
+    } ')' '(' {
+        method_definition_output_params_start();
+    } method_param_def {
+        method_definition_output_params_finish();
+    } ')' {
+        method_definition_method_body_start();
+    } method_body {
+        method_definition_method_body_finish();
+    }
+    | METHOD {
+        method_definition_no_attrs_start();
+    } SYMBOL {
+        method_definition_symbol();
+    } '(' {
+        method_definition_input_params_start();
+    } method_param_def {
+        method_definition_input_params_finish();
+    } ')' '(' {
+        method_definition_output_params_start();
+    } method_param_def {
+        method_definition_output_params_finish();
+    } ')' {
+        method_definition_method_body_start();
+    } method_body {
+        method_definition_method_body_finish();
+    }
     ;
 
 method_body_element
-    : function_data_definition {}
-    | try_clause {}
-    | raise_clause {}
-    | function_call {}
-    | for_clause {}
-    | if_clause {}
-    | while_clause {}
-    | do_clause {}
-    | switch_clause {}
-    | pre_post_inc ';' {}
-    | assignment ';' {}
+    : function_data_definition {
+        method_body_element_data_definition_finish();
+    }
+    | try_clause {
+        method_body_element_try_finish();
+    }
+    | raise_clause {
+        method_body_element_raise_finish();
+    }
+    | function_call {
+        method_body_element_function_call_finish();
+    }
+    | for_clause {
+        method_body_element_for_finish();
+    }
+    | if_clause {
+        method_body_element_if_finish();
+    }
+    | while_clause {
+        method_body_element_while_finish();
+    }
+    | do_clause {
+        method_body_element_do_finish();
+    }
+    | switch_clause {
+        method_body_element_switch_finish();
+    }
+    | pre_post_inc ';' {
+        method_body_element_inc_finish();
+    }
+    | assignment ';' {
+        method_body_element_assignment_finish();
+    }
     ;
 
 method_body_element_list
-    : method_body_element {}
-    | method_body_element_list method_body_element {}
+    : method_body_element {
+        method_body_element_list_finish();
+    }
+    | method_body_element_list method_body_element {
+        method_body_element_list_finish();
+    }
     ;
 
 method_body
-    : '{' {} method_body_element_list {} '}' {}
-    | '{' '}' {}
+    : '{' {
+        method_body_element_start();
+    } method_body_element_list {
+        method_body_element_finish();
+    } '}' {
+        method_body_finish();
+    }
+    | '{' '}' {
+        method_body_blank();
+    }
     ;
 
 constructor_definition
-    : CREATE {} '(' {} method_param_def {} ')' {} method_body {}
+    : CREATE {
+        constructor_definition_start();
+    } '(' {
+        constructor_definition_param_start();
+    } method_param_def {
+        constructor_definition_param_finish();
+    } ')' {
+        constructor_definition_body_start();
+    } method_body {
+        constructor_definition_body_finish();
+    }
     ;
 
 destructor_definition
-    : DESTROY {} method_body {}
+    : DESTROY {
+        destructor_definition_body_start();
+    } method_body {
+        destructor_definition_body_finish();
+    }
     ;
 
     /*
@@ -258,46 +524,118 @@ destructor_definition
         and then evaluated at run time.
     */
 subscript_item
-    : '[' {} expression {} ']'
-    | '[' {} formatted_string {} ']'
+    : '[' {
+        subscript_item_expression_start();
+    } expression {
+        subscript_item_expression_finish();
+    } ']'
+    | '[' {
+        subscript_item_formatted_string_start();
+    } formatted_string {
+        subscript_item_formatted_string_finish();
+    } ']'
     ;
 
 subscript_list
-    : subscript_item {}
-    | subscript_list subscript_item {}
+    : subscript_item {
+        subscript_list_init();
+    }
+    | subscript_list subscript_item {
+        subscript_list_add();
+    }
 
 expression_name
-    : complex_name {}
-    | complex_name {} subscript_list {}
+    : complex_name {
+        expression_name_complex_name();
+    }
+    | complex_name {
+        expression_name_complex_name_with_subscript();
+    } subscript_list {
+        expression_name_subscript_list_finish();
+    }
     ;
 
 expression
-    : number {}
-    | expression_name {}
-    | expression '+' expression {}
-    | expression '-' expression {}
-    | expression '/' expression {}
-    | expression '*' expression {}
-    | expression '%' expression {}
-    | expression AND expression {}
-    | expression OR expression {}
-    | expression '<' expression {}
-    | expression '>' expression {}
-    | expression EQU expression {}
-    | expression NEQU expression {}
-    | expression LTEQU expression {}
-    | expression GTEQU expression {}
-    | expression '&' expression {}
-    | expression '|' expression {}
-    | expression '^' expression {}
-    | expression BROL expression {}
-    | expression BROR expression {}
-    | expression BSHL expression {}
-    | expression BSHR expression {}
-    | '-' expression %prec NEG {}
-    | NOT expression {}
-    | '~' expression {}
-    | '(' {} expression ')' {}
+    : number {
+        expression_literal_number();
+    }
+    | expression_name {
+        expression_expression_name();
+    }
+    | expression '+' expression {
+        expression_addition_operation();
+    }
+    | expression '-' expression {
+        expression_subtraction_operation();
+    }
+    | expression '/' expression {
+        expression_division_operation();
+    }
+    | expression '*' expression {
+        expression_multiplication_operation();
+    }
+    | expression '%' expression {
+        expression_modulo_operation();
+    }
+    | expression AND expression {
+        expression_and_boolean_operation();
+    }
+    | expression OR expression {
+        expression_or_boolean_operation();
+    }
+    | expression '<' expression {
+        expression_less_boolean_operation();
+    }
+    | expression '>' expression {
+        expression_greater_boolean_operation();
+    }
+    | expression EQU expression {
+        expression_equal_boolean_operation();
+    }
+    | expression NEQU expression {
+        expression_not_equal_boolean_operation();
+    }
+    | expression LTEQU expression {
+        expression_less_or_equal_boolean_operation();
+    }
+    | expression GTEQU expression {
+        expression_greater_or_equal_boolean_operation();
+    }
+    | expression '&' expression {
+        expression_and_bitwise_operation();
+    }
+    | expression '|' expression {
+        expression_or_bitwise_operation();
+    }
+    | expression '^' expression {
+        expression_xor_bitwise_operation();
+    }
+    | expression BROL expression {
+        expression_rotate_left_bitwise_operation();
+    }
+    | expression BROR expression {
+        expression_rotate_right_bitwise_operation();
+    }
+    | expression BSHL expression {
+        expression_shift_left_bitwise_operation();
+    }
+    | expression BSHR expression {
+        expression_shift_right_bitwise_operation();
+    }
+    | '-' expression %prec NEG {
+        expression_unary_negate_operation();
+    }
+    | NOT expression {
+        expression_unary_not_boolean_operation();
+    }
+    | '~' expression {
+        expression_not_bitwise_operation();
+    }
+    | '(' {
+        expression_start();
+    } expression ')' {
+        expression_finish();
+    }
     ;
 
     /*************************************
@@ -308,55 +646,119 @@ expression
         Function call related rules
     */
 function_call_parameter
-    : formatted_string {}
-    | expression {}
+    : formatted_string {
+        function_call_parameter_formatted_string();
+    }
+    | expression {
+        function_call_parameter_expression();
+    }
     ;
 
 function_call_parameter_list
     :
-    | function_call_parameter {}
-    | function_call_parameter_list ',' function_call_parameter {}
+    | function_call_parameter {
+        function_call_parameter_list_create();
+    }
+    | function_call_parameter_list ',' function_call_parameter {
+        function_call_parameter_list_add();
+    }
     ;
 
 function_call
-    : complex_name {} '(' {} function_call_parameter_list {} ')' '(' {} function_call_parameter_list {} ')' ';' {}
-    | DESTROY complex_name {} ';' {}
+    : complex_name {
+        function_call_complex_name();
+    } '(' {
+        function_call_input_parameter_start();
+    } function_call_parameter_list {
+        function_call_input_parameter_finish();
+    } ')' '(' {
+        function_call_output_parameter_start();
+    } function_call_parameter_list {
+        function_call_output_parameter_finish();
+    } ')' ';' {
+        function_call_finish();
+    }
+    | DESTROY complex_name {
+        function_call_destroy_complex_name();
+    } ';' {
+        function_call_destroy_finish();
+    }
     ;
 
     /*
         Common rules for branching and defining loop bodies
     */
 branch_expression
-    : expression {}
-    | bool_value {}
+    : expression {
+        branch_expression_expression();
+    }
+    | bool_value {
+        branch_expression_bool_value();
+    }
     ;
 
 
 jump_clause
-    : CONTINUE ';' {}
-    | BREAK ';' {}
+    : CONTINUE ';' {
+        jump_clause_continue();
+    }
+    | BREAK ';' {
+        jump_clause_break();
+    }
     ;
 
 pre_post_inc
-    : complex_name {} INC {}
-    | complex_name {} DEC {}
-    | INC {} complex_name {}
-    | DEC {} complex_name {}
+    : complex_name {
+        post_inc_complex_name();
+    } INC {
+        post_inc_finish();
+    }
+    | complex_name {
+        post_dec_complex_name();
+    } DEC {
+        post_dec_finish();
+    }
+    | INC {
+        pre_inc_start();
+    } complex_name {
+        pre_inc_complex_name();
+    }
+    | DEC {
+        pre_dec_start();
+    } complex_name {
+        pre_dec_complex_name();
+    }
     ;
 
 loop_body_element
-    : method_body_element {}
-    | jump_clause {}
+    : method_body_element {
+        loop_body_element_method_body_element();
+    }
+    | jump_clause {
+        loop_body_element_jump_clause_element();
+    }
     ;
 
 loop_body_element_list
-    : loop_body_element {}
-    | loop_body_element_list loop_body_element {}
+    : loop_body_element {
+        loop_body_element_list_init();
+    }
+    | loop_body_element_list loop_body_element {
+        loop_body_element_list_add();
+    }
     ;
 
 loop_body
-    : '{' '}' {}
-    | '{' {} loop_body_element_list {} '}' {}
+    : '{' '}' {
+        loop_body_element_empty();
+    }
+    | '{' {
+        loop_body_element_start();
+    } loop_body_element_list {
+        loop_body_element_finish();
+    } '}' {
+        loop_body_finish();
+    }
     ;
 
     /*

@@ -3,8 +3,18 @@
 #include <string.h>
 
 #include "errors.h"
-#include "linked_lists.h"
-#include "hash_table.h"
-#include "ast_tree.h"
-#include "ast_attributes.h"
+#include "scanner.h"
 #include "parser_support.h"
+
+void import_definition_create(void) {
+    DEBUG();
+}
+
+void import_definition_finish(void) {
+    DEBUG();
+}
+
+void import_definition_alias_to_symbol(void) {
+    DEBUG();
+}
+
