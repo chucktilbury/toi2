@@ -16,7 +16,7 @@ HEADERS	=	$(OBJS:.o=.h)
 TARGET	=	../../lib/libutils.a
 DEPS	= 	$(TARGET).dep
 
-CC		=	clang
+CC		=	gcc #clang
 CARGS	=	-Wall
 HSEARCH	=	-I../parser
 DEBUG	=	-g -DTRACE

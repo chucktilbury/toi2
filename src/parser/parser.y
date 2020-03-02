@@ -42,17 +42,27 @@
         Module rules.
     */
 module
-    : module_list {}
+    : module_list {
+        module_module_list_end();
+    }
     ;
 
 module_item
-    : import_definition {}
-    | class_definition {}
+    : import_definition {
+        module_item_import_definition_end();
+    }
+    | class_definition {
+        module_item_class_definition_end();
+    }
     ;
 
 module_list
-    : module_item {}
-    | module module_item {}
+    : module_item {
+        module_list_module_item_end();
+    }
+    | module module_item {
+        module_list_module_item_end();
+    }
     ;
 
     /*

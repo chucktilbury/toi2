@@ -14,7 +14,7 @@ HEADERS	=	$(OBJS:.o=.h)
 TARGET	=	../../lib/libabstree.a
 DEPS	= 	$(TARGET).dep
 
-CC		=	clang
+CC		=	gcc # clang
 CARGS	=	-Wall
 DEBUG	=	-g -DTRACE
 HSRC	= 	-I../utils -I../parser

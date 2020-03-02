@@ -8,7 +8,7 @@ SRCS	=	$(OBJS:.o=.c)
 TARGET	=	../../bin/toi
 DEPS	= 	$(TARGET).dep
 
-CC		=	clang
+CC		=	gcc # clang
 CARGS	=	-Wall
 HSRC	=	-I../parser -I../utils -I../abstract_tree
 DEBUG	=	-g -DTRACE

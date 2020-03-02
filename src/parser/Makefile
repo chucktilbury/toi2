@@ -31,7 +31,7 @@ HEADERS	=	$(OBJS:.o=.h)
 TARGET	=	../../lib/libparser.a
 DEPS	= 	$(TARGET).dep
 
-CC		=	clang
+CC		=	gcc # clang
 CARGS	=	-Wall
 DEBUG	=	-g -DTRACE
 HSRC	= 	-I../utils -I../abstract_tree
