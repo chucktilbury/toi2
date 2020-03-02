@@ -765,58 +765,128 @@ loop_body
         For loop related rules
     */
 for_initialize_assign
-    : NOTHING {}
-    | expression {}
-    | bool_value {}
+    : NOTHING {
+        for_initialize_assign_nothing();
+    }
+    | expression {
+        for_initialize_assign_expression();
+    }
+    | bool_value {
+        for_initialize_assign_bool_value();
+    }
     ;
 
 for_initialize
-    : intrinsic_type {} SYMBOL {} '=' for_initialize_assign ';' {}
-    | assignment {} ';' {}
+    : intrinsic_type {
+        for_initialize_intrinsic_type();
+    } SYMBOL {
+        for_initialize_symbol();
+    } '=' for_initialize_assign ';' {
+        for_initialize_data_definition_finish();
+    }
+    | assignment {
+        for_initialize_assignment();
+    } ';' {
+        for_initialize_assignment_finish();
+    }
     ;
 
 
 for_test_expression
-    : expression {} ';' {}
+    : expression {
+        for_test_expression();
+    } ';' {
+        for_test_expression_finish();
+    }
     ;
 
 for_arith_expression
-    : expression {}
-    | pre_post_inc {}
-    | assignment {}
+    : expression {
+        for_arith_expression_expression();
+    }
+    | pre_post_inc {
+        for_arith_expression_pre_post_inc();
+    }
+    | assignment {
+        for_arith_expression_assignment();
+    }
     ;
 
 for_clause
-    : FOR '(' {} for_initialize for_test_expression  for_arith_expression {} ')' loop_body {}
+    : FOR '(' {
+        for_clause_definition_init();
+    } for_initialize for_test_expression  for_arith_expression {
+        for_clause_definition_finish();
+    } ')' loop_body {
+        for_clause_loop_body_finish();
+    }
     ;
 
     /*
         If/else clause related rules
     */
 else_clause
-    : ELSE '(' {} expression {} ')' method_body {}
-    | ELSE {} method_body {}
+    : ELSE '(' {
+        else_clause_experssion_start();
+    } expression {
+        else_clause_experssion_finish();
+    } ')' method_body {
+        else_clause_method_body_finish();
+    }
+    | ELSE {
+        else_clause_no_expression();
+    } method_body {
+        else_clause_method_body_finish();
+    }
     ;
 
 else_body
-    : else_clause {}
-    | else_body else_clause {}
-    | method_body {}
+    : else_clause {
+        else_body_else_clause_init();
+    }
+    | else_body else_clause {
+        else_body_else_clause_add();
+    }
+    | method_body {
+        else_clause_method_body_finish();
+    }
     ;
 
 if_clause
-    : IF '(' {} branch_expression {} ')' else_body {}
+    : IF '(' {
+        if_clause_expression_start();
+    } branch_expression {
+        if_clause_expression_finish();
+    } ')' else_body {
+        if_clause_else_body_finish();
+    }
     ;
 
     /*
         While clause rules.
     */
 while_clause
-    : WHILE '(' {} branch_expression {} ')' loop_body {}
+    : WHILE '(' {
+        while_clause_experssion_start();
+    } branch_expression {
+        while_clause_expression_finish();
+    } ')' loop_body {
+        while_clause_loop_body_finish();
+    }
     ;
 
 do_clause
-    : DO {} loop_body {} WHILE '(' {} branch_expression {} ')' ';' {}
+    : DO {
+        do_clause_loop_body_start();
+    } loop_body {
+        do_clause_loop_body_finish();
+    } WHILE '(' {
+        do_clause_expression_start();
+    } branch_expression {
+        do_clause_expression_finish();
+    } ')' ';' {
+        do_clause_finish();
+    }
     ;
 
     /*
@@ -824,81 +894,171 @@ do_clause
     */
 except_parameter
     :
-    | formatted_string {}
-    | complex_name {}
+    | formatted_string {
+        except_parameter_formatted_string();
+    }
+    | complex_name {
+        except_parameter_complex_name();
+    }
     ;
 
 except_parameter_list
-    : except_parameter {}
-    | except_parameter_list ',' except_parameter {}
+    : except_parameter {
+        except_parameter_list_init();
+    }
+    | except_parameter_list ',' except_parameter {
+        except_parameter_list_add();
+    }
     ;
 
 except_clause
-    : EXCEPT '(' {} except_parameter_list {} ')' method_body {}
-    | EXCEPT complex_name {} '(' {} except_parameter_list {} ')' method_body {}
+    : EXCEPT '(' {
+        except_clause_parameter_list_start();
+    } except_parameter_list {
+        except_clause_parameter_list_finish();
+    } ')' method_body {
+        except_clause_method_body_finish();
+    }
+    | EXCEPT complex_name {
+        except_clause_complex_name();
+    } '(' {
+        except_clause_parameter_list_start();
+    } except_parameter_list {
+        except_clause_parameter_list_start();
+    } ')' method_body {
+        except_clause_method_body_finish();
+    }
     ;
 
 final_clause
-    : FINAL {} method_body {}
+    : FINAL {
+        final_clause_start();
+    } method_body {
+        final_clause_finish();
+    }
     ;
 
 try_clause_intro
-    : TRY {} method_body except_clause {}
+    : TRY {
+        try_clause_intro_start();
+    } method_body except_clause {
+        try_clause_intro_finish();
+    }
     ;
 
 try_clause
     : try_clause_intro
-    | try_clause_intro final_clause {}
+    | try_clause_intro final_clause {
+        try_clause_finish();
+    }
     ;
 
 raise_clause
-    : RAISE '(' {} except_parameter_list {} ')' ';' {}
+    : RAISE '(' {
+        raise_clause_parameter_start();
+    } except_parameter_list {
+        raise_clause_parameter_finish();
+    } ')' ';' {
+        raise_clause_finish();
+    }
     ;
 
     /*
         Switch/case related rules
     */
 case_clause
-    : CASE UNUM {} loop_body {}
-    | CASE INUM {} loop_body {}
-    | CASE FNUM {} loop_body {}
+    : CASE UNUM {
+        case_clause_unum();
+    } loop_body {
+        case_clause_loop_body_finish();
+    }
+    | CASE INUM {
+        case_clause_inum();
+    } loop_body {
+        case_clause_loop_body_finish();
+    }
+    | CASE FNUM {
+        case_clause_fnum();
+    } loop_body {
+        case_clause_loop_body_finish();
+    }
     ;
 
 default_case
-    : DEFAULT {} loop_body {}
+    : DEFAULT {
+        default_case();
+    } loop_body {
+        case_clause_loop_body_finish();
+    }
     ;
 
 case_body
-    : case_clause {}
-    | case_body case_clause {}
+    : case_clause {
+        case_body_init();
+    }
+    | case_body case_clause {
+        case_body_add();
+    }
     ;
 
 switch_clause_intro
-    : SWITCH '(' {} expression {} ')' '{' {} case_body {}
+    : SWITCH '(' {
+        switch_clause_intro_expression_start();
+    } expression {
+        switch_clause_intro_expression_finish();
+    } ')' '{' {
+        switch_clause_intro_case_body_start();
+    } case_body {
+        switch_clause_intro_case_body_finish();
+    }
     ;
 
 switch_clause
-    : switch_clause_intro '}' {}
-    | switch_clause_intro default_case {} '}' {}
+    : switch_clause_intro '}' {
+        switch_clause_after_intro();
+    }
+    | switch_clause_intro default_case {
+        switch_clause_after_intro_default();
+    } '}' {
+        switch_clause_finish();
+    }
     ;
 
     /*
         Assignment related rules
     */
 type_cast
-    : intrinsic_type {} ':' {}
+    : intrinsic_type {
+        type_cast_type();
+    } ':' {
+        type_cast_type_finish();
+    }
     ;
 
 assignment_target
-    : expression {}
-    | formatted_string {}
-    | type_cast expression {}
-    | NOTHING {}
-    | bool_value {}
+    : expression {
+        assignment_target_expression();
+    }
+    | formatted_string {
+        assignment_target_formatted_string();
+    }
+    | type_cast expression {
+        assignment_target_type_cast_expression();
+    }
+    | NOTHING {
+        assignment_target_nothing();
+    }
+    | bool_value {
+        assignment_target_bool_value();
+    }
     ;
 
 assignment
-    : complex_name {} '=' assignment_target {}
+    : complex_name {
+        assignment_complex_name();
+    } '=' assignment_target {
+        assignment_target_finish();
+    }
     ;
 
 %%
