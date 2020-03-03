@@ -50,30 +50,35 @@ def check_result(result, proof):
             errors += 1
             miscompare_list.append(idx+1)
 
+    retv = 0
     if errors != 0:
         print("FAIL: miscompared lines:")
         print("    ", miscompare_list)
+        retv += 1
     else:
         print("PASS")
 
+    return retv
 
 def build_test(name, outfile):
     # spawn the compiler on the test file name and save the results in a
     # temporary file. If the compile fails to spawn then return None.
-    os.system('../toi %s > %s'%(name, outfile))
+    os.system('../bin/toi %s > %s'%(name, outfile))
 
 
 def run_test(tname, pname):
 
     #with open(name, 'r') as infp:
     #(tname, proof_file) = write_proof(name)
+    retv = 0
     sys.stdout.write("    Name: %s - "%(tname))
     outfp_name = "%s.tmp"%(str(uuid.uuid4()))
     build_test(tname, outfp_name)
-    check_result(outfp_name, pname)
+    retv += check_result(outfp_name, pname)
 
     #os.unlink(proof_file)
     os.unlink(outfp_name)
+    return retv
 
 if __name__ == '__main__':
     try:
@@ -110,6 +115,7 @@ if __name__ == '__main__':
     for name in test_list:
         print("    %s"%(name))
 
+    errors = 0
     print("\nRunning tests:")
     #for name in test_list:
     for idx in range(len(test_list)):
@@ -117,9 +123,9 @@ if __name__ == '__main__':
             build_test(test_list[idx], proof_list[idx])
             print("    Init proof file: %s"%(proof_list[idx]))
         else:
-            run_test(test_list[idx], proof_list[idx])
+            errors += run_test(test_list[idx], proof_list[idx])
 
-    print("\n")
+    print("\nerrors: %d\n"%(errors))
 
 
 # def write_proof(name):
