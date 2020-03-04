@@ -54,7 +54,7 @@ DBG: /home/chuck/Src/toi2/tests/language_tests/for_clause_tests.toi: 11: 10: for
 DBG: /home/chuck/Src/toi2/tests/language_tests/for_clause_tests.toi: 11: 10: method_body_element_for_finish
 DBG: /home/chuck/Src/toi2/tests/language_tests/for_clause_tests.toi: 11: 10: method_body_element_list_finish
 DBG: /home/chuck/Src/toi2/tests/language_tests/for_clause_tests.toi: 13: 13: for_clause_definition_init
-DBG: /home/chuck/Src/toi2/tests/language_tests/for_clause_tests.toi: 13: 16: intrinsic_type_create_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/for_clause_tests.toi: 13: 16: save_intrinsic_type
 DBG: /home/chuck/Src/toi2/tests/language_tests/for_clause_tests.toi: 13: 16: for_initialize_intrinsic_type
 DBG: /home/chuck/Src/toi2/tests/language_tests/for_clause_tests.toi: 13: 18: for_initialize_symbol
 DBG: /home/chuck/Src/toi2/tests/language_tests/for_clause_tests.toi: 13: 22: number_create_literal_inum

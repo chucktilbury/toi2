@@ -13,5 +13,5 @@ clean:
 all_clean:
 	make -C src all_clean
 
-tests:
+tests: all
 	make -C tests

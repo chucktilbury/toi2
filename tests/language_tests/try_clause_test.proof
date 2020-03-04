@@ -15,14 +15,14 @@ DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 7: 19: metho
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 7: 19: method_definition_output_params_finish
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 7: 19: method_definition_method_body_start
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 9: 12: method_body_element_start
-DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 9: 12: intrinsic_type_create_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 9: 12: save_intrinsic_type
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 9: 16: function_data_definition_symbol
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 9: 17: function_data_definition_no_initializer
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 9: 17: method_body_element_data_definition_finish
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 9: 17: method_body_element_list_finish
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 11: 12: try_clause_intro_start
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 12: 18: method_body_element_start
-DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 12: 18: intrinsic_type_create_float
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 12: 18: save_intrinsic_type
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 12: 31: function_data_definition_symbol
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 12: 33: function_data_definition_with_initializer
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 12: 37: number_create_literal_fnum
@@ -96,7 +96,7 @@ DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 22: 12: meth
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 22: 12: method_body_element_list_finish
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 22: 12: try_clause_intro_start
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 23: 18: method_body_element_start
-DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 23: 18: intrinsic_type_create_float
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 23: 18: save_intrinsic_type
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 23: 31: function_data_definition_symbol
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 23: 33: function_data_definition_with_initializer
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 23: 37: number_create_literal_fnum
@@ -171,7 +171,7 @@ DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 31: 17: meth
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 31: 17: method_body_element_list_finish
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 33: 12: try_clause_intro_start
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 34: 18: method_body_element_start
-DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 34: 18: intrinsic_type_create_float
+DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 34: 18: save_intrinsic_type
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 34: 31: function_data_definition_symbol
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 34: 33: function_data_definition_with_initializer
 DBG: /home/chuck/Src/toi2/tests/language_tests/try_clause_test.toi: 34: 37: number_create_literal_fnum

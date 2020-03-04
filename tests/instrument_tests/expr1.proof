@@ -15,7 +15,7 @@ DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 5: 18: method_param_
 DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 5: 18: method_definition_output_params_finish
 DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 5: 18: method_definition_method_body_start
 DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 6: 12: method_body_element_start
-DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 6: 12: intrinsic_type_create_int64
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 6: 12: save_intrinsic_type
 DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 6: 14: function_data_definition_symbol
 DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 6: 16: function_data_definition_with_initializer
 DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 6: 18: number_create_literal_inum
@@ -30,7 +30,7 @@ DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 6: 23: function_data
 DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 6: 23: function_data_definition_with_initializer_finish
 DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 6: 23: method_body_element_data_definition_finish
 DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 6: 23: method_body_element_list_finish
-DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 7: 12: intrinsic_type_create_int64
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 7: 12: save_intrinsic_type
 DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 7: 14: function_data_definition_symbol
 DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 7: 16: function_data_definition_with_initializer
 DBG: /home/chuck/Src/toi2/tests/instrument_tests/expr1.toi: 7: 18: number_create_literal_inum

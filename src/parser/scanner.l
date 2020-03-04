@@ -137,7 +137,7 @@ static void update_loc(void){
 "continue"      { return CONTINUE; }
 "default"       { return DEFAULT; }
 "final"         { return FINAL; }
-"finaly"        { return FINAL; }
+"finally"       { return FINAL; }
 
     /* boolean operator tokens composed of special characters */
 "&&"            { return AND; }
@@ -216,7 +216,8 @@ static void update_loc(void){
     }
 
     /* recognize a float */
-[-+]?[0-9]+\.[0-9]+([eE]*[-+]?[0-9]+)? {
+    /*[-+]?[0-9]+\.[0-9]+([eE]*[-+]?[0-9]+)? { */
+[0-9]+\.[0-9]+([eE]*[-+]?[0-9]+)? {
         strncpy(strbuf, yytext, sizeof(strbuf));
         return FNUM;
     }

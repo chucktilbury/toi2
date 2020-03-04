@@ -42,7 +42,7 @@ def check_result(result, proof):
     if len(pro_lines) != len(res_lines):
         errors += 1
         sys.stdout.write("FAIL: number of lines does not match.\n")
-        return
+        return errors
 
     miscompare_list = []
     for idx in range(len(res_lines)):
@@ -76,8 +76,10 @@ def run_test(tname, pname):
     build_test(tname, outfp_name)
     retv += check_result(outfp_name, pname)
 
-    #os.unlink(proof_file)
-    os.unlink(outfp_name)
+    if retv == 0:
+        os.unlink(outfp_name)
+    else:
+        os.rename(outfp_name, tname + '.errors')
     return retv
 
 if __name__ == '__main__':
@@ -127,44 +129,3 @@ if __name__ == '__main__':
 
     print("\nerrors: %d\n"%(errors))
 
-
-# def write_proof(name):
-#     # Open the input file and write the proof data to a temporary file.
-#     infp = open(name, 'r')
-#     lines = infp.readlines()
-#     infp.close()
-
-#     # Create a temporary file to put the proof into. Returns the temp file
-#     # name so that it can be deleted by the run_test() function.
-#     outfp_name = "%s.tmp"%(str(uuid.uuid4()))
-#     outfp = open(outfp_name, 'w')
-
-#     # skip white space until a "/*" is found as a single string on an otherwise
-#     # blank line.
-#     for idx in range(len(lines)):
-#     #for line in lines:
-#         line = lines[idx].strip()
-#         if line == '/*':
-#             break
-
-#     idx += 1
-#     # Read and write the lines to the temp file until a "*/" string is found
-#     # on a single line with no other characters.
-#     #test_name = infp.readline().strip()
-#     end_found = False
-#     test_name = lines[idx].strip()
-#     for line in lines[idx+1:]:
-#         line = line.strip()
-#         if line == '*/':
-#             end_found = True
-#             break
-#         else:
-#             outfp.write("%s\n"%(line))
-
-#     if not end_found:
-#         print("ERROR: Test appears to be malformed.")
-#         outfp.close()
-#         exit(1)
-
-#     outfp.close()
-#     return (test_name, outfp_name)

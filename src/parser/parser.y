@@ -79,49 +79,49 @@ complex_name
 
 intrinsic_type
     : DICT {
-        intrinsic_type_create_dict();
+        save_intrinsic_type(DICT);
     }
     | ARRAY {
-        intrinsic_type_create_array();
+        save_intrinsic_type(ARRAY);
     }
     | BOOL {
-        intrinsic_type_create_bool();
+        save_intrinsic_type(BOOL);
     }
     | STRING {
-        intrinsic_type_create_string();
+        save_intrinsic_type(STRING);
     }
     | FLOAT {
-        intrinsic_type_create_float();
+        save_intrinsic_type(FLOAT);
     }
     | INT {
-        intrinsic_type_create_int64();
+        save_intrinsic_type(INT64);
     }
     | INT8 {
-        intrinsic_type_create_int8();
+        save_intrinsic_type(INT8);
     }
     | INT16 {
-        intrinsic_type_create_int16();
+        save_intrinsic_type(INT16);
     }
     | INT32 {
-        intrinsic_type_create_int32();
+        save_intrinsic_type(INT32);
     }
     | INT64 {
-        intrinsic_type_create_int64();
+        save_intrinsic_type(INT64);
     }
     | UINT {
-        intrinsic_type_create_uint64();
+        save_intrinsic_type(UINT64);
     }
     | UINT8 {
-        intrinsic_type_create_uint8();
+        save_intrinsic_type(UINT8);
     }
     | UINT16 {
-        intrinsic_type_create_uint16();
+        save_intrinsic_type(UINT16);
     }
     | UINT32 {
-        intrinsic_type_create_uint32();
+        save_intrinsic_type(UINT32);
     }
     | UINT64 {
-        intrinsic_type_create_uint64();
+        save_intrinsic_type(UINT64);
     }
     | complex_name {
         intrinsic_type_create_complex_name();
@@ -130,19 +130,19 @@ intrinsic_type
 
 data_attrs
     : PRIVATE {
-        data_attrs_add_private();
+        save_data_attr(PRIVATE);
     }
     | PUBLIC {
-        data_attrs_add_public();
+        save_data_attr(PUBLIC);
     }
     | PROTECTED {
-        data_attrs_add_protected();
+        save_data_attr(PROTECTED);
     }
     | CONST {
-        data_attrs_add_const();
+        save_data_attr(CONST);
     }
     | STATIC {
-        data_attrs_add_static();
+        save_data_attr(STATIC);
     }
     ;
 

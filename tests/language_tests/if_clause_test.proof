@@ -26,7 +26,7 @@ DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 10: 20: expre
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 10: 20: branch_expression_expression
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 10: 20: if_clause_expression_finish
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 11: 16: method_body_element_start
-DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 11: 16: intrinsic_type_create_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 11: 16: save_intrinsic_type
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 11: 18: function_data_definition_symbol
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 11: 20: function_data_definition_with_initializer
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 11: 22: complex_name_init_symbol
@@ -50,7 +50,7 @@ DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 13: 25: expre
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 13: 25: branch_expression_expression
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 13: 25: if_clause_expression_finish
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 14: 24: method_body_element_start
-DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 14: 24: intrinsic_type_create_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 14: 24: save_intrinsic_type
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 14: 26: function_data_definition_symbol
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 14: 28: function_data_definition_with_initializer
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 14: 32: number_create_literal_inum
@@ -75,7 +75,7 @@ DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 16: 33: expre
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 16: 33: branch_expression_expression
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 16: 33: if_clause_expression_finish
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 17: 28: method_body_element_start
-DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 17: 28: intrinsic_type_create_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 17: 28: save_intrinsic_type
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 17: 30: function_data_definition_symbol
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 17: 32: function_data_definition_with_initializer
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 17: 34: complex_name_init_symbol
@@ -130,7 +130,7 @@ DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 25: 21: expre
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 25: 21: expression_equal_boolean_operation
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 25: 21: else_clause_experssion_finish
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 26: 18: method_body_element_start
-DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 26: 18: intrinsic_type_create_float
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 26: 18: save_intrinsic_type
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 26: 20: function_data_definition_symbol
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 26: 22: function_data_definition_with_initializer
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 26: 28: number_create_literal_fnum
@@ -166,7 +166,7 @@ DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 30: 25: expre
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 30: 25: branch_expression_expression
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 30: 25: if_clause_expression_finish
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 31: 24: method_body_element_start
-DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 31: 24: intrinsic_type_create_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 31: 24: save_intrinsic_type
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 31: 26: function_data_definition_symbol
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 31: 28: function_data_definition_with_initializer
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 31: 32: number_create_literal_inum
@@ -191,7 +191,7 @@ DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 33: 33: expre
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 33: 33: branch_expression_expression
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 33: 33: if_clause_expression_finish
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 34: 28: method_body_element_start
-DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 34: 28: intrinsic_type_create_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 34: 28: save_intrinsic_type
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 34: 30: function_data_definition_symbol
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 34: 32: function_data_definition_with_initializer
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 34: 34: complex_name_init_symbol
@@ -233,7 +233,7 @@ DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 40: 14: else_
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 41: 16: if_clause_else_body_finish
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 41: 16: method_body_element_if_finish
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 41: 16: method_body_element_list_finish
-DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 41: 16: intrinsic_type_create_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 41: 16: save_intrinsic_type
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 41: 22: function_data_definition_symbol
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 41: 23: function_data_definition_no_initializer
 DBG: /home/chuck/Src/toi2/tests/language_tests/if_clause_test.toi: 41: 23: method_body_element_data_definition_finish

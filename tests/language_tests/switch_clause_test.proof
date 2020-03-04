@@ -15,7 +15,7 @@ DBG: /home/chuck/Src/toi2/tests/language_tests/switch_clause_test.toi: 7: 18: me
 DBG: /home/chuck/Src/toi2/tests/language_tests/switch_clause_test.toi: 7: 18: method_definition_output_params_finish
 DBG: /home/chuck/Src/toi2/tests/language_tests/switch_clause_test.toi: 7: 18: method_definition_method_body_start
 DBG: /home/chuck/Src/toi2/tests/language_tests/switch_clause_test.toi: 9: 12: method_body_element_start
-DBG: /home/chuck/Src/toi2/tests/language_tests/switch_clause_test.toi: 9: 12: intrinsic_type_create_int64
+DBG: /home/chuck/Src/toi2/tests/language_tests/switch_clause_test.toi: 9: 12: save_intrinsic_type
 DBG: /home/chuck/Src/toi2/tests/language_tests/switch_clause_test.toi: 9: 17: function_data_definition_symbol
 DBG: /home/chuck/Src/toi2/tests/language_tests/switch_clause_test.toi: 9: 18: function_data_definition_no_initializer
 DBG: /home/chuck/Src/toi2/tests/language_tests/switch_clause_test.toi: 9: 18: method_body_element_data_definition_finish
