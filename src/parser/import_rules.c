@@ -7,14 +7,14 @@
 #include "parser_support.h"
 
 void import_definition_create(void) {
-    DEBUG();
+    MARK();
 }
 
 void import_definition_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void import_definition_alias_to_symbol(void) {
-    DEBUG();
+    MARK();
 }
 

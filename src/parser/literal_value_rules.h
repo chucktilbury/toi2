@@ -1,6 +1,15 @@
 #ifndef _LITERAL_VALUES_RULES_H_
 #  define _LITERAL_VALUES_RULES_H_
 
+typedef struct literal_num {
+    int type;
+    union {
+        unsigned long long unum;
+        long long inum;
+        double fnum;
+    } value;
+} literal_num_t;
+
 /*
     These are stub functions that are called from the parser.
 */
@@ -26,9 +35,12 @@ int *get_data_attrs_list(int*);
 // void data_attrs_add_const(void);
 // void data_attrs_add_static(void);
 
-void number_create_literal_unum(void);
-void number_create_literal_inum(void);
-void number_create_literal_fnum(void);
+// void number_create_literal_unum(void);
+// void number_create_literal_inum(void);
+// void number_create_literal_fnum(void);
+
+void save_literal_num(int type);
+void *get_literal_num(int *type);
 
 void formatted_string_param_qstrg(void);
 void formatted_string_param_expression(void);

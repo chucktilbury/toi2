@@ -1,0 +1,48 @@
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: open file
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 2: 11: class_definiton_create
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 2: 11: class_definiton_add_name
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 2: 12: class_definiton_param_list_start
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 2: 13: class_parm_list_blank
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 2: 13: class_definiton_param_list_finish
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 2: 15: class_definiton_body_start
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 4: 11: method_definition_no_attrs_start
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 4: 11: method_definition_symbol
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 4: 12: method_definition_input_params_start
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 4: 13: method_param_def_blank
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 4: 13: method_definition_input_params_finish
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 4: 14: method_definition_output_params_start
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 4: 15: method_param_def_blank
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 4: 15: method_definition_output_params_finish
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 4: 15: method_definition_method_body_start
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 5: method_body_element_start
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 6: if_clause_expression_start
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 8: save_literal_num
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 8: expression_literal_number
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 10: save_literal_num
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 10: expression_literal_number
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 11: expression_addition_operation
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 16: save_literal_num
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 16: expression_literal_number
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 18: save_literal_num
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 18: expression_literal_number
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 19: expression_addition_operation
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 20: expression_greater_boolean_operation
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 20: branch_expression_expression
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 20: if_clause_expression_finish
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 22: method_body_blank
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 5: 22: else_clause_method_body_finish
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 6: 3: if_clause_else_body_finish
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 6: 3: method_body_element_if_finish
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 6: 3: method_body_element_list_finish
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 6: 3: method_body_element_finish
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 6: 3: method_body_finish
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 6: 3: method_definition_method_body_finish
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 6: 3: class_body_item_method_definition_finish
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 6: 3: class_body_item_add
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 7: 2: class_definiton_body_finish
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 7: 2: module_item_class_definition_end
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 7: 2: module_list_module_item_end
+MARK: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: 7: 2: module_module_list_end
+DBG: /home/chuck/Src/toi2/tests/instrument_tests/bool1.toi: closing file
+
+parse succeeded: 0 errors: 0 warnings

@@ -8,74 +8,74 @@
 
 
 void class_parm_add_private(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_parm_add_public(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_parm_add_protected(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_parm_list_create(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_parm_list_add(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_parm_list_blank(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_body_item_data_definition_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_body_item_method_definition_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_body_item_constructor_definition_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_body_item_destructor_definition_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_body_item_add(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_definiton_create(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_definiton_attrs_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_definiton_add_name(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_definiton_param_list_start(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_definiton_param_list_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_definiton_body_start(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_definiton_body_finish(void) {
-    DEBUG();
+    MARK();
 }
 

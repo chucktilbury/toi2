@@ -1,0 +1,7 @@
+
+class name() {
+
+	func name()() {
+		if(1+2 > -3+1){}
+	}
+}

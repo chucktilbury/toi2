@@ -137,6 +137,39 @@ void debug(int lev, char *str, ...) {
     }
 }
 
+void debug_s(int lev, const char *str, ...) {
+
+    va_list args;
+    FILE *ofp;
+
+    if(lev <= errors.level) {
+        if(NULL != errors.fp)
+            ofp = errors.fp;
+        else
+            ofp = stderr;
+
+        fprintf(ofp, "MSG: %s: %d: %d: ", get_file_name(), get_line_number(), get_col_number());
+        va_start(args, str);
+        vfprintf(ofp, str, args);
+        va_end(args);
+        fprintf(ofp, "\n");
+    }
+}
+
+void debug_m(int lev, const char* func) {
+
+    FILE *ofp;
+
+    if(lev <= errors.level) {
+        if(NULL != errors.fp)
+            ofp = errors.fp;
+        else
+            ofp = stderr;
+
+        fprintf(ofp, "MARK: %s: %d: %d: %s\n", get_file_name(), get_line_number(), get_col_number(), func);
+    }
+}
+
 void fatal_error(char *str, ...) {
 
     va_list args;

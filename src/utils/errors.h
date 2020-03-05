@@ -27,16 +27,19 @@ FILE *get_error_stream(void);
 void inc_error_count(void);
 void inc_warning_count(void);
 
+void debug_m(int, const char*);
+void debug_s(int, const char*, ...);
+
 enum {
     SYNTAX_ERROR,
 };
 
 #  ifdef TRACE
-#    define DEBUG() debug(5, "%s: %d: %d: %s", get_file_name(), get_line_number(), get_col_number(), __func__);
-#    define DEBSTR(s) debug(5, "%s: %d: %d: %s: %s", get_file_name(), get_line_number(), get_col_number(), __func__, (s));
+#    define MARK()      debug_m(5, __func__)
+#    define MSG(...)    debug_s(5, __VA_ARGS__)
 #  else
-#    define DEBUG()
-#    define DEBSTR(s)
+#    define MARK()
+#    define MSG(...)
 #  endif
 
 #endif /* _ERRORS_H_ */

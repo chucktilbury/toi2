@@ -34,7 +34,7 @@ DEPS	= 	$(TARGET).dep
 CC		=	gcc # clang
 CARGS	=	-Wall
 DEBUG	=	-g -DTRACE
-HSRC	= 	-I../utils -I../abstract_tree
+HSRC	= 	-I../utils -I../abstract_tree -I../expressions
 
 .PHONY: all pretty clean all_clean
 

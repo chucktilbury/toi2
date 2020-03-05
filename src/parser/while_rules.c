@@ -7,34 +7,34 @@
 #include "parser_support.h"
 
 void while_clause_experssion_start(void) {
-    DEBUG();
+    MARK();
 }
 
 void while_clause_expression_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void while_clause_loop_body_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void do_clause_loop_body_start(void) {
-    DEBUG();
+    MARK();
 }
 
 void do_clause_loop_body_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void do_clause_expression_start(void) {
-    DEBUG();
+    MARK();
 }
 
 void do_clause_expression_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void do_clause_finish(void) {
-    DEBUG();
+    MARK();
 }
 

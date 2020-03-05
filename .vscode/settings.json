@@ -1,5 +1,10 @@
 {
     "cSpell.words": [
+        "crnt",
+        "fnum",
+        "inum",
+        "nattrs",
+        "retv",
         "struct",
         "yyparse"
     ]

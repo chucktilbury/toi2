@@ -9,17 +9,17 @@
 #include "parser_support.h"
 
 void module_module_list_end(void) {
-    DEBUG();
+    MARK();
 }
 
 void module_item_import_definition_end(void) {
-    DEBUG();
+    MARK();
 }
 
 void module_item_class_definition_end(void) {
-    DEBUG();
+    MARK();
 }
 
 void module_list_module_item_end(void) {
-    DEBUG();
+    MARK();
 }

@@ -7,66 +7,66 @@
 #include "parser_support.h"
 
 void for_initialize_assign_nothing(void) {
-    DEBUG();
+    MARK();
 }
 
 void for_initialize_assign_expression(void) {
-    DEBUG();
+    MARK();
 }
 
 void for_initialize_assign_bool_value(void) {
-    DEBUG();
+    MARK();
 }
 
 void for_initialize_intrinsic_type(void) {
-    DEBUG();
+    MARK();
 }
 
 void for_initialize_symbol(void) {
-    DEBUG();
+    MARK();
 }
 
 void for_initialize_data_definition_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void for_initialize_assignment(void) {
-    DEBUG();
+    MARK();
 }
 
 void for_initialize_assignment_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void for_test_expression(void) {
-    DEBUG();
+    MARK();
 }
 
 void for_test_expression_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void for_arith_expression_expression(void) {
-    DEBUG();
+    MARK();
 }
 
 void for_arith_expression_pre_post_inc(void) {
-    DEBUG();
+    MARK();
 }
 
 void for_arith_expression_assignment(void) {
-    DEBUG();
+    MARK();
 }
 
 void for_clause_definition_init(void) {
-    DEBUG();
+    MARK();
 }
 
 void for_clause_definition_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void for_clause_loop_body_finish(void) {
-    DEBUG();
+    MARK();
 }
 

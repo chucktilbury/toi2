@@ -93,3 +93,6 @@ When the AST is created, that is taken into account as "special" syntax. The
 
 --------------------
 
+Add rules to accept 0x000 as a signed and 00000 as an unsigned
+
+-------------------

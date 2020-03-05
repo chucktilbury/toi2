@@ -7,58 +7,58 @@
 #include "parser_support.h"
 
 void class_data_definition_with_data_attrs(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_data_definition_add_data_attrs(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_data_definition_name(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_data_definition_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void class_data_definition_no_data_attrs(void) {
-    DEBUG();
+    MARK();
 }
 
 void function_data_definition_target_nothing(void) {
-    DEBUG();
+    MARK();
 }
 
 void function_data_definition_target_expression(void) {
-    DEBUG();
+    MARK();
 }
 
 void function_data_definition_target_cast(void) {
-    DEBUG();
+    MARK();
 }
 
 void function_data_definition_target_formatted_string(void) {
-    DEBUG();
+    MARK();
 }
 
 void function_data_definition_symbol(void) {
-    DEBUG();
+    MARK();
 }
 
 void function_data_definition_const_symbol(void) {
-    DEBUG();
+    MARK();
 }
 
 void function_data_definition_no_initializer(void) {
-    DEBUG();
+    MARK();
 }
 
 void function_data_definition_with_initializer(void) {
-    DEBUG();
+    MARK();
 }
 
 void function_data_definition_with_initializer_finish(void) {
-    DEBUG();
+    MARK();
 }
 

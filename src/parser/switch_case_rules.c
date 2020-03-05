@@ -7,57 +7,57 @@
 #include "parser_support.h"
 
 void case_clause_unum(void) {
-    DEBUG();
+    MARK();
 }
 
 void case_clause_inum(void) {
-    DEBUG();
+    MARK();
 }
 
 void case_clause_fnum(void) {
-    DEBUG();
+    MARK();
 }
 
 void case_clause_loop_body_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void default_case(void) {
-    DEBUG();
+    MARK();
 }
 
 void case_body_init(void) {
-    DEBUG();
+    MARK();
 }
 
 void case_body_add(void) {
-    DEBUG();
+    MARK();
 }
 
 void switch_clause_intro_expression_start(void) {
-    DEBUG();
+    MARK();
 }
 
 void switch_clause_intro_expression_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void switch_clause_intro_case_body_start(void) {
-    DEBUG();
+    MARK();
 }
 
 void switch_clause_intro_case_body_finish(void) {
-    DEBUG();
+    MARK();
 }
 
 void switch_clause_after_intro(void) {
-    DEBUG();
+    MARK();
 }
 
 void switch_clause_after_intro_default(void) {
-    DEBUG();
+    MARK();
 }
 
 void switch_clause_finish(void) {
-    DEBUG();
+    MARK();
 }

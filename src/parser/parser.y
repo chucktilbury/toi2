@@ -157,13 +157,13 @@ data_attrs_list
 
 number
     : UNUM {
-        number_create_literal_unum();
+        save_literal_num(UNUM);
     }
     | INUM {
-        number_create_literal_inum();
+        save_literal_num(INUM);
     }
     | FNUM {
-        number_create_literal_fnum();
+        save_literal_num(FNUM);
     }
     ;
 
@@ -631,11 +631,12 @@ expression
     | '~' expression {
         expression_not_bitwise_operation();
     }
-    | '(' {
-        expression_start();
-    } expression ')' {
-        expression_finish();
-    }
+    | '(' expression ')'
+    // | '(' {
+    //     expression_start();
+    // } expression ')' {
+    //     expression_finish();
+    // }
     ;
 
     /*************************************
