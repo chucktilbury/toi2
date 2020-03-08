@@ -300,7 +300,7 @@ static U32 XXH_readBE32(const void *ptr) {
                                                                      * after
                                                                      * variable 
                                                                      * * * * *
-                                                                     * *
+                                                                     * * *
                                                                      * declarations 
                                                                      */
 XXH_PUBLIC_API unsigned XXH_versionNumber(void) {

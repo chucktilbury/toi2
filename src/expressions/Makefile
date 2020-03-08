@@ -1,7 +1,12 @@
 PLATNAME := $(shell uname)
 
-OBJS	=	expressions.o \
-			evaluate.o
+OBJS	=	arith.o \
+			bitwise.o \
+			bool1.o \
+			bool2.o \
+			evaluate.o \
+			expressions.o \
+			unary.o \
 
 SRCS	=	$(OBJS:.o=.c)
 HEADERS	=	$(OBJS:.o=.h)

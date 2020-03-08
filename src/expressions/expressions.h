@@ -1,6 +1,6 @@
 #ifndef _EXPRESSIONS_H_
 #  define _EXPRESSIONS_H_
-
+#  include <stdint.h>
 /*
  * The context of the stack is the expected type that the expression will take when it is evaluated and returned.
  */

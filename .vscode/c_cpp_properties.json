@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "defines": [
+                "TRACE=1"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cppStandard": "c++98",
+            "includePath": [
+                "${workspaceFolder}/src/parser/",
+                "${workspaceFolder}/src/",
+                "${workspaceFolder}/src/utils/",
+                "${workspaceFolder}/src/expressions/",
+                "${workspaceFolder}/src/abstract_tree/",
+                "${default}"
+            ],
+            "intelliSenseMode": "gcc-x64",
+            "cStandard": "c99"
+        }
+    ],
+    "version": 4
+}

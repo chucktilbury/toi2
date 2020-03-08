@@ -10,6 +10,7 @@
         "yyparse"
     ],
     "files.associations": {
-        "errors.h": "c"
+        "errors.h": "c",
+        "stdio.h": "c"
     }
 }

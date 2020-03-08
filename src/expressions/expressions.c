@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdint.h>
 
-#include "errors.h"
-#include "scanner.h"
+#include "../utils/errors.h"
+#include "../parser/scanner.h"
 #include "expressions.h"
 
 /*
@@ -156,28 +155,3 @@ out_lifo_t *peek_inter(expression_t *expr) {
     MARK();
     return expr->out;
 }
-
-// static void *decode_read_lifo(out_lifo_t *item, expr_val_type_t *type) {
-// MARK();
-
-// void *retv = NULL;
-// if(item != NULL) {
-// switch(item->vtype) {
-// case EXPR_VAL_UNUM:
-// retv = (void*)&item->value.unum;
-// *type = item->vtype;
-// break;
-// case EXPR_VAL_INUM:
-// retv = (void*)&item->value.inum;
-// *type = item->vtype;
-// break;
-// case EXPR_VAL_FNUM:
-// retv = (void*)&item->value.fnum;
-// *type = item->vtype;
-// break;
-// default:
-// fatal_error("Unknown expression vtype (2.2).");
-// }
-// }
-// return retv;
-// }
