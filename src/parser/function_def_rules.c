@@ -161,4 +161,3 @@ void destructor_definition_body_start(void) {
 void destructor_definition_body_finish(void) {
     MARK();
 }
-

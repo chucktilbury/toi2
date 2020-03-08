@@ -17,4 +17,3 @@ void import_definition_finish(void) {
 void import_definition_alias_to_symbol(void) {
     MARK();
 }
-

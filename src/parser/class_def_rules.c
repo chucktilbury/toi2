@@ -6,7 +6,6 @@
 #include "scanner.h"
 #include "parser_support.h"
 
-
 void class_parm_add_private(void) {
     MARK();
 }
@@ -78,4 +77,3 @@ void class_definiton_body_start(void) {
 void class_definiton_body_finish(void) {
     MARK();
 }
-

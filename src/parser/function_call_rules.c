@@ -53,5 +53,3 @@ void function_call_destroy_complex_name(void) {
 void function_call_destroy_finish(void) {
     MARK();
 }
-
-

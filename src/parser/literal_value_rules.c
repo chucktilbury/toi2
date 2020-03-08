@@ -88,22 +88,25 @@ int *get_data_attrs_list(int *nattrs) {
 void save_literal_num(int type) {
     MARK();
     literal_num.type = type;
-    switch(type) {
+    switch (type) {
         case UNUM:
             {
                 unsigned long long val = (unsigned long long)strtoul(get_tok_str(), NULL, 16);
+
                 literal_num.value.unum = val;
             }
             break;
         case INUM:
             {
                 long long val = (long long)strtol(get_tok_str(), NULL, 10);
+
                 literal_num.value.inum = val;
             }
             break;
         case FNUM:
             {
                 double val = strtod(get_tok_str(), NULL);
+
                 literal_num.value.fnum = val;
             }
             break;
@@ -115,16 +118,17 @@ void save_literal_num(int type) {
 void *get_literal_num(int *type) {
     MARK();
     void *retv;
+
     *type = literal_num.type;
-    switch(literal_num.type) {
+    switch (literal_num.type) {
         case UNUM:
-            retv = (void*)&literal_num.value.unum;
+            retv = (void *)&literal_num.value.unum;
             break;
         case INUM:
-            retv = (void*)&literal_num.value.inum;
+            retv = (void *)&literal_num.value.inum;
             break;
         case FNUM:
-            retv = (void*)&literal_num.value.fnum;
+            retv = (void *)&literal_num.value.fnum;
             break;
         default:
             fatal_error("Get unknown literal number type: %d", literal_num.type);
@@ -171,4 +175,3 @@ void bool_value_create_true(void) {
 void bool_value_create_false(void) {
     MARK();
 }
-

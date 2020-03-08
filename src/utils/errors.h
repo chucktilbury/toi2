@@ -27,16 +27,16 @@ FILE *get_error_stream(void);
 void inc_error_count(void);
 void inc_warning_count(void);
 
-void debug_m(int, const char*);
-void debug_s(int, const char*, ...);
+void debug_mark(int, const char *);
+void debug_msg(int, const char *, ...);
 
 enum {
     SYNTAX_ERROR,
 };
 
 #  ifdef TRACE
-#    define MARK()      debug_m(5, __func__)
-#    define MSG(...)    debug_s(5, __VA_ARGS__)
+#    define MARK()      debug_mark(5, __func__)
+#    define MSG(...)    debug_msg(5, __VA_ARGS__)
 #  else
 #    define MARK()
 #    define MSG(...)

@@ -256,7 +256,7 @@
 --comment-indentation0
 
 // Set maximum line length for comment formatting to n.
-//--comment-line-length70
+--comment-line-length80
 
 // Put comments to the right of the declarations in column n.
 --declaration-comment-column0

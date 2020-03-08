@@ -1,7 +1,6 @@
 #ifndef _EXCEPT_RULES_H_
 #  define _EXCEPT_RULES_H_
 
-
 void except_parameter_formatted_string(void);
 void except_parameter_complex_name(void);
 void except_parameter_list_init(void);

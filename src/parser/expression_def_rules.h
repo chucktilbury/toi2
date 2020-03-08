@@ -1,7 +1,6 @@
 #ifndef _EXPRESSION_DEF_RULES_H_
 #  define _EXPRESSION_DEF_RULES_H_
 
-
 void subscript_item_expression_start(void);
 void subscript_item_expression_finish(void);
 void subscript_item_formatted_string_start(void);

@@ -41,4 +41,3 @@ void if_clause_expression_finish(void) {
 void if_clause_else_body_finish(void) {
     MARK();
 }
-

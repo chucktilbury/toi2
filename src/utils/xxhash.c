@@ -51,7 +51,8 @@
  * (ie GCC + ARMv6) See http://stackoverflow.com/a/32095106/646947 for details.
  * Prefer these methods in priority order (0 > 1 > 2) 
  */
-#ifndef XXH_FORCE_MEMORY_ACCESS /* can be defined externally, on command line for example */
+#ifndef XXH_FORCE_MEMORY_ACCESS /* can be defined externally, on command line
+                                 * for example */
 #  if defined(__GNUC__) && ( defined(__ARM_ARCH_6__) || defined(__ARM_ARCH_6J__) \
                         || defined(__ARM_ARCH_6K__) || defined(__ARM_ARCH_6Z__) \
                         || defined(__ARM_ARCH_6ZK__) || defined(__ARM_ARCH_6T2__) )
@@ -295,7 +296,13 @@ static U32 XXH_readBE32(const void *ptr) {
  *************************************
  *  Macros
  ***************************************/
-#define XXH_STATIC_ASSERT(c)  { enum { XXH_sa = 1/(int)(!!(c)) }; } /* use after variable declarations */
+#define XXH_STATIC_ASSERT(c)  { enum { XXH_sa = 1/(int)(!!(c)) }; } /* use
+                                                                     * after
+                                                                     * variable 
+                                                                     * * * * *
+                                                                     * *
+                                                                     * declarations 
+                                                                     */
 XXH_PUBLIC_API unsigned XXH_versionNumber(void) {
     return XXH_VERSION_NUMBER;
 }
@@ -485,7 +492,8 @@ XXH_PUBLIC_API unsigned int XXH32(const void *input, size_t len, unsigned int se
     XXH_endianess endian_detected = (XXH_endianess) XXH_CPU_LITTLE_ENDIAN;
 
     if(XXH_FORCE_ALIGN_CHECK) {
-        if((((size_t)input) & 3) == 0) { /* Input is 4-bytes aligned, leverage the speed benefit */
+        if((((size_t)input) & 3) == 0) { /* Input is 4-bytes aligned, leverage
+                                          * the speed benefit */
             if((endian_detected == XXH_littleEndian)
                || XXH_FORCE_NATIVE_FORMAT)
                 return XXH32_endian_align(input, len, seed, XXH_littleEndian, XXH_aligned);
@@ -517,7 +525,8 @@ XXH_PUBLIC_API void XXH32_copyState(XXH32_state_t * dstState, const XXH32_state_
 }
 
 XXH_PUBLIC_API XXH_errorcode XXH32_reset(XXH32_state_t * statePtr, unsigned int seed) {
-    XXH32_state_t state; /* using a local state to memcpy() in order to avoid strict-aliasing warnings */
+    XXH32_state_t state; /* using a local state to memcpy() in order to avoid
+                          * strict-aliasing warnings */
 
     memset(&state, 0, sizeof(state));
     state.v1 = seed + PRIME32_1 + PRIME32_2;
@@ -1045,7 +1054,8 @@ XXH_PUBLIC_API unsigned long long XXH64(const void *input, size_t len, unsigned 
     XXH_endianess endian_detected = (XXH_endianess) XXH_CPU_LITTLE_ENDIAN;
 
     if(XXH_FORCE_ALIGN_CHECK) {
-        if((((size_t)input) & 7) == 0) { /* Input is aligned, let's leverage the speed advantage */
+        if((((size_t)input) & 7) == 0) { /* Input is aligned, let's leverage
+                                          * the speed advantage */
             if((endian_detected == XXH_littleEndian)
                || XXH_FORCE_NATIVE_FORMAT)
                 return XXH64_endian_align(input, len, seed, XXH_littleEndian, XXH_aligned);
@@ -1077,7 +1087,8 @@ XXH_PUBLIC_API void XXH64_copyState(XXH64_state_t * dstState, const XXH64_state_
 }
 
 XXH_PUBLIC_API XXH_errorcode XXH64_reset(XXH64_state_t * statePtr, unsigned long long seed) {
-    XXH64_state_t state; /* using a local state to memcpy() in order to avoid strict-aliasing warnings */
+    XXH64_state_t state; /* using a local state to memcpy() in order to avoid
+                          * strict-aliasing warnings */
 
     memset(&state, 0, sizeof(state));
     state.v1 = seed + PRIME64_1 + PRIME64_2;

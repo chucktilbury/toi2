@@ -69,5 +69,3 @@ void raise_clause_parameter_finish(void) {
 void raise_clause_finish(void) {
     MARK();
 }
-
-

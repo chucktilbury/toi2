@@ -284,7 +284,8 @@ extern "C" {
         uint32_t v4;
         uint32_t mem32[4];
         uint32_t memsize;
-        uint32_t reserved; /* never read nor write, might be removed in a future version */
+        uint32_t reserved; /* never read nor write, might be removed in a
+                            * future version */
     }; /* typedef'd to XXH32_state_t */
 
     struct XXH64_state_s {
@@ -295,7 +296,8 @@ extern "C" {
         uint64_t v4;
         uint64_t mem64[4];
         uint32_t memsize;
-        uint32_t reserved[2]; /* never read nor write, might be removed in a future version */
+        uint32_t reserved[2]; /* never read nor write, might be removed in a
+                               * future version */
     }; /* typedef'd to XXH64_state_t */
 
 #    else
@@ -309,7 +311,8 @@ extern "C" {
         unsigned v4;
         unsigned mem32[4];
         unsigned memsize;
-        unsigned reserved; /* never read nor write, might be removed in a future version */
+        unsigned reserved; /* never read nor write, might be removed in a
+                            * future version */
     }; /* typedef'd to XXH32_state_t */
 
 #      ifndef XXH_NO_LONG_LONG
@@ -324,7 +327,8 @@ extern "C" {
         unsigned long long v4;
         unsigned long long mem64[4];
         unsigned memsize;
-        unsigned reserved[2]; /* never read nor write, might be removed in a future version */
+        unsigned reserved[2]; /* never read nor write, might be removed in a
+                               * future version */
     }; /* typedef'd to XXH64_state_t */
 #      endif
 

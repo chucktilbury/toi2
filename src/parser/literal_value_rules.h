@@ -11,8 +11,8 @@ typedef struct literal_num {
 } literal_num_t;
 
 /*
-    These are stub functions that are called from the parser.
-*/
+ * These are stub functions that are called from the parser. 
+ */
 void complex_name_init_symbol(void);
 void complex_name_add_symbol(void);
 char *get_complex_name(void);
@@ -24,10 +24,11 @@ void intrinsic_type_create_complex_name(void);
 char *get_complex_name_intrinsic_type(void);
 
 void save_data_attr(int);
-//int get_data_attr(void);
+
+// int get_data_attr(void);
 void data_attrs_list_init(void);
 void data_attrs_list_add(void);
-int *get_data_attrs_list(int*);
+int *get_data_attrs_list(int *);
 
 // void data_attrs_add_private(void);
 // void data_attrs_add_public(void);
@@ -54,10 +55,7 @@ void bool_value_create_true(void);
 void bool_value_create_false(void);
 
 /*
-    These functions are not in the parser. They are called by other parts
-    of the parser support.
-*/
-
-
+ * These functions are not in the parser. They are called by other parts of the parser support. 
+ */
 
 #endif /* _LITERAL_VALUES_RULES_H_ */

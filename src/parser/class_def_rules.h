@@ -20,5 +20,4 @@ void class_definiton_param_list_finish(void);
 void class_definiton_body_start(void);
 void class_definiton_body_finish(void);
 
-
 #endif /* _CLASS_DEF_RULES_H_ */

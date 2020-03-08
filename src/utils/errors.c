@@ -10,8 +10,8 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-#include "scanner.h"
 #include "errors.h"
+#include "scanner.h"
 
 static struct errors {
     int level;
@@ -137,7 +137,7 @@ void debug(int lev, char *str, ...) {
     }
 }
 
-void debug_s(int lev, const char *str, ...) {
+void debug_msg(int lev, const char *str, ...) {
 
     va_list args;
     FILE *ofp;
@@ -156,7 +156,7 @@ void debug_s(int lev, const char *str, ...) {
     }
 }
 
-void debug_m(int lev, const char* func) {
+void debug_mark(int lev, const char *func) {
 
     FILE *ofp;
 

@@ -8,7 +8,6 @@
 #include "linked_lists.h"
 #include "parser_support.h"
 
-
 void subscript_item_expression_start(void) {
     MARK();
 }
@@ -152,4 +151,3 @@ void expression_start(void) {
 void expression_finish(void) {
     MARK();
 }
-

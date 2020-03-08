@@ -14,5 +14,4 @@ void function_call_finish(void);
 void function_call_destroy_complex_name(void);
 void function_call_destroy_finish(void);
 
-
 #endif /* _FUNCTION_CALL_RULES_H_ */

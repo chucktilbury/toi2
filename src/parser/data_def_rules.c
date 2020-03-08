@@ -61,4 +61,3 @@ void function_data_definition_with_initializer(void) {
 void function_data_definition_with_initializer_finish(void) {
     MARK();
 }
-

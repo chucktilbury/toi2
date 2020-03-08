@@ -41,4 +41,3 @@ void assignment_complex_name(void) {
 void assignment_target_finish(void) {
     MARK();
 }
-

@@ -69,4 +69,3 @@ void for_clause_definition_finish(void) {
 void for_clause_loop_body_finish(void) {
     MARK();
 }
-
