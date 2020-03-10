@@ -519,9 +519,6 @@ destructor_definition
 
     /*
         Expression related rules.
-
-        Expressions use the "switching yard" algorithm so they can be stored
-        and then evaluated at run time.
     */
 subscript_item
     : '[' {

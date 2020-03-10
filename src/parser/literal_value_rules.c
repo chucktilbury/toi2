@@ -2,10 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "errors.h"
 #include "scanner.h"
 #include "parser.h"
 #include "parser_support.h"
+#include "../utils/errors.h"
+#include "../expressions/expressions.h"
 
 #define MAX_NAME (1024*64)
 
@@ -85,29 +86,36 @@ int *get_data_attrs_list(int *nattrs) {
     return data_attrs_list;
 }
 
+extern expression_t *current_expression;
 void save_literal_num(int type) {
     MARK();
-    literal_num.type = type;
+    literal_num.vtype = type;
     switch (type) {
         case UNUM:
             {
-                unsigned long long val = (unsigned long long)strtoul(get_tok_str(), NULL, 16);
-
-                literal_num.value.unum = val;
+                literal_num.value.unum = (uint64_t) strtoul(get_tok_str(), NULL, 16);
+                MSG("storing UNUM value %lu", literal_num.value.unum);
+                // uint64_t val = (uint64_t)strtoul(get_tok_str(), NULL, 16);
+                // store_expr_value(current_expression, EXPR_VAL_UNUM,
+                // (void*)&val);
             }
             break;
         case INUM:
             {
-                long long val = (long long)strtol(get_tok_str(), NULL, 10);
-
-                literal_num.value.inum = val;
+                literal_num.value.inum = (int64_t) strtol(get_tok_str(), NULL, 10);
+                MSG("storing INUM value %ld", literal_num.value.inum);
+                // int64_t val = (int64_t)strtol(get_tok_str(), NULL, 10);
+                // store_expr_value(current_expression, EXPR_VAL_INUM,
+                // (void*)&val);
             }
             break;
         case FNUM:
             {
-                double val = strtod(get_tok_str(), NULL);
-
-                literal_num.value.fnum = val;
+                literal_num.value.fnum = strtod(get_tok_str(), NULL);
+                MSG("storing UNUM value %f", literal_num.value.fnum);
+                // double val = strtod(get_tok_str(), NULL);
+                // store_expr_value(current_expression, EXPR_VAL_FNUM,
+                // (void*)&val);
             }
             break;
         default:
@@ -115,25 +123,26 @@ void save_literal_num(int type) {
     }
 }
 
-void *get_literal_num(int *type) {
+literal_num_t *get_literal_num(void) {
     MARK();
-    void *retv;
+    // void *retv;
 
-    *type = literal_num.type;
-    switch (literal_num.type) {
-        case UNUM:
-            retv = (void *)&literal_num.value.unum;
-            break;
-        case INUM:
-            retv = (void *)&literal_num.value.inum;
-            break;
-        case FNUM:
-            retv = (void *)&literal_num.value.fnum;
-            break;
-        default:
-            fatal_error("Get unknown literal number type: %d", literal_num.type);
-    }
-    return retv;
+    // *type = literal_num.type;
+    // switch (literal_num.type) {
+    // case UNUM:
+    // retv = (void *)&literal_num.value.unum;
+    // break;
+    // case INUM:
+    // retv = (void *)&literal_num.value.inum;
+    // break;
+    // case FNUM:
+    // retv = (void *)&literal_num.value.fnum;
+    // break;
+    // default:
+    // fatal_error("Get unknown literal number type: %d", literal_num.type);
+    // }
+    // return retv;
+    return &literal_num;
 }
 
 void formatted_string_param_qstrg(void) {

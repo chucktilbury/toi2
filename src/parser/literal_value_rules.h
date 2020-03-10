@@ -1,17 +1,18 @@
 #ifndef _LITERAL_VALUES_RULES_H_
 #  define _LITERAL_VALUES_RULES_H_
 
+#  include <stdint.h>
 typedef struct literal_num {
-    int type;
+    int vtype;
     union {
-        unsigned long long unum;
-        long long inum;
+        uint64_t unum;
+        int64_t inum;
         double fnum;
     } value;
 } literal_num_t;
 
 /*
- * These are stub functions that are called from the parser. 
+ * These are stub functions that are called from the parser.
  */
 void complex_name_init_symbol(void);
 void complex_name_add_symbol(void);
@@ -41,7 +42,7 @@ int *get_data_attrs_list(int *);
 // void number_create_literal_fnum(void);
 
 void save_literal_num(int type);
-void *get_literal_num(int *type);
+literal_num_t *get_literal_num(void);
 
 void formatted_string_param_qstrg(void);
 void formatted_string_param_expression(void);
@@ -55,7 +56,7 @@ void bool_value_create_true(void);
 void bool_value_create_false(void);
 
 /*
- * These functions are not in the parser. They are called by other parts of the parser support. 
+ * These functions are not in the parser. They are called by other parts of the parser support.
  */
 
 #endif /* _LITERAL_VALUES_RULES_H_ */

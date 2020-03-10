@@ -5,6 +5,7 @@
         "fnum",
         "inum",
         "nattrs",
+        "nitem",
         "retv",
         "struct",
         "yyparse"

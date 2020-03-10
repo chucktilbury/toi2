@@ -19,7 +19,8 @@ OBJS	=	module_rules.o \
 			while_rules.o \
 			except_rules.o \
 			switch_case_rules.o \
-			assignment_rules.o
+			assignment_rules.o \
+			globals.o
 
 OBJS1	=	scanner.o \
 			parser.o

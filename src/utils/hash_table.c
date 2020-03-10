@@ -1,13 +1,13 @@
 /*
- * Generic hash table to support the symbol table and symbol attributes. 
+ * Generic hash table to support the symbol table and symbol attributes.
  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
 
-#include "errors.h"
-#include "hash_table.h"
+#include "utils.h"
+//#include "hash_table.h"
 #include "xxhash.h"
 
 typedef struct __hte__ {
@@ -63,7 +63,7 @@ uint32_t make_hash(const char *str) {
 
 /*
  * This is called when there was a collision storing the entry. It simply
- * searches a trivial linked list. 
+ * searches a trivial linked list.
  */
 static inline hash_table_entry_t *find_local(hash_table_t * table, const char *key, int hash) {
 

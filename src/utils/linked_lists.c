@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "linked_lists.h"
-#include "errors.h"
+#include "utils.h"
+//#include "errors.h"
 
 /*
  *  Data structure for a generic linked list.
@@ -217,7 +217,7 @@ void destroy_stack(data_stack_t stack) {
 }
 
 /*
- * To build: clang linked_lists.c scanner.c errors.c parser.c 
+ * To build: clang linked_lists.c scanner.c errors.c parser.c
  */
 // #define TESTING_LIST
 #ifdef TESTING_LIST

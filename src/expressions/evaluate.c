@@ -41,8 +41,6 @@
  * an expression that has already been parsed.
  */
 
-static void push_inter_value(expression_t *expr, val_fifo_element_t * val);
-
 /*
  * Returns a pointer to the value of the expression. The type parameter
  * indicates the type that the return value points to.
@@ -55,11 +53,15 @@ void *evaluate_expression(expression_t *expr, expr_val_type_t * type) {
     reset_value_fifo(expr);
 
     while(!finished) {
-        value = get_value(expr);
-        if(value->vtype == EXPR_VAL_OPERATOR) {
+        value = get_expr_value(expr);
+        EXPR_VAL_MSG(value->vtype);
+        if(value == NULL)
+            finished++;
+        else if(value->vtype == EXPR_VAL_OPERATOR) {
             // apply the operation to the out stack
             expr_ops_t oper = value->value.oper;
 
+            EXPR_OP_MSG(oper);
             switch (oper) {
                     // Arithmetic operations
                 case EXPR_OP_ADD:
@@ -148,45 +150,39 @@ void *evaluate_expression(expression_t *expr, expr_val_type_t * type) {
         }
         else {
             // push the value on the out stack
-            push_inter_value(expr, (void *)&value->value);
+            switch (value->vtype) {
+                case EXPR_VAL_UNUM:
+                    {
+                        uint64_t result = value->value.unum;
+
+                        push_inter(expr, EXPR_VAL_UNUM, (void *)&result);
+                    }
+                    break;
+                case EXPR_VAL_INUM:
+                    {
+                        int64_t result = value->value.inum;
+
+                        push_inter(expr, EXPR_VAL_INUM, (void *)&result);
+                    }
+                    break;
+                case EXPR_VAL_FNUM:
+                    {
+                        double result = value->value.fnum;
+
+                        push_inter(expr, EXPR_VAL_FNUM, (void *)&result);
+                    }
+                    break;
+                case EXPR_VAL_BOOL:
+                    {
+                        unsigned char result = value->value.unum;
+
+                        push_inter(expr, EXPR_VAL_BOOL, (void *)&result);
+                    }
+                    break;
+                default:
+                    fatal_error("Unknown vtype in push_inter_value().");
+            }
         }
     }
-    return get_value(expr);
-}
-
-static void push_inter_value(expression_t *expr, val_fifo_element_t * val) {
-    MARK();
-
-    switch (val->vtype) {
-        case EXPR_VAL_UNUM:
-            {
-                uint64_t result = val->value.unum;
-
-                push_inter(expr, EXPR_VAL_UNUM, (void *)&result);
-            }
-            break;
-        case EXPR_VAL_INUM:
-            {
-                int64_t result = val->value.inum;
-
-                push_inter(expr, EXPR_VAL_INUM, (void *)&result);
-            }
-            break;
-        case EXPR_VAL_FNUM:
-            {
-                double result = val->value.fnum;
-
-                push_inter(expr, EXPR_VAL_FNUM, (void *)&result);
-            }
-            break;
-        case EXPR_VAL_BOOL:
-            {
-                unsigned char result = val->value.unum;
-
-                push_inter(expr, EXPR_VAL_BOOL, (void *)&result);
-            }
-            break;
-        default:
-            fatal_error("Unknown vtype in push_inter_value().");
-    }
+    return get_expr_value(expr);
 }

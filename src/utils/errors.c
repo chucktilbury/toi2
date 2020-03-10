@@ -10,8 +10,8 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-#include "errors.h"
-#include "scanner.h"
+#include "utils.h"
+#include "../parser/scanner.h"
 
 static struct errors {
     int level;

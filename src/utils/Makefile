@@ -9,6 +9,8 @@ OBJS	=	errors.o \
 			linked_lists.o \
 			hash_table.o \
 			xxhash.o \
+			lifo.o \
+			fifo.o
 
 SRCS	=	$(OBJS:.o=.c)
 HEADERS	=	$(OBJS:.o=.h)

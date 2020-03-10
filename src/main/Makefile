@@ -15,7 +15,7 @@ DEBUG	=	-g -DTRACE
 
 LIBDIRS	=	-L../../lib
 ifeq ($(PLATNAME), Linux)
-	LIBS	=	$(LIBDIRS) -lparser -labstree -lutils -ll -ly
+	LIBS	=	$(LIBDIRS) -lparser -labstree -lutils -lexpressions -ll -ly
 else ifeq ($(PLATNAME), MSYS_NT-6.1)
 	LIBS	=	$(LIBDIRS) -L/c/MinGW/msys/1.0/lib -lparser -lutils -lfl -ly
 endif
