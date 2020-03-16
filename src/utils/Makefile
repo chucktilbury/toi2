@@ -41,7 +41,7 @@ pretty:
 	-rm -f *~
 
 clean:
-	-rm -f $(OBJS) *.bak *~
+	-rm -f $(OBJS) $(TARGET) *.bak *~
 
 all_clean: clean
 	-rm -f $(TARGET) $(DEPS) .indent.pro

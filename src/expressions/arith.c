@@ -67,7 +67,6 @@ static inline expr_val_type_t coerse_type(arith_value_t *outv,
             default:
                 fatal_error("parser error: unknown left value type: %d", left->vtype);
         }
-        break;
 
         switch(right->vtype) {
             case EXPR_VAL_UNUM:
@@ -86,7 +85,6 @@ static inline expr_val_type_t coerse_type(arith_value_t *outv,
             default:
                 fatal_error("parser error: unknown right value type: %d", right->vtype);
         }
-        break;
         outv->vtype = EXPR_VAL_BOOL;
         retv = EXPR_VAL_BOOL;
     }
@@ -97,6 +95,7 @@ static inline expr_val_type_t coerse_type(arith_value_t *outv,
                 break;
             case EXPR_VAL_INUM:
                 outv->left.fnum = (double)left->value.inum;
+                MSG("coerse left inum to fnum: %f", outv->left.fnum);
                 break;
             case EXPR_VAL_FNUM:
                 outv->left.fnum = left->value.fnum;
@@ -104,7 +103,6 @@ static inline expr_val_type_t coerse_type(arith_value_t *outv,
             default:
                 fatal_error("parser error: unknown left value type: %d", left->vtype);
         }
-        break;
 
         switch(right->vtype) {
             case EXPR_VAL_UNUM:
@@ -112,6 +110,7 @@ static inline expr_val_type_t coerse_type(arith_value_t *outv,
                 break;
             case EXPR_VAL_INUM:
                 outv->right.fnum = (double)right->value.inum;
+                MSG("coerse right inum to fnum: %f", outv->right.fnum);
                 break;
             case EXPR_VAL_FNUM:
                 outv->right.fnum = right->value.fnum;
@@ -119,7 +118,6 @@ static inline expr_val_type_t coerse_type(arith_value_t *outv,
             default:
                 fatal_error("parser error: unknown right value type: %d", right->vtype);
         }
-        break;
         outv->vtype = EXPR_VAL_FNUM;
         retv = EXPR_VAL_FNUM;
     }
@@ -129,12 +127,11 @@ static inline expr_val_type_t coerse_type(arith_value_t *outv,
                 outv->left.inum = (int64_t)left->value.unum;
                 break;
             case EXPR_VAL_INUM:
-                outv->left.inum = eft->value.inum;
+                outv->left.inum = left->value.inum;
                 break;
             default:
                 fatal_error("parser error: unknown left value type: %d", left->vtype);
         }
-        break;
 
         switch(right->vtype) {
             case EXPR_VAL_UNUM:
@@ -146,7 +143,6 @@ static inline expr_val_type_t coerse_type(arith_value_t *outv,
             default:
                 fatal_error("parser error: unknown right value type: %d", right->vtype);
         }
-        break;
         outv->vtype = EXPR_VAL_INUM;
         retv = EXPR_VAL_INUM;
     }
@@ -157,567 +153,185 @@ static inline expr_val_type_t coerse_type(arith_value_t *outv,
         retv = EXPR_VAL_UNUM;
     }
 
-    return retv
-}
-
-void perform_arith_operation(expression_t expr,
-                             arith_value_t *outv,
-                             expr_ops_t oper) {
-
+    return retv;
 }
 
 void perform_arith_add(expression_t expr) {
     MARK();
     expr_value_t left;
     expr_value_t right;
+    expr_value_t result;
+    arith_value_t outv;
+    int errors = 0;
 
     pop_output(expr, &right);
     pop_output(expr, &left);
+    coerse_type(&outv, &left, &right);
 
-    switch (left.vtype) {
+    switch(outv.vtype) {
         case EXPR_VAL_UNUM:
-            {
-                uint64_t le = left.value.unum;
-                uint64_t result;
-                expr_value_t ovalue;
-
-                switch (right.vtype) {
-                    case EXPR_VAL_UNUM:
-                        result = le + right.value.unum;
-                        break;
-                    case EXPR_VAL_INUM:
-                        // integer becomes unsigned
-                        warning("converting integer to unsigned value");
-                        result = le + (uint64_t) right.value.inum;
-                        break;
-                    case EXPR_VAL_FNUM:
-                        // float is truncated to unsigned
-                        warning("truncate a float to unsigned value");
-                        result = le + (uint64_t) right.value.fnum;
-                        break;
-                    case EXPR_VAL_BOOL:
-                        warning("using boolean result in arithmetic operation");
-                        result = le + (uint64_t) right.value.bval;
-                        break;
-                    default:
-                        syntax("Unknown vtype right in perform_arithmetic().");
-                }
-                ovalue.value.unum = result;
-                ovalue.vtype = EXPR_VAL_UNUM;
-                push_output(expr, &ovalue);
-            }
+            result.vtype = EXPR_VAL_UNUM;
+            result.value.unum = outv.left.unum + outv.right.unum;
             break;
-
         case EXPR_VAL_INUM:
-            {
-                int64_t le = left.value.inum;
-                int64_t result;
-                expr_value_t ovalue;
-
-                switch (right.vtype) {
-                    case EXPR_VAL_UNUM:
-                        // unsigned is sign extended to integer
-                        warning("converting unsigned value to sign extended integer");
-                        result = le + (int64_t) right.value.unum;
-                        break;
-                    case EXPR_VAL_INUM:
-                        result = le + right.value.inum;
-                        break;
-                    case EXPR_VAL_FNUM:
-                        // float is truncated to integer
-                        warning("truncate a float to unsigned value");
-                        result = le + (int64_t) right.value.fnum;
-                        break;
-                    case EXPR_VAL_BOOL:
-                        warning("using boolean result in arithmetic operation");
-                        result = le + (int64_t) right.value.bval;
-                        break;
-                    default:
-                        syntax("Unknown vtype right in perform_arithmetic().");
-                }
-                ovalue.value.inum = result;
-                ovalue.vtype = EXPR_VAL_INUM;
-                push_output(expr, &ovalue);
-            }
+            result.vtype = EXPR_VAL_INUM;
+            result.value.inum = outv.left.inum + outv.right.inum;
             break;
-
         case EXPR_VAL_FNUM:
-            {
-                double le = left.value.fnum;
-                double result;
-                expr_value_t ovalue;
-
-                // right side is simply case to double
-                switch (right.vtype) {
-                    case EXPR_VAL_UNUM:
-                        result = le + (double)right.value.unum;
-                        break;
-                    case EXPR_VAL_INUM:
-                        result = le + (double)right.value.inum;
-                        break;
-                    case EXPR_VAL_FNUM:
-                        result = le + right.value.fnum;
-                        break;
-                    case EXPR_VAL_BOOL:
-                        warning("using boolean result in arithmetic operation");
-                        result = le + (double)right.value.bval;
-                        break;
-                    default:
-                        syntax("Unknown vtype right in perform_arithmetic().");
-                }
-                ovalue.value.fnum = result;
-                ovalue.vtype = EXPR_VAL_FNUM;
-                push_output(expr, &ovalue);
-            }
+            result.vtype = EXPR_VAL_FNUM;
+            result.value.fnum = outv.left.fnum + outv.right.fnum;
             break;
-
         case EXPR_VAL_BOOL:
-            syntax("addition on boolean result is invalid");
+            syntax("cannot add boolean values");
+            errors++;
             break;
-
         default:
-            syntax("Unknown vtype left in perform_arithmetic().");
+            fatal_error("parser error: invalid type in perform_arith_add().");
     }
-
+    if(!errors)
+        push_output(expr, &result);
 }
+
 
 void perform_arith_sub(expression_t expr) {
     MARK();
     expr_value_t left;
     expr_value_t right;
+    expr_value_t result;
+    arith_value_t outv;
+    int errors = 0;
 
     pop_output(expr, &right);
     pop_output(expr, &left);
+    coerse_type(&outv, &left, &right);
 
-    switch (left.vtype) {
+    switch(outv.vtype) {
         case EXPR_VAL_UNUM:
-            {
-                uint64_t le = left.value.unum;
-                uint64_t result;
-                expr_value_t ovalue;
-
-                switch (right.vtype) {
-                    case EXPR_VAL_UNUM:
-                        result = le - right.value.unum;
-                        break;
-                    case EXPR_VAL_INUM:
-                        // integer becomes unsigned
-                        warning("converting integer to unsigned value");
-                        result = le - (uint64_t) right.value.inum;
-                        break;
-                    case EXPR_VAL_FNUM:
-                        // float is truncated to unsigned
-                        warning("truncate a float to unsigned value");
-                        result = le - (uint64_t) right.value.fnum;
-                        break;
-                    case EXPR_VAL_BOOL:
-                        warning("using boolean result in arithmetic operation");
-                        result = le - (uint64_t) right.value.bval;
-                        break;
-                    default:
-                        syntax("Unknown vtype right in perform_arithmetic().");
-                }
-                ovalue.value.unum = result;
-                ovalue.vtype = EXPR_VAL_UNUM;
-                push_output(expr, &ovalue);
-            }
+            result.vtype = EXPR_VAL_UNUM;
+            result.value.unum = outv.left.unum - outv.right.unum;
             break;
-
         case EXPR_VAL_INUM:
-            {
-                int64_t le = left.value.inum;
-                int64_t result;
-                expr_value_t ovalue;
-
-                switch (right.vtype) {
-                    case EXPR_VAL_UNUM:
-                        // unsigned is sign extended to integer
-                        warning("converting unsigned value to sign extended integer");
-                        result = le - (int64_t) right.value.unum;
-                        break;
-                    case EXPR_VAL_INUM:
-                        result = le - right.value.inum;
-                        break;
-                    case EXPR_VAL_FNUM:
-                        // float is truncated to integer
-                        warning("truncate a float to unsigned value");
-                        result = le - (int64_t) right.value.fnum;
-                        break;
-                    case EXPR_VAL_BOOL:
-                        warning("using boolean result in arithmetic operation");
-                        result = le - (int64_t) right.value.bval;
-                        break;
-                    default:
-                        syntax("Unknown vtype right in perform_arithmetic().");
-                }
-                ovalue.value.inum = result;
-                ovalue.vtype = EXPR_VAL_INUM;
-                push_output(expr, &ovalue);
-            }
+            result.vtype = EXPR_VAL_INUM;
+            result.value.inum = outv.left.inum - outv.right.inum;
             break;
-
         case EXPR_VAL_FNUM:
-            {
-                double le = left.value.fnum;
-                double result;
-                expr_value_t ovalue;
-
-                // right side is simply case to double
-                switch (right.vtype) {
-                    case EXPR_VAL_UNUM:
-                        result = le - (double)right.value.unum;
-                        break;
-                    case EXPR_VAL_INUM:
-                        result = le - (double)right.value.inum;
-                        break;
-                    case EXPR_VAL_FNUM:
-                        result = le - right.value.fnum;
-                        break;
-                    case EXPR_VAL_BOOL:
-                        warning("using boolean result in arithmetic operation");
-                        result = le - (double)right.value.bval;
-                        break;
-                    default:
-                        syntax("Unknown vtype right in perform_arithmetic().");
-                }
-                ovalue.value.fnum = result;
-                ovalue.vtype = EXPR_VAL_FNUM;
-                push_output(expr, &ovalue);
-            }
+            result.vtype = EXPR_VAL_FNUM;
+            result.value.fnum = outv.left.fnum - outv.right.fnum;
             break;
-
         case EXPR_VAL_BOOL:
-            syntax("subtraction on boolean result is invalid");
+            syntax("cannot subtract boolean values");
+            errors++;
             break;
-
         default:
-            syntax("Unknown vtype left in perform_arithmetic().");
+            fatal_error("parser error: invalid type in perform_arith_sub().");
     }
+    if(!errors)
+        push_output(expr, &result);
 }
 
 void perform_arith_mul(expression_t expr) {
     MARK();
     expr_value_t left;
     expr_value_t right;
+    expr_value_t result;
+    arith_value_t outv;
+    int errors = 0;
 
     pop_output(expr, &right);
     pop_output(expr, &left);
+    coerse_type(&outv, &left, &right);
 
-    switch (left.vtype) {
+    switch(outv.vtype) {
         case EXPR_VAL_UNUM:
-            {
-                uint64_t le = left.value.unum;
-                uint64_t result;
-                expr_value_t ovalue;
-
-                switch (right.vtype) {
-                    case EXPR_VAL_UNUM:
-                        result = le * right.value.unum;
-                        break;
-                    case EXPR_VAL_INUM:
-                        // integer becomes unsigned
-                        warning("converting integer to unsigned value");
-                        result = le * (uint64_t) right.value.inum;
-                        break;
-                    case EXPR_VAL_FNUM:
-                        // float is truncated to unsigned
-                        warning("truncate a float to unsigned value");
-                        result = le * (uint64_t) right.value.fnum;
-                        break;
-                    case EXPR_VAL_BOOL:
-                        warning("using boolean result in arithmetic operation");
-                        result = le * (uint64_t) right.value.bval;
-                        break;
-                    default:
-                        syntax("Unknown vtype right in perform_arithmetic().");
-                }
-                ovalue.value.unum = result;
-                ovalue.vtype = EXPR_VAL_UNUM;
-                push_output(expr, &ovalue);
-            }
+            result.vtype = EXPR_VAL_UNUM;
+            result.value.unum = outv.left.unum * outv.right.unum;
             break;
-
         case EXPR_VAL_INUM:
-            {
-                int64_t le = left.value.inum;
-                int64_t result;
-                expr_value_t ovalue;
-
-                switch (right.vtype) {
-                    case EXPR_VAL_UNUM:
-                        // unsigned is sign extended to integer
-                        warning("converting unsigned value to sign extended integer");
-                        result = le * (int64_t) right.value.unum;
-                        break;
-                    case EXPR_VAL_INUM:
-                        result = le * right.value.inum;
-                        break;
-                    case EXPR_VAL_FNUM:
-                        // float is truncated to integer
-                        warning("truncate a float to unsigned value");
-                        result = le * (int64_t) right.value.fnum;
-                        break;
-                    case EXPR_VAL_BOOL:
-                        warning("using boolean result in arithmetic operation");
-                        result = le * (int64_t) right.value.bval;
-                        break;
-                    default:
-                        syntax("Unknown vtype right in perform_arithmetic().");
-                }
-                ovalue.value.inum = result;
-                ovalue.vtype = EXPR_VAL_INUM;
-                push_output(expr, &ovalue);
-            }
+            result.vtype = EXPR_VAL_INUM;
+            result.value.inum = outv.left.inum * outv.right.inum;
             break;
-
         case EXPR_VAL_FNUM:
-            {
-                double le = left.value.fnum;
-                double result;
-                expr_value_t ovalue;
-
-                // right side is simply case to double
-                switch (right.vtype) {
-                    case EXPR_VAL_UNUM:
-                        result = le * (double)right.value.unum;
-                        break;
-                    case EXPR_VAL_INUM:
-                        result = le * (double)right.value.inum;
-                        break;
-                    case EXPR_VAL_FNUM:
-                        result = le * right.value.fnum;
-                        break;
-                    case EXPR_VAL_BOOL:
-                        warning("using boolean result in arithmetic operation");
-                        result = le * (double)right.value.bval;
-                        break;
-                    default:
-                        syntax("Unknown vtype right in perform_arithmetic().");
-                }
-                ovalue.value.fnum = result;
-                ovalue.vtype = EXPR_VAL_FNUM;
-                push_output(expr, &ovalue);
-            }
+            result.vtype = EXPR_VAL_FNUM;
+            result.value.fnum = outv.left.fnum * outv.right.fnum;
             break;
-
         case EXPR_VAL_BOOL:
-            syntax("multiplication on boolean result is invalid");
+            syntax("cannot multiply boolean values");
+            errors++;
             break;
-
         default:
-            syntax("Unknown vtype left in perform_arithmetic().");
+            fatal_error("parser error: invalid type in perform_arith_mul().");
     }
+    if(!errors)
+        push_output(expr, &result);
 }
 
 void perform_arith_div(expression_t expr) {
     MARK();
     expr_value_t left;
     expr_value_t right;
+    expr_value_t result;
+    arith_value_t outv;
+    int errors = 0;
 
     pop_output(expr, &right);
     pop_output(expr, &left);
+    coerse_type(&outv, &left, &right);
 
-    // check for divide by zero
-    switch (right.vtype) {
+    switch(outv.vtype) {
         case EXPR_VAL_UNUM:
-            if(right.value.unum == 0)
-                syntax("Attempt to divide by zero detected.");
+            result.vtype = EXPR_VAL_UNUM;
+            result.value.unum = outv.left.unum / outv.right.unum;
             break;
         case EXPR_VAL_INUM:
-            if(right.value.inum == 0)
-                syntax("Attempt to divide by zero detected.");
+            result.vtype = EXPR_VAL_INUM;
+            result.value.inum = outv.left.inum / outv.right.inum;
             break;
         case EXPR_VAL_FNUM:
-            if(right.value.fnum == 0.0)
-                syntax("Attempt to divide by zero detected.");
+            result.vtype = EXPR_VAL_FNUM;
+            result.value.fnum = outv.left.fnum / outv.right.fnum;
             break;
         case EXPR_VAL_BOOL:
-            syntax("using boolean result in division operation is illegal");
+            syntax("cannot divide boolean values");
+            errors++;
             break;
         default:
-            syntax("Unknown vtype right in perform_arithmetic().");
+            fatal_error("parser error: invalid type in perform_arith_div().");
     }
-
-    switch (left.vtype) {
-        case EXPR_VAL_UNUM:
-            {
-                uint64_t le = left.value.unum;
-                uint64_t result;
-                expr_value_t ovalue;
-
-                switch (right.vtype) {
-                    case EXPR_VAL_UNUM:
-                        result = le / right.value.unum;
-                        break;
-                    case EXPR_VAL_INUM:
-                        // integer becomes unsigned
-                        warning("converting integer to unsigned value");
-                        result = le / (uint64_t) right.value.inum;
-                        break;
-                    case EXPR_VAL_FNUM:
-                        // float is truncated to unsigned
-                        warning("truncate a float to unsigned value");
-                        result = le / (uint64_t) right.value.fnum;
-                        break;
-                    default:
-                        syntax("Unknown vtype right in perform_arithmetic().");
-                }
-                ovalue.value.unum = result;
-                ovalue.vtype = EXPR_VAL_UNUM;
-                push_output(expr, &ovalue);
-            }
-            break;
-
-        case EXPR_VAL_INUM:
-            {
-                int64_t le = left.value.inum;
-                int64_t result;
-                expr_value_t ovalue;
-
-                switch (right.vtype) {
-                    case EXPR_VAL_UNUM:
-                        // unsigned is sign extended to integer
-                        warning("converting unsigned value to sign extended integer");
-                        result = le / (int64_t) right.value.unum;
-                        break;
-                    case EXPR_VAL_INUM:
-                        result = le / right.value.inum;
-                        break;
-                    case EXPR_VAL_FNUM:
-                        // float is truncated to integer
-                        warning("truncate a float to unsigned value");
-                        result = le / (int64_t) right.value.fnum;
-                        break;
-                    default:
-                        syntax("Unknown vtype right in perform_arithmetic().");
-                }
-                ovalue.value.inum = result;
-                ovalue.vtype = EXPR_VAL_INUM;
-                push_output(expr, &ovalue);
-            }
-            break;
-
-        case EXPR_VAL_FNUM:
-            {
-                double le = left.value.fnum;
-                double result;
-                expr_value_t ovalue;
-
-                // right side is simply case to double
-                switch (right.vtype) {
-                    case EXPR_VAL_UNUM:
-                        result = le / (double)right.value.unum;
-                        break;
-                    case EXPR_VAL_INUM:
-                        result = le / (double)right.value.inum;
-                        break;
-                    case EXPR_VAL_FNUM:
-                        result = le / right.value.fnum;
-                        break;
-                    default:
-                        syntax("Unknown vtype right in perform_arithmetic().");
-                }
-                ovalue.value.fnum = result;
-                ovalue.vtype = EXPR_VAL_FNUM;
-                push_output(expr, &ovalue);
-            }
-            break;
-
-        case EXPR_VAL_BOOL:
-            syntax("using boolean result in division operation is illegal");
-            break;
-
-        default:
-            syntax("Unknown vtype left in perform_arithmetic().");
-    }
+    if(!errors)
+        push_output(expr, &result);
 }
 
 void perform_arith_mod(expression_t expr) {
     MARK();
     expr_value_t left;
     expr_value_t right;
+    expr_value_t result;
+    arith_value_t outv;
+    int errors = 0;
 
     pop_output(expr, &right);
     pop_output(expr, &left);
+    coerse_type(&outv, &left, &right);
 
-    // check for divide by zero
-    switch (right.vtype) {
+    switch(outv.vtype) {
         case EXPR_VAL_UNUM:
-            if(right.value.unum == 0)
-                syntax("Attempt to modulo divide by zero detected.");
+            result.vtype = EXPR_VAL_UNUM;
+            result.value.unum = outv.left.unum % outv.right.unum;
             break;
         case EXPR_VAL_INUM:
-            if(right.value.inum == 0)
-                syntax("Attempt to modulo divide by zero detected.");
+            result.vtype = EXPR_VAL_INUM;
+            result.value.inum = outv.left.inum % outv.right.inum;
             break;
         case EXPR_VAL_FNUM:
-            syntax("Modulo operatons only allowed on integer and unsigned.");
+            syntax("modulo division not allowed on floats");
             break;
         case EXPR_VAL_BOOL:
-            syntax("modulo operations not allowed on a boolean result");
+            syntax("cannot modulo divide boolean values");
+            errors++;
             break;
         default:
-            syntax("Unknown vtype right in perform_arithmetic().");
+            fatal_error("parser error: invalid type in perform_arith_mod().");
     }
-
-    switch (left.vtype) {
-        case EXPR_VAL_UNUM:
-            {
-                uint64_t le = left.value.unum;
-                uint64_t result;
-                expr_value_t ovalue;
-
-                switch (right.vtype) {
-                    case EXPR_VAL_UNUM:
-                        result = le % right.value.unum;
-                        break;
-                    case EXPR_VAL_INUM:
-                        // integer becomes unsigned
-                        warning("converting integer to unsigned value");
-                        result = le % (uint64_t) right.value.inum;
-                        break;
-                    default:
-                        syntax("Unknown vtype right in perform_arithmetic().");
-                }
-                ovalue.value.unum = result;
-                ovalue.vtype = EXPR_VAL_UNUM;
-                push_output(expr, &ovalue);
-            }
-            break;
-
-        case EXPR_VAL_INUM:
-            {
-                int64_t le = left.value.inum;
-                int64_t result;
-                expr_value_t ovalue;
-
-                switch (right.vtype) {
-                    case EXPR_VAL_UNUM:
-                        // unsigned is sign extended to integer
-                        warning("converting unsigned value to sign extended integer");
-                        result = le / (int64_t) right.value.unum;
-                        break;
-                    case EXPR_VAL_INUM:
-                        result = le / right.value.inum;
-                        break;
-                    default:
-                        syntax("Unknown vtype right in perform_arithmetic().");
-                }
-                ovalue.value.inum = result;
-                ovalue.vtype = EXPR_VAL_INUM;
-                push_output(expr, &ovalue);
-            }
-            break;
-
-        case EXPR_VAL_FNUM:
-            syntax("Modulo operatons only allowed on integer and unsigned.");
-            break;
-
-        case EXPR_VAL_BOOL:
-            syntax("Modulo operatons not allowed on boolean result.");
-            break;
-
-        default:
-            syntax("Unknown vtype left in perform_arithmetic().");
-    }
+    if(!errors)
+        push_output(expr, &result);
 }

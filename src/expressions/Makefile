@@ -37,9 +37,9 @@ pretty:
 	-rm -f *~
 
 clean:
-	-rm -f $(OBJS) *.bak *~
+	-rm -f $(TARGET) $(OBJS) *.bak *~
 
 all_clean: clean
-	-rm -f $(TARGET) $(DEPS) .indent.pro
+	-rm -f  $(DEPS) .indent.pro
 
 -include $(DEPS)

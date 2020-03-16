@@ -43,7 +43,7 @@ void evaluate_expression(expression_t expr) {
     MARK();
     expr_value_t value;
     expr_value_t ovalue;
-    int finished = 0;
+    //int finished = 0;
 
     reset_value_fifo(expr);
     MSG("----- BEGIN EXPRESSION EVALUATION");

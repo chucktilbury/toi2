@@ -84,7 +84,7 @@ void expression_literal_number(void) {
                 val.value.fnum = lval->value.fnum;
                 val.vtype = EXPR_VAL_FNUM;
                 store_expr_value(current_expression, &val);
-                MSG("storing expr UNUM value %f", val.value.fnum);
+                MSG("storing expr FNUM value %f", val.value.fnum);
             }
             break;
         default:
