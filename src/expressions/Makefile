@@ -1,17 +1,18 @@
 PLATNAME := $(shell uname)
 
-OBJS	=	arith.o \
-			bitwise.o \
-			bool1.o \
-			bool2.o \
-			evaluate.o \
-			expressions.o \
-			unary.o \
+TARG_DIR	= ../../lib/
+SRCS	=	arith.c \
+			bitwise.c \
+			boolean.c \
+			evaluate.c \
+			expressions.c \
+			unary.c
 
-SRCS	=	$(OBJS:.o=.c)
-HEADERS	=	$(OBJS:.o=.h)
+OBJS	=	$(SRCS:.c=.o)
+#OBJS	=	$(foreach var, $(TOBJ), $(TARG_DIR)$(var))
+#HEADERS	=	$(OBJS:.o=.h)
 
-TARGET	=	../../lib/libexpressions.a
+TARGET	=	$(TARG_DIR)libexpressions.a
 DEPS	= 	$(TARGET).dep
 
 CC		=	gcc # clang

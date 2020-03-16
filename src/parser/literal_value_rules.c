@@ -93,7 +93,7 @@ void save_literal_num(int type) {
     switch (type) {
         case UNUM:
             {
-                char *str = get_tok_str();
+                const char *str = get_tok_str();
                 literal_num.value.unum = (uint64_t) strtoul(str, NULL, 16);
                 MSG("storing UNUM value %lu (%s)", literal_num.value.unum, str);
                 // uint64_t val = (uint64_t)strtoul(get_tok_str(), NULL, 16);
@@ -103,7 +103,7 @@ void save_literal_num(int type) {
             break;
         case INUM:
             {
-                char *str = get_tok_str();
+                const char *str = get_tok_str();
                 literal_num.value.inum = (int64_t) strtol(str, NULL, 10);
                 MSG("storing INUM value %ld (%s)", literal_num.value.inum, str);
                 // int64_t val = (int64_t)strtol(get_tok_str(), NULL, 10);

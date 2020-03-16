@@ -21,30 +21,11 @@
  */
 
 /*
- *  The actual operaton is performed using this data structure.
- */
-typedef struct arith_value {
-    expr_val_type_t vtype;
-    union __attribute__((packed)) {
-        uint64_t unum;
-        int64_t inum;
-        double fnum;
-        unsigned char bval;
-    } left;
-    union __attribute__((packed)) {
-        uint64_t unum;
-        int64_t inum;
-        double fnum;
-        unsigned char bval;
-    } right;
-} arith_value_t;
-
-/*
  *  All of the permuations of different types makes this code ugly. When a
  *  coersion is made that alters the value of one of the values, a warning is
  *  issued.
  */
-static inline expr_val_type_t coerse_type(arith_value_t *outv,
+static inline expr_val_type_t coerse_type(output_value_t *outv,
                                          expr_value_t *left,
                                          expr_value_t *right) {
     expr_val_type_t retv;
@@ -161,7 +142,7 @@ void perform_arith_add(expression_t expr) {
     expr_value_t left;
     expr_value_t right;
     expr_value_t result;
-    arith_value_t outv;
+    output_value_t outv;
     int errors = 0;
 
     pop_output(expr, &right);
@@ -198,7 +179,7 @@ void perform_arith_sub(expression_t expr) {
     expr_value_t left;
     expr_value_t right;
     expr_value_t result;
-    arith_value_t outv;
+    output_value_t outv;
     int errors = 0;
 
     pop_output(expr, &right);
@@ -234,7 +215,7 @@ void perform_arith_mul(expression_t expr) {
     expr_value_t left;
     expr_value_t right;
     expr_value_t result;
-    arith_value_t outv;
+    output_value_t outv;
     int errors = 0;
 
     pop_output(expr, &right);
@@ -270,7 +251,7 @@ void perform_arith_div(expression_t expr) {
     expr_value_t left;
     expr_value_t right;
     expr_value_t result;
-    arith_value_t outv;
+    output_value_t outv;
     int errors = 0;
 
     pop_output(expr, &right);
@@ -306,7 +287,7 @@ void perform_arith_mod(expression_t expr) {
     expr_value_t left;
     expr_value_t right;
     expr_value_t result;
-    arith_value_t outv;
+    output_value_t outv;
     int errors = 0;
 
     pop_output(expr, &right);

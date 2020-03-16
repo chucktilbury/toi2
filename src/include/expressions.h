@@ -86,6 +86,10 @@ typedef enum {
 #    define EXPR_PRINT_VALUE(v)
 #  endif
 
+/*
+ *  This data structure is used to store and manipulate arithmetic and boolean
+ *  values for expressions.
+ */
 typedef struct expr_value {
     expr_val_type_t vtype;
     union __attribute__((packed)) {
@@ -97,6 +101,25 @@ typedef struct expr_value {
         unsigned char bval;
     } value;
 } expr_value_t;
+
+/*
+ *  The actual operaton is performed using this data structure.
+ */
+typedef struct output_value {
+    expr_val_type_t vtype;
+    union __attribute__((packed)) {
+        uint64_t unum;
+        int64_t inum;
+        double fnum;
+        unsigned char bval;
+    } left;
+    union __attribute__((packed)) {
+        uint64_t unum;
+        int64_t inum;
+        double fnum;
+        unsigned char bval;
+    } right;
+} output_value_t;
 
 typedef void *expression_t;
 

@@ -35,6 +35,9 @@
  * an expression that has already been parsed.
  */
 void reset_value_fifo(expression_t e);
+void perform_bitwise_operation(expression_t expr, expr_ops_t oper);
+void perform_boolean_operation(expression_t expr, expr_ops_t oper);
+
 /*
  * Returns a pointer to the value of the expression. The type parameter
  * indicates the type that the return value points to.
@@ -85,51 +88,25 @@ void evaluate_expression(expression_t expr) {
 
                     // Boolean operations
                 case EXPR_OP_BOOL_AND:
-                    perform_bool_and(expr);
-                    break;
                 case EXPR_OP_BOOL_OR:
-                    perform_bool_or(expr);
-                    break;
                 case EXPR_OP_BOOL_EQ:
-                    perform_bool_eq(expr);
-                    break;
                 case EXPR_OP_BOOL_NEQ:
-                    perform_bool_nqe(expr);
-                    break;
                 case EXPR_OP_BOOL_LE:
-                    perform_bool_le(expr);
-                    break;
                 case EXPR_OP_BOOL_GE:
-                    perform_bool_ge(expr);
-                    break;
                 case EXPR_OP_BOOL_LT:
-                    perform_bool_lt(expr);
-                    break;
                 case EXPR_OP_BOOL_GT:
-                    perform_bool_gt(expr);
+                    perform_boolean_operation(expr, oper);
                     break;
 
                     // Bitwise operations
                 case EXPR_OP_BIT_AND:
-                    perform_bitwise_and(expr);
-                    break;
                 case EXPR_OP_BIT_OR:
-                    perform_bitwise_or(expr);
-                    break;
                 case EXPR_OP_BIT_XOR:
-                    perform_bitwise_xor(expr);
-                    break;
                 case EXPR_OP_BIT_SHL:
-                    perform_bitwise_shl(expr);
-                    break;
                 case EXPR_OP_BIT_SHR:
-                    perform_bitwise_shr(expr);
-                    break;
                 case EXPR_OP_BIT_ROL:
-                    perform_bitwise_rol(expr);
-                    break;
                 case EXPR_OP_BIT_ROR:
-                    perform_bitwise_ror(expr);
+                    perform_bitwise_operation(expr, oper);
                     break;
 
                 default:
