@@ -1,7 +1,7 @@
 .PHONY: all pretty clean all_clean
 
-TARGETS	=	utils \
-			parser \
+TARGETS	=	parser \
+			utils \
 			abstract_tree \
 			expressions \
 			main

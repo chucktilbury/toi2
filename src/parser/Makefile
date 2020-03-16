@@ -35,7 +35,7 @@ DEPS	= 	$(TARGET).dep
 CC		=	gcc # clang
 CARGS	=	-Wall
 DEBUG	=	-g -DTRACE
-HSRC	= 	-I../utils -I../abstract_tree -I../expressions
+HSRC	= 	-I../include -I../abstract_tree
 
 .PHONY: all pretty clean all_clean
 
@@ -67,4 +67,3 @@ all_clean: clean
 	-rm -f scanner.c parser.c parser.h $(TARGET) $(DEPS) .indent.pro
 
 -include $(DEPS)
-

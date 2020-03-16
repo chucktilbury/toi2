@@ -2,10 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "errors.h"
+#include "utils.h"
 #include "scanner.h"
-#include "linked_lists.h"
-#include "hash_table.h"
 #include "parser_support.h"
 
 void module_module_list_end(void) {

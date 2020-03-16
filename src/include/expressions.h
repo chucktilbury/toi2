@@ -139,6 +139,6 @@ void perform_unary_minus(expression_t expr);
 void perform_unary_neg(expression_t expr);
 void perform_unary_not(expression_t expr);
 
-void *evaluate_expression(expression_t *expr, expr_val_type_t * type);
+void evaluate_expression(expression_t expr);
 
 #endif /* _EXPRESSIONS_H_ */

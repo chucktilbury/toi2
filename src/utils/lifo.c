@@ -75,11 +75,13 @@ int lifo_pop(lifo_t lifo, void *data, size_t size) {
             popper = ls->top;
             if(popper->size != size)
                 MSG("LIFO size does not match: popper = %d and parm = %d", popper->size, size);
+
             if(popper->data != NULL) {
                 if(data != NULL && size != 0)
                     memcpy(data, popper->data, size);
-                free(popper->data);
                 ls->top = popper->next;
+
+                free(popper->data);
                 free(popper);
                 ls->num_elements --;
                 return 1;   // success
@@ -122,4 +124,3 @@ int lifo_peek(lifo_t lifo, void *data, size_t size) {
 
     return 0;   // fail
 }
-

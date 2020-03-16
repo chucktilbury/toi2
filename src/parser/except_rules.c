@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "errors.h"
+#include "utils.h"
 #include "scanner.h"
 #include "parser_support.h"
 

@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../include/expressions.h"
-#include "../include/utils.h"
-#include "../parser/scanner.h"
+#include "expressions.h"
+#include "utils.h"
+#include "scanner.h"
 
 /*
  * This data structure contains all of the elements required to evaluate the expression. This is the data structure that is stored in the abstract
@@ -37,8 +37,15 @@ expression_t create_expression(void) {
 void destroy_expression(expression_t e) {
     MARK();
     expression_struct_t *expr = (expression_struct_t *)e;
+    expr_value_t val;
 
     if(expr != NULL) {
+
+        fifo_reset(expr->input);
+        while(fifo_get(expr->input, &val, sizeof(expr_value_t)))
+            if(val.vtype == EXPR_VAL_REFERENCE)
+                free(val.value.ref);
+
         fifo_destroy(expr->input);
         lifo_destroy(expr->output);
         free(expr);
@@ -48,13 +55,13 @@ void destroy_expression(expression_t e) {
 void store_expr_value(expression_t e, expr_value_t *val) {
     MARK();
     expression_struct_t *expr = (expression_struct_t *)e;
-    fifo_add(expr->input, (void*)val, sizeof(expression_struct_t));
+    fifo_add(expr->input, (void*)val, sizeof(expr_value_t));
 }
 
 int get_expr_value(expression_t e, expr_value_t *val) {
     MARK();
     expression_struct_t *expr = (expression_struct_t *)e;
-    return fifo_get(expr->input, val, sizeof(expression_struct_t));
+    return fifo_get(expr->input, val, sizeof(expr_value_t));
 }
 
 void reset_value_fifo(expression_t e) {
@@ -65,18 +72,22 @@ void reset_value_fifo(expression_t e) {
 
 void push_output(expression_t e, expr_value_t *val) {
     MARK();
+    EXPR_PRINT_VALUE(val);
     expression_struct_t *expr = (expression_struct_t *)e;
-    lifo_push(expr->output, val, sizeof(expression_struct_t));
+    lifo_push(expr->output, val, sizeof(expr_value_t));
 }
 
 int pop_output(expression_t e, expr_value_t *val) {
     MARK();
     expression_struct_t *expr = (expression_struct_t *)e;
-    return lifo_pop(expr->output, val, sizeof(expression_struct_t));
+    int retv = lifo_pop(expr->output, val, sizeof(expr_value_t));
+    EXPR_PRINT_VALUE(val);
+    return retv;
 }
 
 int peek_output(expression_t e, expr_value_t *val) {
     MARK();
+    EXPR_PRINT_VALUE(val);
     expression_struct_t *expr = (expression_struct_t *)e;
-    return lifo_peek(expr->output, val, sizeof(expression_struct_t));
+    return lifo_peek(expr->output, val, sizeof(expr_value_t));
 }

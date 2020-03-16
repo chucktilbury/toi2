@@ -2,103 +2,126 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../parser/scanner.h"
-#include "../utils/errors.h"
-#include "unary.h"
+#include "scanner.h"
+#include "utils.h"
+#include "expressions.h"
 
-void perform_unary_minus(expression_t *expr) {
+void perform_unary_minus(expression_t expr) {
     MARK();
-    out_lifo_t *value = pop_inter(expr);
+    expr_value_t value;
+    expr_value_t ovalue;
 
-    switch (value->vtype) {
+    pop_output(expr, &value);
+
+    switch (value.vtype) {
         case EXPR_VAL_UNUM:
             {
                 int64_t result;
 
                 warning("converting unsigned integer to unsigned value and sign extending");
-                result = -(int64_t) value->value.unum;
-                push_inter(expr, EXPR_VAL_INUM, (void *)&result);
+                result = -(int64_t) value.value.unum;
+                ovalue.value.inum = result;
+                ovalue.vtype = EXPR_VAL_INUM;
+                push_output(expr, &ovalue);
             }
             break;
         case EXPR_VAL_INUM:
             {
                 int64_t result;
 
-                result = -value->value.inum;
-                push_inter(expr, EXPR_VAL_UNUM, (void *)&result);
+                result = -value.value.inum;
+                ovalue.value.inum = result;
+                ovalue.vtype = EXPR_VAL_INUM;
+                push_output(expr, &ovalue);
             }
             break;
         case EXPR_VAL_FNUM:
             {
                 double result;
 
-                result = -value->value.fnum;
-                push_inter(expr, EXPR_VAL_FNUM, (void *)&result);
+                result = -value.value.fnum;
+                ovalue.value.fnum = result;
+                ovalue.vtype = EXPR_VAL_FNUM;
+                push_output(expr, &ovalue);
                 break;
             }
         case EXPR_VAL_BOOL:
-            fatal_error("unary negate not allowed on a boolean result");
+            syntax("unary negate not allowed on a boolean result");
             break;
 
         default:
-            fatal_error("Unknown vtype value in perform_arithmetic().");
+            syntax("Unknown vtype value in perform_arithmetic().");
     }
-
-    free(value);
 }
 
-void perform_unary_neg(expression_t *expr) {
+void perform_unary_neg(expression_t expr) {
     MARK();
-    out_lifo_t *value = pop_inter(expr);
+    expr_value_t value;
+    expr_value_t ovalue;
     uint64_t result;
+    int error = 0;
 
-    switch (value->vtype) {
+    pop_output(expr, &value);
+
+    switch (value.vtype) {
         case EXPR_VAL_UNUM:
-            result = ~value->value.unum;
+            result = ~value.value.unum;
             break;
         case EXPR_VAL_INUM:
             // integer becomes unsigned
             warning("converting integer to unsigned value");
-            result = ~(uint64_t) value->value.inum;
+            result = ~(uint64_t) value.value.inum;
             break;
         case EXPR_VAL_FNUM:
             // float is truncated to unsigned
-            fatal_error("unary bitwise negation not allowed for float");
+            syntax("unary bitwise negation not allowed for float");
+            error++;
             break;
         case EXPR_VAL_BOOL:
-            fatal_error("binary operations not allowed on a boolean result");
+            syntax("binary operations not allowed on a boolean result");
+            error++;
             break;
         default:
-            fatal_error("Unknown vtype value in perform_arithmetic().");
+            syntax("Unknown vtype value in perform_arithmetic().");
+            error++;
     }
-    push_inter(expr, EXPR_VAL_UNUM, (void *)&result);
-    free(value);
+    if(error == 0) {
+        ovalue.value.unum = result;
+        ovalue.vtype = EXPR_VAL_UNUM;
+        push_output(expr, &ovalue);
+    }
 }
 
-void perform_unary_not(expression_t *expr) {
+void perform_unary_not(expression_t expr) {
     MARK();
-    out_lifo_t *value = pop_inter(expr);
+    expr_value_t value;
+    expr_value_t ovalue;
     unsigned char result;
+    int error = 0;
 
-    switch (value->vtype) {
+    pop_output(expr, &value);
+
+    switch (value.vtype) {
         case EXPR_VAL_UNUM:
-            warning("unary boolean \"not\" performed on unsigned integer");
-            result = (!(value->value.unum == 0));
+            result = (!(value.value.unum == 0));
             break;
         case EXPR_VAL_INUM:
-            warning("unary boolean \"not\" performed on unsigned integer");
-            result = (!(value->value.inum == 0));
+            result = (!(value.value.inum == 0));
             break;
         case EXPR_VAL_FNUM:
             warning("unary boolean \"not\" performed on float");
-            result = (!(value->value.fnum == 0.0));
+            result = (!(value.value.fnum == 0.0));
             break;
         case EXPR_VAL_BOOL:
-            result = (!(value->value.bnum == 0));
+            result = (!(value.value.bval == 0));
             break;
         default:
-            fatal_error("Unknown vtype value in perform_arithmetic().");
+            syntax("Unknown vtype value in perform_arithmetic().");
+            error++;
     }
-    push_inter(expr, EXPR_VAL_BOOL, (void *)&result);
-    free(value);
+    if(error == 0) {
+        ovalue.value.bval = result;
+        ovalue.vtype = EXPR_VAL_BOOL;
+        push_output(expr, &ovalue);
+    }
 }

@@ -5,7 +5,7 @@
 #include <string.h>
 #include <errno.h>
 
-#include "errors.h"
+#include "utils.h"
 #include "parser.h"
 
 // string buffer to get token from
@@ -349,4 +349,3 @@ int get_token(void) {
     //
     //return retv;
 }
-

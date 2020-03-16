@@ -60,7 +60,8 @@ void fifo_add(fifo_t fifo, void *data, size_t size) {
         if(NULL == (nelem->data = malloc(size)))
             fatal_error("cannot allocate memory for FIFO element data");
 
-        memcpy(nelem->data, data, size);
+        if(data != NULL)
+            memcpy(nelem->data, data, size);
         nelem->size = size;
 
         if(fs->first == NULL) {
@@ -107,8 +108,10 @@ int fifo_get(fifo_t fifo, void *data, size_t size) {
 int fifo_reset(fifo_t fifo) {
     MARK();
     fifo_struct_t *fs = (fifo_struct_t *)fifo;
-    fs->crnt = fs->first;
-    return 0; // fail
+    if(fs != NULL) {
+        fs->crnt = fs->first;
+        return 1;
+    }
+    else
+        return 0; // fail
 }
-
-

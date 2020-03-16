@@ -2,480 +2,470 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../parser/scanner.h"
-#include "../utils/errors.h"
-#include "bool1.h"
+#include "scanner.h"
+#include "utils.h"
+#include "expressions.h"
 
-void perform_bool_and(expression_t *expr) {
+void perform_bool_and(expression_t expr) {
     MARK();
-    out_lifo_t *right = pop_inter(expr);
-    out_lifo_t *left = pop_inter(expr);
+    expr_value_t left;
+    expr_value_t right;
+    expr_value_t ovalue;
     unsigned char result;
+    int error = 0;
 
-    switch (left->vtype) {
+    pop_output(expr, &left);
+    pop_output(expr, &right);
+
+    switch (left.vtype) {
         case EXPR_VAL_INUM:
             {
-                int64_t le = left->value.inum;
+                int64_t le = left.value.inum;
 
-                switch (right->vtype) {
+                switch (right.vtype) {
                     case EXPR_VAL_UNUM:
-                        result = ((le != 0) && (right->value.unum != 0));
+                        result = ((le != 0) && (right.value.unum != 0));
                         break;
                     case EXPR_VAL_INUM:
-                        result = ((le != 0) && (right->value.inum != 0));
+                        result = ((le != 0) && (right.value.inum != 0));
                         break;
                     case EXPR_VAL_FNUM:
-                        warning("integer \"and\" comparison to float");
-                        result = ((le != 0) && (right->value.fnum != 0.0));
+                        syntax("integer \"and\" comparison to float is invalid");
+                        error++;
                         break;
                     case EXPR_VAL_BOOL:
-                        result = ((le != 0) && (right->value.bnum != 0));
+                        result = ((le != 0) && (right.value.bval != 0));
                         break;
                     default:
-                        fatal_error("Unknown vtype right in perform_arithmetic().");
+                        syntax("Unknown vtype right in perform_arithmetic().");
+                        error++;
                 }
             }
             break;
 
         case EXPR_VAL_UNUM:
             {
-                uint64_t le = left->value.unum;
+                uint64_t le = left.value.unum;
 
-                switch (right->vtype) {
+                switch (right.vtype) {
                     case EXPR_VAL_UNUM:
-                        result = ((le != 0) && (right->value.unum != 0));
+                        result = ((le != 0) && (right.value.unum != 0));
                         break;
                     case EXPR_VAL_INUM:
-                        result = ((le != 0) && (right->value.inum != 0));
+                        result = ((le != 0) && (right.value.inum != 0));
                         break;
                     case EXPR_VAL_FNUM:
-                        warning("unsigned integer \"and\" comparison to float");
-                        result = ((le != 0) && (right->value.fnum != 0.0));
+                        syntax("unsigned integer \"and\" comparison to float is invalid");
+                        error++;
                         break;
                     case EXPR_VAL_BOOL:
-                        result = ((le != 0) && (right->value.bnum != 0));
+                        result = ((le != 0) && (right.value.bval != 0));
                         break;
                     default:
-                        fatal_error("Unknown vtype right in perform_arithmetic().");
+                        syntax("Unknown vtype right in perform_arithmetic().");
+                        error++;
                 }
             }
             break;
 
         case EXPR_VAL_FNUM:
-            {
-                double le = left->value.fnum;
-
-                // right side is simply case to double
-                switch (right->vtype) {
-                    case EXPR_VAL_UNUM:
-                        warning("unsigned integer \"and\" comparison to float");
-                        result = ((le != 0) && (right->value.unum != 0));
-                        break;
-                    case EXPR_VAL_INUM:
-                        warning("integer \"and\" comparison to float");
-                        result = ((le != 0) && (right->value.inum != 0));
-                        break;
-                    case EXPR_VAL_FNUM:
-                        warning("float \"and\" comparison to float");
-                        result = ((le != 0) && (right->value.fnum != 0));
-                        break;
-                    case EXPR_VAL_BOOL:
-                        warning("boolean result \"and\" comparison to float");
-                        result = ((le != 0) && (right->value.bnum != 0));
-                        break;
-                    default:
-                        fatal_error("Unknown vtype right in perform_arithmetic().");
-                }
-                push_inter(expr, EXPR_VAL_FNUM, (void *)&result);
-            }
+            syntax("\"and\" comparison to float is invalid");
             break;
 
         case EXPR_VAL_BOOL:
             {
-                unsigned char le = left->value.bnum;
+                unsigned char le = left.value.bval;
 
-                switch (right->vtype) {
+                switch (right.vtype) {
                     case EXPR_VAL_UNUM:
-                        result = ((le != 0) && (right->value.unum != 0));
+                        result = ((le != 0) && (right.value.unum != 0));
                         break;
                     case EXPR_VAL_INUM:
-                        result = ((le != 0) && (right->value.inum != 0));
+                        result = ((le != 0) && (right.value.inum != 0));
                         break;
                     case EXPR_VAL_FNUM:
-                        warning("boolean \"and\" comparison to float");
-                        result = ((le != 0) && (right->value.fnum != 0.0));
+                        syntax("boolean \"and\" comparison to float is invalid");
+                        error++;
                         break;
                     case EXPR_VAL_BOOL:
-                        result = ((le != 0) && (right->value.bnum != 0));
+                        result = ((le != 0) && (right.value.bval != 0));
                         break;
                     default:
-                        fatal_error("Unknown vtype right in perform_arithmetic().");
+                        syntax("Unknown vtype right in perform_arithmetic().");
+                        error++;
                 }
             }
             break;
 
         default:
-            fatal_error("Unknown vtype left in perform_arithmetic().");
+            syntax("Unknown vtype left in perform_arithmetic().");
+            error++;
     }
-
-    push_inter(expr, EXPR_VAL_BOOL, (void *)&result);
-    free(right);
-    free(left);
+    if(!error) {
+        ovalue.value.bval = result;
+        ovalue.vtype = EXPR_VAL_BOOL;
+        push_output(expr, &ovalue);
+    }
 }
 
-void perform_bool_or(expression_t *expr) {
+void perform_bool_or(expression_t expr) {
     MARK();
-    out_lifo_t *right = pop_inter(expr);
-    out_lifo_t *left = pop_inter(expr);
+    expr_value_t left;
+    expr_value_t right;
+    expr_value_t ovalue;
     unsigned char result;
+    int error = 0;
 
-    switch (left->vtype) {
+    pop_output(expr, &left);
+    pop_output(expr, &right);
+
+    switch (left.vtype) {
         case EXPR_VAL_INUM:
             {
-                int64_t le = left->value.inum;
+                int64_t le = left.value.inum;
 
-                switch (right->vtype) {
+                switch (right.vtype) {
                     case EXPR_VAL_UNUM:
-                        result = ((le != 0) || (right->value.unum != 0));
+                        result = ((le != 0) || (right.value.unum != 0));
                         break;
                     case EXPR_VAL_INUM:
-                        result = ((le != 0) || (right->value.inum != 0));
+                        result = ((le != 0) || (right.value.inum != 0));
                         break;
                     case EXPR_VAL_FNUM:
-                        warning("integer \"or\" comparison to float");
-                        result = ((le != 0) || (right->value.fnum != 0.0));
+                        syntax("integer \"or\" comparison to float is invalid");
+                        error++;
                         break;
                     case EXPR_VAL_BOOL:
-                        result = ((le != 0) || (right->value.bnum != 0));
+                        result = ((le != 0) || (right.value.bval != 0));
                         break;
                     default:
-                        fatal_error("Unknown vtype right in perform_arithmetic().");
+                        syntax("Unknown vtype right in perform_arithmetic().");
+                        error++;
                 }
             }
 
         case EXPR_VAL_UNUM:
             {
-                uint64_t le = left->value.unum;
+                uint64_t le = left.value.unum;
 
-                switch (right->vtype) {
+                switch (right.vtype) {
                     case EXPR_VAL_UNUM:
-                        result = ((le != 0) || (right->value.unum != 0));
+                        result = ((le != 0) || (right.value.unum != 0));
                         break;
                     case EXPR_VAL_INUM:
-                        result = ((le != 0) || (right->value.inum != 0));
+                        result = ((le != 0) || (right.value.inum != 0));
                         break;
                     case EXPR_VAL_FNUM:
-                        warning("unsigned integer \"or\" comparison to float");
-                        result = ((le != 0) || (right->value.fnum != 0.0));
+                        syntax("unsigned integer \"or\" comparison to float is invalid");
+                        error++;
                         break;
                     case EXPR_VAL_BOOL:
-                        result = ((le != 0) || (right->value.bnum != 0));
+                        result = ((le != 0) || (right.value.bval != 0));
                         break;
                     default:
-                        fatal_error("Unknown vtype right in perform_arithmetic().");
+                        syntax("Unknown vtype right in perform_arithmetic().");
+                        error++;
                 }
             }
             break;
 
         case EXPR_VAL_FNUM:
-            {
-                double le = left->value.fnum;
-
-                // right side is simply case to double
-                switch (right->vtype) {
-                    case EXPR_VAL_UNUM:
-                        warning("unsigned integer \"or\" comparison to float");
-                        result = ((le != 0) || (right->value.unum != 0));
-                        break;
-                    case EXPR_VAL_INUM:
-                        warning("integer \"or\" comparison to float");
-                        result = ((le != 0) || (right->value.inum != 0));
-                        break;
-                    case EXPR_VAL_FNUM:
-                        warning("float \"or\" comparison to float");
-                        result = ((le != 0) || (right->value.fnum != 0));
-                        break;
-                    case EXPR_VAL_BOOL:
-                        warning("boolean result \"or\" comparison to float");
-                        result = ((le != 0) || (right->value.bnum != 0));
-                        break;
-                    default:
-                        fatal_error("Unknown vtype right in perform_arithmetic().");
-                }
-                push_inter(expr, EXPR_VAL_FNUM, (void *)&result);
-            }
+            syntax("unsigned integer \"or\" comparison to float is invalid");
+            error++;
             break;
 
         case EXPR_VAL_BOOL:
             {
-                unsigned char le = left->value.bnum;
+                unsigned char le = left.value.bval;
 
-                switch (right->vtype) {
+                switch (right.vtype) {
                     case EXPR_VAL_UNUM:
-                        result = ((le != 0) || (right->value.unum != 0));
+                        result = ((le != 0) || (right.value.unum != 0));
                         break;
                     case EXPR_VAL_INUM:
-                        result = ((le != 0) || (right->value.inum != 0));
+                        result = ((le != 0) || (right.value.inum != 0));
                         break;
                     case EXPR_VAL_FNUM:
-                        warning("boolean result \"or\" comparison to float");
-                        result = ((le != 0) || (right->value.fnum != 0.0));
+                        syntax("boolean \"or\" comparison to float is invalid");
+                        error++;
                         break;
                     case EXPR_VAL_BOOL:
-                        result = ((le != 0) || (right->value.bnum != 0));
+                        result = ((le != 0) || (right.value.bval != 0));
                         break;
                     default:
-                        fatal_error("Unknown vtype right in perform_arithmetic().");
+                        syntax("Unknown vtype right in perform_arithmetic().");
+                        error++;
                 }
             }
 
         default:
-            fatal_error("Unknown vtype left in perform_arithmetic().");
+            syntax("Unknown vtype left in perform_arithmetic().");
+            error++;
     }
-
-    push_inter(expr, EXPR_VAL_BOOL, (void *)&result);
-    free(right);
-    free(left);
+    if(!error) {
+        ovalue.value.bval = result;
+        ovalue.vtype = EXPR_VAL_BOOL;
+        push_output(expr, &ovalue);
+    }
 }
 
-void perform_bool_eq(expression_t *expr) {
+void perform_bool_eq(expression_t expr) {
     MARK();
-    out_lifo_t *right = pop_inter(expr);
-    out_lifo_t *left = pop_inter(expr);
+    expr_value_t left;
+    expr_value_t right;
+    expr_value_t ovalue;
     unsigned char result;
+    int error = 0;
 
-    switch (left->vtype) {
+    pop_output(expr, &left);
+    pop_output(expr, &right);
+
+    switch (left.vtype) {
         case EXPR_VAL_INUM:
             {
-                int64_t le = left->value.inum;
+                int64_t le = left.value.inum;
 
-                switch (right->vtype) {
+                switch (right.vtype) {
                     case EXPR_VAL_UNUM:
                         warning("comparing equality of signed and unsigned integers");
-                        result = (le == right->value.unum);
+                        result = (le == right.value.unum);
                         break;
                     case EXPR_VAL_INUM:
-                        result = (le == right->value.inum);
+                        result = (le == right.value.inum);
                         break;
                     case EXPR_VAL_FNUM:
                         warning("comparing equality of signed integer and float");
-                        result = (le == right->value.fnum);
+                        result = (le == right.value.fnum);
                         break;
                     case EXPR_VAL_BOOL:
                         warning("comparing equality of boolean result and integer");
-                        result = (le == right->value.bnum);
+                        result = (le == right.value.bval);
                         break;
                     default:
-                        fatal_error("Unknown vtype right in perform_arithmetic().");
+                        syntax("Unknown vtype right in perform_arithmetic().");
                 }
             }
 
         case EXPR_VAL_UNUM:
             {
-                uint64_t le = left->value.unum;
+                uint64_t le = left.value.unum;
 
-                switch (right->vtype) {
+                switch (right.vtype) {
                     case EXPR_VAL_UNUM:
-                        result = (le == right->value.unum);
+                        result = (le == right.value.unum);
                         break;
                     case EXPR_VAL_INUM:
                         warning("comparing equality of signed and unsigned integers");
-                        result = (le == right->value.inum);
+                        result = (le == right.value.inum);
                         break;
                     case EXPR_VAL_FNUM:
                         warning("comparing equality of unsigned integer and float");
-                        result = (le == right->value.fnum);
+                        result = (le == right.value.fnum);
                         break;
                     case EXPR_VAL_BOOL:
                         warning("comparing equality of boolean result and unsigned integer");
-                        result = (le == right->value.bnum);
+                        result = (le == right.value.bval);
                         break;
                     default:
-                        fatal_error("Unknown vtype right in perform_arithmetic().");
+                        syntax("Unknown vtype right in perform_arithmetic().");
+                        error++;
                 }
             }
             break;
 
         case EXPR_VAL_FNUM:
             {
-                double le = left->value.fnum;
+                double le = left.value.fnum;
 
                 // right side is simply case to double
-                switch (right->vtype) {
+                switch (right.vtype) {
                     case EXPR_VAL_UNUM:
                         warning("comparing equality of unsigned integer and float");
-                        result = (le == right->value.unum);
+                        result = (le == right.value.unum);
                         break;
                     case EXPR_VAL_INUM:
                         warning("comparing equality of signed integer and float");
-                        result = (le == right->value.inum);
+                        result = (le == right.value.inum);
                         break;
                     case EXPR_VAL_FNUM:
                         warning("comparing equality of two floats");
-                        result = (le == right->value.fnum);
+                        result = (le == right.value.fnum);
                         break;
                     case EXPR_VAL_BOOL:
                         warning("comparing equality of boolean result and float");
-                        result = (le == right->value.bnum);
+                        result = (le == right.value.bval);
                         break;
                     default:
-                        fatal_error("Unknown vtype right in perform_arithmetic().");
+                        syntax("Unknown vtype right in perform_arithmetic().");
+                        error++;
                 }
-                push_inter(expr, EXPR_VAL_FNUM, (void *)&result);
             }
             break;
 
         case EXPR_VAL_BOOL:
             {
-                unsigned char le = left->value.bnum;
+                unsigned char le = left.value.bval;
 
-                switch (right->vtype) {
+                switch (right.vtype) {
                     case EXPR_VAL_UNUM:
                         warning("comparing equality of boolean result and unsigned integer");
-                        result = (le == right->value.unum);
+                        result = (le == right.value.unum);
                         break;
                     case EXPR_VAL_INUM:
                         warning("comparing equality of boolean result and integer");
-                        result = (le == right->value.inum);
+                        result = (le == right.value.inum);
                         break;
                     case EXPR_VAL_FNUM:
                         warning("comparing equality of boolean result and float");
-                        result = (le == right->value.fnum);
+                        result = (le == right.value.fnum);
                         break;
                     case EXPR_VAL_BOOL:
-                        result = (le == right->value.bnum);
+                        result = (le == right.value.bval);
                         break;
                     default:
-                        fatal_error("Unknown vtype right in perform_arithmetic().");
+                        syntax("Unknown vtype right in perform_arithmetic().");
+                        error++;
                 }
             }
 
         default:
-            fatal_error("Unknown vtype left in perform_arithmetic().");
+            syntax("Unknown vtype left in perform_arithmetic().");
+            error++;
     }
-
-    push_inter(expr, EXPR_VAL_BOOL, (void *)&result);
-    free(right);
-    free(left);
+    if(!error) {
+        ovalue.value.bval = result;
+        ovalue.vtype = EXPR_VAL_BOOL;
+        push_output(expr, &ovalue);
+    }
 }
 
-void perform_bool_nqe(expression_t *expr) {
+void perform_bool_nqe(expression_t expr) {
     MARK();
-    out_lifo_t *right = pop_inter(expr);
-    out_lifo_t *left = pop_inter(expr);
+    expr_value_t left;
+    expr_value_t right;
+    expr_value_t ovalue;
     unsigned char result;
+    int error = 0;
 
-    switch (left->vtype) {
+    pop_output(expr, &left);
+    pop_output(expr, &right);
+
+    switch (left.vtype) {
         case EXPR_VAL_INUM:
             {
-                int64_t le = left->value.inum;
+                int64_t le = left.value.inum;
 
-                switch (right->vtype) {
+                switch (right.vtype) {
                     case EXPR_VAL_UNUM:
                         warning("comparing equality of signed and unsigned integers");
-                        result = (le != right->value.unum);
+                        result = (le != right.value.unum);
                         break;
                     case EXPR_VAL_INUM:
-                        result = (le != right->value.inum);
+                        result = (le != right.value.inum);
                         break;
                     case EXPR_VAL_FNUM:
                         warning("comparing equality of signed integer and float");
-                        result = (le != right->value.fnum);
+                        result = (le != right.value.fnum);
                         break;
                     case EXPR_VAL_BOOL:
                         warning("comparing equality of boolean result and integer");
-                        result = (le != right->value.bnum);
+                        result = (le != right.value.bval);
                         break;
                     default:
-                        fatal_error("Unknown vtype right in perform_arithmetic().");
+                        syntax("Unknown vtype right in perform_arithmetic().");
+                        error++;
                 }
             }
 
         case EXPR_VAL_UNUM:
             {
-                uint64_t le = left->value.unum;
+                uint64_t le = left.value.unum;
 
-                switch (right->vtype) {
+                switch (right.vtype) {
                     case EXPR_VAL_UNUM:
-                        result = (le != right->value.unum);
+                        result = (le != right.value.unum);
                         break;
                     case EXPR_VAL_INUM:
                         warning("comparing equality of signed and unsigned integers");
-                        result = (le != right->value.inum);
+                        result = (le != right.value.inum);
                         break;
                     case EXPR_VAL_FNUM:
                         warning("comparing equality of unsigned integer and float");
-                        result = (le != right->value.fnum);
+                        result = (le != right.value.fnum);
                         break;
                     case EXPR_VAL_BOOL:
                         warning("comparing equality of boolean result and unsigned integer");
-                        result = (le != right->value.bnum);
+                        result = (le != right.value.bval);
                         break;
                     default:
-                        fatal_error("Unknown vtype right in perform_arithmetic().");
+                        syntax("Unknown vtype right in perform_arithmetic().");
+                        error++;
                 }
             }
             break;
 
         case EXPR_VAL_FNUM:
             {
-                double le = left->value.fnum;
+                double le = left.value.fnum;
 
                 // right side is simply case to double
-                switch (right->vtype) {
+                switch (right.vtype) {
                     case EXPR_VAL_UNUM:
                         warning("comparing equality of unsigned integer and float");
-                        result = (le != right->value.unum);
+                        result = (le != right.value.unum);
                         break;
                     case EXPR_VAL_INUM:
                         warning("comparing equality of signed integer and float");
-                        result = (le != right->value.inum);
+                        result = (le != right.value.inum);
                         break;
                     case EXPR_VAL_FNUM:
                         warning("comparing equality of two floats");
-                        result = (le != right->value.fnum);
+                        result = (le != right.value.fnum);
                         break;
                     case EXPR_VAL_BOOL:
                         warning("comparing equality of boolean result and float");
-                        result = (le != right->value.bnum);
+                        result = (le != right.value.bval);
                         break;
                     default:
-                        fatal_error("Unknown vtype right in perform_arithmetic().");
+                        syntax("Unknown vtype right in perform_arithmetic().");
+                        error++;
                 }
-                push_inter(expr, EXPR_VAL_FNUM, (void *)&result);
             }
             break;
 
         case EXPR_VAL_BOOL:
             {
-                unsigned char le = left->value.bnum;
+                unsigned char le = left.value.bval;
 
-                switch (right->vtype) {
+                switch (right.vtype) {
                     case EXPR_VAL_UNUM:
                         warning("comparing equality of boolean result and unsigned integer");
-                        result = (le != right->value.unum);
+                        result = (le != right.value.unum);
                         break;
                     case EXPR_VAL_INUM:
                         warning("comparing equality of boolean result and integer");
-                        result = (le != right->value.inum);
+                        result = (le != right.value.inum);
                         break;
                     case EXPR_VAL_FNUM:
                         warning("comparing equality of boolean result and float");
-                        result = (le != right->value.fnum);
+                        result = (le != right.value.fnum);
                         break;
                     case EXPR_VAL_BOOL:
-                        result = (le != right->value.bnum);
+                        result = (le != right.value.bval);
                         break;
                     default:
-                        fatal_error("Unknown vtype right in perform_arithmetic().");
+                        syntax("Unknown vtype right in perform_arithmetic().");
+                        error++;
                 }
             }
 
         default:
-            fatal_error("Unknown vtype left in perform_arithmetic().");
+            syntax("Unknown vtype left in perform_arithmetic().");
+            error++;
     }
-
-    push_inter(expr, EXPR_VAL_BOOL, (void *)&result);
-    free(right);
-    free(left);
+    if(!error) {
+        ovalue.value.bval = result;
+        ovalue.vtype = EXPR_VAL_BOOL;
+        push_output(expr, &ovalue);
+    }
 }

@@ -7,8 +7,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "utils.h"
 #include "scanner.h"
-#include "errors.h"
 #include "parser_support.h"
 
 #define TOKSTR get_tok_str()
@@ -1071,4 +1071,3 @@ void yyerror(const char* s)
 	fprintf(stdout, "\n%s: line %d: at %d: %s\n\n", get_file_name(), get_line_number(), get_col_number(), s); //yylloc.first_line, s);
     inc_error_count();
 }
-

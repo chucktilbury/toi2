@@ -3,7 +3,7 @@
 
 #include "scanner.h"
 #include "parser.h"
-#include "errors.h"
+#include "utils.h"
 #include "ast_tree.h"
 
 int main(int argc, char **argv) {

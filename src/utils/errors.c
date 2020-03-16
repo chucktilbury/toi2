@@ -156,7 +156,7 @@ void debug_msg(int lev, const char *str, ...) {
     }
 }
 
-void debug_mark(int lev, const char *func) {
+void debug_mark(int lev, const char *file, int line, const char *func) {
 
     FILE *ofp;
 
@@ -166,7 +166,8 @@ void debug_mark(int lev, const char *func) {
         else
             ofp = stderr;
 
-        fprintf(ofp, "MARK: %s: %d: %d: %s\n", get_file_name(), get_line_number(), get_col_number(), func);
+        fprintf(ofp, "MARK: (%s, %d) %s: %d: %d: %s\n", file, line, get_file_name(), get_line_number(), get_col_number(), func);
+        //fprintf(ofp, "      %s: %d\n", file, line);
     }
 }
 

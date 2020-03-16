@@ -5,8 +5,8 @@
 #include "scanner.h"
 #include "parser.h"
 #include "parser_support.h"
-#include "../utils/errors.h"
-#include "../expressions/expressions.h"
+#include "utils.h"
+#include "expressions.h"
 
 #define MAX_NAME (1024*64)
 
@@ -93,8 +93,9 @@ void save_literal_num(int type) {
     switch (type) {
         case UNUM:
             {
-                literal_num.value.unum = (uint64_t) strtoul(get_tok_str(), NULL, 16);
-                MSG("storing UNUM value %lu", literal_num.value.unum);
+                char *str = get_tok_str();
+                literal_num.value.unum = (uint64_t) strtoul(str, NULL, 16);
+                MSG("storing UNUM value %lu (%s)", literal_num.value.unum, str);
                 // uint64_t val = (uint64_t)strtoul(get_tok_str(), NULL, 16);
                 // store_expr_value(current_expression, EXPR_VAL_UNUM,
                 // (void*)&val);
@@ -102,8 +103,9 @@ void save_literal_num(int type) {
             break;
         case INUM:
             {
-                literal_num.value.inum = (int64_t) strtol(get_tok_str(), NULL, 10);
-                MSG("storing INUM value %ld", literal_num.value.inum);
+                char *str = get_tok_str();
+                literal_num.value.inum = (int64_t) strtol(str, NULL, 10);
+                MSG("storing INUM value %ld (%s)", literal_num.value.inum, str);
                 // int64_t val = (int64_t)strtol(get_tok_str(), NULL, 10);
                 // store_expr_value(current_expression, EXPR_VAL_INUM,
                 // (void*)&val);

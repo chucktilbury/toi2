@@ -96,3 +96,13 @@ When the AST is created, that is taken into account as "special" syntax. The
 Add rules to accept 0x000 as a signed and 00000 as an unsigned
 
 -------------------
+
+Modify promotion rules such that the result is the highest attribute of both
+operands. Order of promotion:
+float -- if one or the other is a float, then promote both.
+signed int
+unsigned int
+boolean
+
+When a numeric expression operation is carried out, it is always done using the
+same types for both operands.

@@ -2,15 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../abstract_tree/ast_tree.h"
-#include "../parser/scanner.h"
-#include "../utils/errors.h"
+#include "scanner.h"
+#include "utils.h"
 #include "expressions.h"
-#include "arith.h"
-#include "bitwise.h"
-#include "bool1.h"
-#include "bool2.h"
-#include "unary.h"
 
 /*
  * This exists to allow the parser to store an expression in such a way as to
@@ -40,28 +34,26 @@
  * is left to other code to determine. This code is concerned to evaluating
  * an expression that has already been parsed.
  */
-
+void reset_value_fifo(expression_t e);
 /*
  * Returns a pointer to the value of the expression. The type parameter
  * indicates the type that the return value points to.
  */
-void *evaluate_expression(expression_t *expr, expr_val_type_t * type) {
+void evaluate_expression(expression_t expr) {
     MARK();
-    val_fifo_element_t *value;
+    expr_value_t value;
+    expr_value_t ovalue;
     int finished = 0;
 
     reset_value_fifo(expr);
-
-    while(!finished) {
-        value = get_expr_value(expr);
-        EXPR_VAL_MSG(value->vtype);
-        if(value == NULL)
-            finished++;
-        else if(value->vtype == EXPR_VAL_OPERATOR) {
+    MSG("----- BEGIN EXPRESSION EVALUATION");
+    //while(!finished) {
+    while(get_expr_value(expr, &value)) {
+        EXPR_PRINT_VALUE(&value);
+        if(value.vtype == EXPR_VAL_OPERATOR) {
             // apply the operation to the out stack
-            expr_ops_t oper = value->value.oper;
+            expr_ops_t oper = value.value.oper;
 
-            EXPR_OP_MSG(oper);
             switch (oper) {
                     // Arithmetic operations
                 case EXPR_OP_ADD:
@@ -141,48 +133,40 @@ void *evaluate_expression(expression_t *expr, expr_val_type_t * type) {
                     break;
 
                 default:
-                    fatal_error("Unknown operator type in evaluate_expression().");
+                    syntax("Unknown operator type in evaluate_expression().");
             }
         }
-        else if(value->vtype == EXPR_VAL_REFERENCE) {
+        else if(value.vtype == EXPR_VAL_REFERENCE) {
             // find the value of the reference and push it on the out stack
             syntax("References are not supported (yet)");
         }
         else {
             // push the value on the out stack
-            switch (value->vtype) {
+            switch (value.vtype) {
                 case EXPR_VAL_UNUM:
-                    {
-                        uint64_t result = value->value.unum;
-
-                        push_inter(expr, EXPR_VAL_UNUM, (void *)&result);
-                    }
+                        ovalue.value.unum = value.value.unum;
+                        ovalue.vtype = EXPR_VAL_UNUM;
+                        push_output(expr, &ovalue);
                     break;
                 case EXPR_VAL_INUM:
-                    {
-                        int64_t result = value->value.inum;
-
-                        push_inter(expr, EXPR_VAL_INUM, (void *)&result);
-                    }
+                        ovalue.value.inum = value.value.inum;
+                        ovalue.vtype = EXPR_VAL_INUM;
+                        push_output(expr, &ovalue);
                     break;
                 case EXPR_VAL_FNUM:
-                    {
-                        double result = value->value.fnum;
-
-                        push_inter(expr, EXPR_VAL_FNUM, (void *)&result);
-                    }
+                        ovalue.value.fnum = value.value.fnum;
+                        ovalue.vtype = EXPR_VAL_FNUM;
+                        push_output(expr, &ovalue);
                     break;
                 case EXPR_VAL_BOOL:
-                    {
-                        unsigned char result = value->value.unum;
-
-                        push_inter(expr, EXPR_VAL_BOOL, (void *)&result);
-                    }
+                        ovalue.value.bval = value.value.bval;
+                        ovalue.vtype = EXPR_VAL_BOOL;
+                        push_output(expr, &ovalue);
                     break;
                 default:
-                    fatal_error("Unknown vtype in push_inter_value().");
+                    syntax("Unknown vtype in push_inter_value().");
             }
         }
     }
-    return get_expr_value(expr);
+    MSG("----- FINISH EXPRESSION EVALUATION");
 }

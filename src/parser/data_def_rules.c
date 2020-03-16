@@ -4,9 +4,8 @@
 
 #include "scanner.h"
 #include "parser_support.h"
-#include "../utils/errors.h"
-#include "../expressions/expressions.h"
-#include "../expressions/evaluate.h"
+#include "utils.h"
+#include "expressions.h"
 
 expression_t *current_expression;
 
@@ -65,22 +64,47 @@ void function_data_definition_with_initializer(void) {
 
 void function_data_definition_with_initializer_finish(void) {
     MARK();
-    expr_val_type_t type;
-    void *result = evaluate_expression(current_expression, (void *)&type);
+    //expr_val_type_t type;
+    //void *result = evaluate_expression(current_expression, (void *)&type);
+    //
+    //switch (type) {
+    //    case EXPR_VAL_UNUM:
+    //        MSG("result of unsigned integer expression: %lu", *(uint64_t *) result);
+    //        break;
+    //    case EXPR_VAL_INUM:
+    //        MSG("result of signed integer expression: %ld", *(int64_t *) result);
+    //        break;
+    //    case EXPR_VAL_FNUM:
+    //        MSG("result of float expression: %f", *(double *)result);
+    //        break;
+    //    case EXPR_VAL_BOOL:
+    //        MSG("result of boolean expression: %s", *(unsigned char *)result ? "True" : "False");
+    //        break;
+    //}
+    //destroy_expression(current_expression);
+    expr_value_t val;
+    evaluate_expression(current_expression);
+    pop_output(current_expression, &val);
 
-    switch (type) {
+    EXPR_PRINT_VALUE(&val);
+    MSG("EVALUATING EXPRESSION ENDED");
+    switch (val.vtype) {
         case EXPR_VAL_UNUM:
-            MSG("result of unsigned integer expression: %lu", *(uint64_t *) result);
+            MSG("result of unsigned integer expression: %lu", val.value.unum);
             break;
         case EXPR_VAL_INUM:
-            MSG("result of signed integer expression: %ld", *(int64_t *) result);
+            MSG("result of signed integer expression: %ld", val.value.inum);
             break;
         case EXPR_VAL_FNUM:
-            MSG("result of float expression: %f", *(double *)result);
+            MSG("result of float expression: %f", val.value.fnum);
             break;
         case EXPR_VAL_BOOL:
-            MSG("result of boolean expression: %s", *(unsigned char *)result ? "True" : "False");
+            MSG("result of boolean expression: %s", val.value.bval? "True" : "False");
             break;
+        case EXPR_VAL_REFERENCE:
+        case EXPR_VAL_OPERATOR:
+            syntax("unexpected reference or operator in evalate expression.");
     }
     destroy_expression(current_expression);
+
 }
