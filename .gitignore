@@ -1,6 +1,8 @@
 # Prerequisites
 *.komodoproject
 build/
+.vscode/
+.komodotools/
 *.d
 
 # Object files
