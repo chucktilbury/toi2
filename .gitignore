@@ -1,5 +1,6 @@
 # Prerequisites
 *.komodoproject
+build/
 *.d
 
 # Object files
