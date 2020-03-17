@@ -15,7 +15,7 @@ DEBUG	=	-g -DTRACE
 
 LIBDIRS	=	-L../../lib
 ifeq ($(PLATNAME), Linux)
-	LIBS	=	$(LIBDIRS) -lparser -labstree -lexpressions -lutils -ll -ly
+	LIBS	=	$(LIBDIRS) -lparser -labstree -lparser_support -lexpressions -lutils -ll -ly
 else ifeq ($(PLATNAME), MSYS_NT-6.1)
 	LIBS	=	$(LIBDIRS) -L/c/MinGW/msys/1.0/lib -lparser -lutils -lfl -ly
 endif
@@ -37,9 +37,6 @@ pretty:
 	-rm -f *~
 
 clean:
-	-rm -f $(OBJS) *.bak *~
-
-all_clean: clean
-	-rm -f $(TARGET) $(DEPS) .indent.pro
+	-rm -f $(OBJS) *.bak *~ $(TARGET) $(DEPS) .indent.pro
 
 -include $(DEPS)

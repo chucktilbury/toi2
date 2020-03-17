@@ -27,7 +27,5 @@ target_include_directories(${PROJECT_NAME}
         ${PROJECT_SOURCE_DIR}/../parser
 )
 
-#set(CMAKE_STATIC_LINKER_FLAGS "-rcs")
-#target_link_options(${PROJECT_NAME} BEFORE PUBLIC "LINKER:-rcs")
-
+#set(LIBRARY_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/../lib")
 target_compile_options(${PROJECT_NAME} PRIVATE "-Wall" "-Wextra" "-g" "-DTRACE")

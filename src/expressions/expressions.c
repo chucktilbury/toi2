@@ -53,7 +53,7 @@ void destroy_expression(expression_t e) {
 }
 
 void store_expr_value(expression_t e, expr_value_t *val) {
-    MARK();
+    MARK() ;
     expression_struct_t *expr = (expression_struct_t *)e;
     fifo_add(expr->input, (void*)val, sizeof(expr_value_t));
 }

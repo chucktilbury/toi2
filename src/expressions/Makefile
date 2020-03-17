@@ -18,7 +18,7 @@ DEPS	= 	$(TARGET).dep
 CC		=	gcc # clang
 CARGS	=	-Wall
 DEBUG	=	-g -DTRACE
-HSRC	= 	-I../include -I../parser
+HSRC	= 	-I../include -I../parser -I../parser_support
 
 .PHONY: all pretty clean all_clean
 

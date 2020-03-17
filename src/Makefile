@@ -1,6 +1,7 @@
 .PHONY: all pretty clean all_clean
 
 TARGETS	=	parser \
+			parser_support \
 			utils \
 			abstract_tree \
 			expressions \
@@ -22,7 +23,3 @@ clean:
 		make -C $$target clean; \
 	done
 
-all_clean:
-	@for target in $(TARGETS); do \
-		make -C $$target all_clean; \
-	done

@@ -72,6 +72,7 @@ static void update_loc(void){
 %x COMMENT
 %option noinput nounput
 %option yylineno
+%option noyywrap
 %%
 
     /* overhead */

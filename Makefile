@@ -10,8 +10,5 @@ pretty:
 clean:
 	make -C src clean
 
-all_clean:
-	make -C src all_clean
-
 tests: all
 	make -C tests

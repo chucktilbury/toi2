@@ -6,11 +6,11 @@ add_executable(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME}
-    utils
-    expressions
+    parser
     abstract
     parser_support
-    parser
+    expressions
+    utils
 )
 
 target_include_directories(${PROJECT_NAME}
@@ -18,4 +18,5 @@ target_include_directories(${PROJECT_NAME}
         ${PROJECT_SOURCE_DIR}/../include
 )
 
+#set(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/../bin")
 target_compile_options(${PROJECT_NAME} PRIVATE "-Wall" "-Wextra" "-g" "-DTRACE")
