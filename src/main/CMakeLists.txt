@@ -19,5 +19,4 @@ target_include_directories(${PROJECT_NAME}
         ${PROJECT_SOURCE_DIR}/../include
 )
 
-#set(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/../bin")
 target_compile_options(${PROJECT_NAME} PRIVATE "-Wall" "-Wextra" "-g" "-DTRACE")

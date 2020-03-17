@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,7 +7,11 @@
 #include "utils.h"
 #include "expressions.h"
 
-/*
+void reset_value_fifo(expression_t e);
+void perform_bitwise_operation(expression_t expr, expr_ops_t oper);
+void perform_boolean_operation(expression_t expr, expr_ops_t oper);
+
+/*!
  * This exists to allow the parser to store an expression in such a way as to
  * allow it to be evaluated multiple times without re-parsing it, such as the
  * case would be if a function were called multiple times.
@@ -33,12 +38,7 @@
  * fits into the actual size that has been specified, such as in an assignment,
  * is left to other code to determine. This code is concerned to evaluating
  * an expression that has already been parsed.
- */
-void reset_value_fifo(expression_t e);
-void perform_bitwise_operation(expression_t expr, expr_ops_t oper);
-void perform_boolean_operation(expression_t expr, expr_ops_t oper);
-
-/*
+ *
  * Returns a pointer to the value of the expression. The type parameter
  * indicates the type that the return value points to.
  */

@@ -2,21 +2,10 @@
 #  define _PARSER_SUPPORT_H_
 
 /*
- *  This header has the various includes, macros, and definitions that provide
- *  access to the implementation of the parser support. There are quite a few
- *  files and this header binds them together.
+ *  This header contains function protoyypes for functions that are used in the
+ *  parser YACC (Bison) parser.
  */
-
-#  include <stdint.h>
-
-typedef struct literal_num {
-    int vtype;
-    union {
-        uint64_t unum;
-        int64_t inum;
-        double fnum;
-    } value;
-} literal_num_t;
+#include "parser_defs.h"
 
 //#include "module_rules.h"
 void module_module_list_end(void);

@@ -15,5 +15,4 @@ target_include_directories(${PROJECT_NAME}
         ${PROJECT_SOURCE_DIR}/../include
 )
 
-#set(LIBRARY_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/../lib")
 target_compile_options(${PROJECT_NAME} PRIVATE "-Wall" "-g" "-DTRACE")
