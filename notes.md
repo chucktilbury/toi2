@@ -53,11 +53,13 @@ requires an integer subscript and a dictionary requires a string. There are
 a lot of these, especially when parsing an expression. Boolean and arithmetic
 expressions are treated as the same thing in the bison parser.
 
+```C
 typedef struct ast_node {
     struct ast_node *parent;
     linked_list_t *children;
     hash_table_t *attributes;
 } ast_node_t;
+```
 
 Note the implications of importing modules. An imported module will be
 parsed and it's name space will be added as a child of the root node, but
@@ -67,8 +69,12 @@ using the import name in dot notation.
 Note the implications of object vs. classes. The class to which an object
 belongs must be found and stored when the AST is created. objects can be
 reassigned to other names and such. For example:
+
+```
 a = SomeClass();
 b = a;
+```
+
 Assignment of classes takes more code. There needs to be a simple way to copy
 a node's attributes. Of course there is the scenario where someone may assign
 an object to an int or something.
@@ -93,16 +99,3 @@ When the AST is created, that is taken into account as "special" syntax. The
 
 --------------------
 
-Add rules to accept 0x000 as a signed and 00000 as an unsigned
-
--------------------
-
-Modify promotion rules such that the result is the highest attribute of both
-operands. Order of promotion:
-float -- if one or the other is a float, then promote both.
-signed int
-unsigned int
-boolean
-
-When a numeric expression operation is carried out, it is always done using the
-same types for both operands.

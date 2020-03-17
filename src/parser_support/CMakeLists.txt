@@ -18,7 +18,6 @@ add_library(${PROJECT_NAME}
         import_rules.c
         while_rules.c
         except_rules.c
-        globals.c
 )
 
 target_include_directories(${PROJECT_NAME}
