@@ -11,7 +11,7 @@
 #include <stdarg.h>
 
 #include "utils.h"
-#include "../parser/scanner.h"
+#include "scanner.h"
 
 static struct errors {
     int level;
